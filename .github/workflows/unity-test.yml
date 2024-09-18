@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest  # You can also use macos-latest for mac builds
 
     steps:
+    - name: checkout repo
+      uses: actions/checkout@v4
+
     - name: Run Tests
       uses: game-ci/unity-test-runner@v4
       env:
