@@ -1,0 +1,46 @@
+name: Unity Test Runner
+
+on: 
+  push:
+    branches: [ main ]   # Triggers on push to main branch
+  pull_request:
+    branches: [ main ]   # Triggers on pull request to main branch
+
+jobs:
+  test:
+    name: Run Unity Tests
+    runs-on: ubuntu-latest  # You can also use macos-latest for mac builds
+
+    steps:
+    # Checkout the code
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Install Unity and activate a license
+    - name: Set up Unity
+      uses: game-ci/unity-builder@v2
+      with:
+        version: 2022.3.45f1  # Specify the Unity version you're using
+
+    # Run Unit Tests in Play Mode or Edit Mode
+    - name: Run Edit Mode Tests
+      uses: game-ci/unity-test-runner@v3
+      with:
+        version: 2022.3.45f1  # Specify the Unity version you're using
+        testMode: editmode  # You can also use 'playmode' for play mode tests
+        customParameters: -testResults /github/workspace/test-results.xml
+
+    # Upload test results
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: test-results.xml
+
+    # Optional: Upload test coverage report
+    - name: Upload Code Coverage Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage
+        path: CodeCoverage
+
