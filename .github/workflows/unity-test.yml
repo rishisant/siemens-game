@@ -16,12 +16,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Install Unity and activate a license
-    - name: Set up Unity
-      uses: game-ci/unity-builder@v2
-      with:
-        version: 2022.3.45f1  # Specify the Unity version you're using
-
     # Run Unit Tests in Play Mode or Edit Mode
     - name: Run Edit Mode Tests
       uses: game-ci/unity-test-runner@v3
