@@ -2,9 +2,9 @@ name: Unity Test Runner
 
 on: 
   push:
-    branches: [ main ]   # Triggers on push to main branch
+    branches: [ dev-ethan ]   # Triggers on push to main branch
   pull_request:
-    branches: [ main ]   # Triggers on pull request to main branch
+    branches: [ dev-ethan ]   # Triggers on pull request to main branch
 
 jobs:
   test:
