@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     name: Run Unity Tests
+    permissions: write-all
     runs-on: ubuntu-latest  # You can also use macos-latest for mac builds
 
     steps:
