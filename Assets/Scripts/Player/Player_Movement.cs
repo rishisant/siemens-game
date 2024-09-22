@@ -9,8 +9,8 @@ public class Player_Movement : MonoBehaviour
 {
     // Add all necessary variables
     // Use SerializeField to expose them in the Unity Editor (Good Code Practice)
-    [SerializeField] private float initialSpeed = 2.5f;
-    [SerializeField] private float maxSpeed = 5f;
+    [SerializeField] private float initialSpeed = 1f;
+    [SerializeField] private float maxSpeed = 4.5f;
     [SerializeField] private float speedIncreaseDuration = 3f;
     [SerializeField] private float cameraSmoothness = 0.125f;
     [SerializeField] private float cameraZoomIn = 2f;
@@ -18,6 +18,8 @@ public class Player_Movement : MonoBehaviour
 
     private float currentSpeed;
     private float speedIncreaseTimer;
+
+    private bool isMoving = false; // Check if the player is moving
 
     private Vector2 lastMovement = Vector2.down;
     
@@ -46,6 +48,12 @@ public class Player_Movement : MonoBehaviour
         Vector2 movementInput = GetInput();
         HandleMovement(movementInput);
         UpdateAnimator(movementInput);
+
+        if (!isMoving) {
+            // Set the current speed to the initial speed
+            currentSpeed = initialSpeed; // Stops the robot's recharge
+            speedIncreaseTimer = 0f;
+        }
     }
 
     // LateUpdate is called after Update, so it's good for camera movement
@@ -80,24 +88,37 @@ public class Player_Movement : MonoBehaviour
     // Using rigidbody to move the player
     private void HandleMovement(Vector2 movement)
     {
+        // Restrict to horizontal or vertical movement
+        if (movement.x != 0)
+        {
+            movement.y = 0;
+        } else if (movement.y != 0)
+        {
+            movement.x = 0;
+        }
         rb.velocity = movement * currentSpeed;
+        isMoving = movement != Vector2.zero;
     }
 
     // Update the animator based on the movement
     // Necessary for the animations to work
     private void UpdateAnimator(Vector2 movement)
     {
+        // Restrict to horizontal or vertical movement
+        if (movement.x != 0)
+        {
+            movement.y = 0;
+        } else if (movement.y != 0)
+        {
+            movement.x = 0;
+        }
         animator.SetFloat("moveX", movement.x);
         animator.SetFloat("moveY", movement.y);
-        bool isMoving = movement != Vector2.zero;
+        // bool isMoving = movement != Vector2.zero;
         animator.SetBool("isMoving", isMoving);
 
-        if (isMoving)
+        if (isMoving) {
             lastMovement = movement;
-        else
-        {
-            animator.SetFloat("lastMoveX", lastMovement.x);
-            animator.SetFloat("lastMoveY", lastMovement.y);
         }
     }
 
