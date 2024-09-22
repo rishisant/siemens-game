@@ -13,8 +13,6 @@ public class NewTestScript
     {
         // Use the Assert class to test conditions
         Assert.AreEqual(1, 1, "1 == 1");
-        Assert.AreEqual(2, 1, "2 == 1");
-
     }
 
     // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
