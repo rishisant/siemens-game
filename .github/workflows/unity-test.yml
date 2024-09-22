@@ -2,15 +2,19 @@ name: Unity Test Runner
 
 on: 
   push:
-    branches: [ dev-ethan ]   # Triggers on push to main branch
+    branches: 
+      - main
+      - dev
   pull_request:
-    branches: [ dev-ethan ]   # Triggers on pull request to main branch
+    branches: 
+      - main
+      - dev
 
 jobs:
   test:
     name: Run Unity Tests
     permissions: write-all
-    runs-on: ubuntu-latest  # You can also use macos-latest for mac builds
+    runs-on: ubuntu-latest
 
     steps:
     - name: checkout repo
