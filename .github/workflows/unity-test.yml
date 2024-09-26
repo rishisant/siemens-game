@@ -5,10 +5,12 @@ on:
     branches: 
       - master
       - dev
+      - dev-ethan
   pull_request:
     branches: 
       - master
       - dev
+      - dev-ethan
 
 jobs:
   test:
@@ -19,6 +21,13 @@ jobs:
     steps:
     - name: checkout repo
       uses: actions/checkout@v4
+
+    - uses: actions/cache@v3
+      with:
+        path: Library
+        key: Library-${{ hashFiles('Assets/**', 'Packages/**', ProjectSettings/**') }}
+        restore-keys: |
+          Library-
 
     - name: Run Tests
       uses: game-ci/unity-test-runner@v4
