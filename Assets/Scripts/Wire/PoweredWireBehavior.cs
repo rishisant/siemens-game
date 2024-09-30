@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Networking.PlayerConnection;
 using UnityEngine;
 
 public class PoweredWireBehavior : MonoBehaviour
@@ -27,11 +28,21 @@ public class PoweredWireBehavior : MonoBehaviour
 
     void OnMouseOver()
     {
+        if (powerWireS.connected)
+        {
+            return;
+        }
+
         powerWireS.movable = true;
     }
 
     void OnMouseExit()
     {
+        if (powerWireS.connected)
+        {
+            return;
+        }
+
         if (!powerWireS.moving)
         {
             powerWireS.movable = false;
@@ -40,6 +51,11 @@ public class PoweredWireBehavior : MonoBehaviour
 
     void OnMouseUp()
     {
+        if (powerWireS.connected)
+        {
+            return;
+        }
+
         mouseDown = false;
         gameObject.transform.position = powerWireS.startPosition;
         UpdateLine();
@@ -47,6 +63,11 @@ public class PoweredWireBehavior : MonoBehaviour
 
     void MoveWire()
     {
+        if (powerWireS.connected)
+        {
+            return;
+        }
+
         if (mouseDown && powerWireS.movable)
         {
             powerWireS.moving = true;
@@ -64,7 +85,7 @@ public class PoweredWireBehavior : MonoBehaviour
         }
     }
 
-    private void UpdateLine()
+    public void UpdateLine()
     {
         line.SetPosition(1, new Vector3(gameObject.transform.position.x - .1f, gameObject.transform.position.y, 0));
     }
