@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera_Movement : MonoBehaviour
+public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] private Transform target; // The player transform to follow
-    [SerializeField] private Vector3 offset; // Offset from the player
+    [SerializeField] private Transform target;
+    [SerializeField] private float smoothSpeed = 0.125f;
+    [SerializeField] private Vector3 offset;
 
-    // Update is called once per frame
-    void LateUpdate()
+    private void FixedUpdate()
     {
-        // Check if the target is not null (player/target is selected)
-        if (target != null)
-        {
-            // Move the camera to the player's position
-            transform.position = target.position + offset;
-            transform.LookAt(target);
-        }
+        Vector3 desiredPosition = target.position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        smoothedPosition.z = transform.position.z; // Keep Z-Position the Same (2D)
+        transform.position = smoothedPosition;
     }
 }
