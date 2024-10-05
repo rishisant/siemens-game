@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,10 +113,10 @@ TextureImporter:
       name: hoodie_white_full_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 489
-        width: 24
-        height: 15
+        x: 0
+        y: 480
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: hoodie_white_full_1
       rect:
         serializedVersion: 2
-        x: 60
-        y: 488
-        width: 24
-        height: 15
+        x: 48
+        y: 480
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: hoodie_white_full_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 441
-        width: 12
-        height: 16
+        x: 0
+        y: 432
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +176,10 @@ TextureImporter:
       name: hoodie_white_full_3
       rect:
         serializedVersion: 2
-        x: 64
-        y: 440
-        width: 12
-        height: 16
+        x: 48
+        y: 432
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +197,10 @@ TextureImporter:
       name: hoodie_white_full_4
       rect:
         serializedVersion: 2
-        x: 20
-        y: 394
-        width: 12
-        height: 16
+        x: 0
+        y: 384
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +218,10 @@ TextureImporter:
       name: hoodie_white_full_5
       rect:
         serializedVersion: 2
-        x: 68
-        y: 393
-        width: 12
-        height: 16
+        x: 48
+        y: 384
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +239,10 @@ TextureImporter:
       name: hoodie_white_full_6
       rect:
         serializedVersion: 2
-        x: 12
-        y: 345
-        width: 24
-        height: 15
+        x: 0
+        y: 336
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,10 +260,10 @@ TextureImporter:
       name: hoodie_white_full_7
       rect:
         serializedVersion: 2
-        x: 60
-        y: 344
-        width: 24
-        height: 15
+        x: 48
+        y: 336
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,10 +281,10 @@ TextureImporter:
       name: hoodie_white_full_8
       rect:
         serializedVersion: 2
-        x: 15
-        y: 297
-        width: 18
-        height: 15
+        x: 0
+        y: 288
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,10 +302,10 @@ TextureImporter:
       name: hoodie_white_full_9
       rect:
         serializedVersion: 2
-        x: 63
-        y: 296
-        width: 18
-        height: 15
+        x: 48
+        y: 288
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,10 +323,10 @@ TextureImporter:
       name: hoodie_white_full_10
       rect:
         serializedVersion: 2
-        x: 109
-        y: 297
-        width: 22
-        height: 15
+        x: 96
+        y: 288
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,10 +344,10 @@ TextureImporter:
       name: hoodie_white_full_11
       rect:
         serializedVersion: 2
-        x: 159
-        y: 297
-        width: 18
-        height: 15
+        x: 144
+        y: 288
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,10 +365,10 @@ TextureImporter:
       name: hoodie_white_full_12
       rect:
         serializedVersion: 2
-        x: 207
-        y: 296
-        width: 18
-        height: 15
+        x: 192
+        y: 288
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -386,10 +386,10 @@ TextureImporter:
       name: hoodie_white_full_13
       rect:
         serializedVersion: 2
-        x: 253
-        y: 297
-        width: 22
-        height: 15
+        x: 240
+        y: 288
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -407,10 +407,10 @@ TextureImporter:
       name: hoodie_white_full_14
       rect:
         serializedVersion: 2
-        x: 15
-        y: 248
-        width: 13
-        height: 16
+        x: 0
+        y: 240
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -428,10 +428,10 @@ TextureImporter:
       name: hoodie_white_full_15
       rect:
         serializedVersion: 2
-        x: 64
-        y: 248
-        width: 12
-        height: 16
+        x: 48
+        y: 240
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -449,10 +449,10 @@ TextureImporter:
       name: hoodie_white_full_16
       rect:
         serializedVersion: 2
-        x: 112
-        y: 249
-        width: 12
-        height: 16
+        x: 96
+        y: 240
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -470,10 +470,10 @@ TextureImporter:
       name: hoodie_white_full_17
       rect:
         serializedVersion: 2
-        x: 160
-        y: 248
-        width: 12
-        height: 16
+        x: 144
+        y: 240
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -491,10 +491,10 @@ TextureImporter:
       name: hoodie_white_full_18
       rect:
         serializedVersion: 2
-        x: 208
-        y: 248
-        width: 12
-        height: 16
+        x: 192
+        y: 240
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -512,10 +512,10 @@ TextureImporter:
       name: hoodie_white_full_19
       rect:
         serializedVersion: 2
-        x: 256
-        y: 249
-        width: 12
-        height: 16
+        x: 240
+        y: 240
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -533,10 +533,10 @@ TextureImporter:
       name: hoodie_white_full_20
       rect:
         serializedVersion: 2
-        x: 20
-        y: 200
-        width: 13
-        height: 16
+        x: 0
+        y: 192
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -554,10 +554,10 @@ TextureImporter:
       name: hoodie_white_full_21
       rect:
         serializedVersion: 2
-        x: 68
-        y: 200
-        width: 12
-        height: 16
+        x: 48
+        y: 192
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -575,10 +575,10 @@ TextureImporter:
       name: hoodie_white_full_22
       rect:
         serializedVersion: 2
-        x: 116
-        y: 201
-        width: 12
-        height: 16
+        x: 96
+        y: 192
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -596,10 +596,10 @@ TextureImporter:
       name: hoodie_white_full_23
       rect:
         serializedVersion: 2
-        x: 164
-        y: 200
-        width: 12
-        height: 16
+        x: 144
+        y: 192
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -617,10 +617,10 @@ TextureImporter:
       name: hoodie_white_full_24
       rect:
         serializedVersion: 2
-        x: 212
-        y: 200
-        width: 12
-        height: 16
+        x: 192
+        y: 192
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -638,10 +638,10 @@ TextureImporter:
       name: hoodie_white_full_25
       rect:
         serializedVersion: 2
-        x: 260
-        y: 201
-        width: 12
-        height: 16
+        x: 240
+        y: 192
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -659,10 +659,10 @@ TextureImporter:
       name: hoodie_white_full_26
       rect:
         serializedVersion: 2
-        x: 14
-        y: 153
-        width: 19
-        height: 15
+        x: 0
+        y: 144
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -680,10 +680,10 @@ TextureImporter:
       name: hoodie_white_full_27
       rect:
         serializedVersion: 2
-        x: 63
-        y: 152
-        width: 18
-        height: 15
+        x: 48
+        y: 144
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -701,10 +701,10 @@ TextureImporter:
       name: hoodie_white_full_28
       rect:
         serializedVersion: 2
-        x: 109
-        y: 153
-        width: 22
-        height: 15
+        x: 96
+        y: 144
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -722,10 +722,10 @@ TextureImporter:
       name: hoodie_white_full_29
       rect:
         serializedVersion: 2
-        x: 159
-        y: 153
-        width: 19
-        height: 15
+        x: 144
+        y: 144
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -743,10 +743,10 @@ TextureImporter:
       name: hoodie_white_full_30
       rect:
         serializedVersion: 2
-        x: 207
-        y: 152
-        width: 18
-        height: 15
+        x: 192
+        y: 144
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -764,10 +764,10 @@ TextureImporter:
       name: hoodie_white_full_31
       rect:
         serializedVersion: 2
-        x: 253
-        y: 153
-        width: 22
-        height: 15
+        x: 240
+        y: 144
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -785,10 +785,10 @@ TextureImporter:
       name: hoodie_white_full_32
       rect:
         serializedVersion: 2
-        x: 254
-        y: 116
-        width: 64
-        height: 14
+        x: 0
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -806,10 +806,10 @@ TextureImporter:
       name: hoodie_white_full_33
       rect:
         serializedVersion: 2
-        x: 350
-        y: 125
-        width: 20
-        height: 7
+        x: 48
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -827,10 +827,10 @@ TextureImporter:
       name: hoodie_white_full_34
       rect:
         serializedVersion: 2
-        x: 396
-        y: 120
-        width: 24
-        height: 15
+        x: 96
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -848,10 +848,10 @@ TextureImporter:
       name: hoodie_white_full_35
       rect:
         serializedVersion: 2
-        x: 444
-        y: 119
-        width: 24
-        height: 15
+        x: 144
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -869,10 +869,10 @@ TextureImporter:
       name: hoodie_white_full_36
       rect:
         serializedVersion: 2
-        x: 492
-        y: 118
-        width: 24
-        height: 15
+        x: 192
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -890,10 +890,10 @@ TextureImporter:
       name: hoodie_white_full_37
       rect:
         serializedVersion: 2
-        x: 541
-        y: 115
-        width: 23
-        height: 17
+        x: 240
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -911,10 +911,10 @@ TextureImporter:
       name: hoodie_white_full_38
       rect:
         serializedVersion: 2
-        x: 590
-        y: 105
-        width: 22
-        height: 25
+        x: 288
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -932,10 +932,10 @@ TextureImporter:
       name: hoodie_white_full_39
       rect:
         serializedVersion: 2
-        x: 638
-        y: 99
-        width: 22
-        height: 28
+        x: 336
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -953,10 +953,10 @@ TextureImporter:
       name: hoodie_white_full_40
       rect:
         serializedVersion: 2
-        x: 686
-        y: 99
-        width: 22
-        height: 27
+        x: 384
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -974,10 +974,10 @@ TextureImporter:
       name: hoodie_white_full_41
       rect:
         serializedVersion: 2
-        x: 782
-        y: 105
-        width: 22
-        height: 25
+        x: 432
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -995,10 +995,10 @@ TextureImporter:
       name: hoodie_white_full_42
       rect:
         serializedVersion: 2
-        x: 829
-        y: 115
-        width: 23
-        height: 17
+        x: 480
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1016,10 +1016,10 @@ TextureImporter:
       name: hoodie_white_full_43
       rect:
         serializedVersion: 2
-        x: 876
-        y: 118
-        width: 24
-        height: 15
+        x: 528
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1037,10 +1037,10 @@ TextureImporter:
       name: hoodie_white_full_44
       rect:
         serializedVersion: 2
-        x: 924
-        y: 119
-        width: 24
-        height: 15
+        x: 576
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1058,10 +1058,10 @@ TextureImporter:
       name: hoodie_white_full_45
       rect:
         serializedVersion: 2
-        x: 972
-        y: 120
-        width: 24
-        height: 15
+        x: 624
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1079,10 +1079,10 @@ TextureImporter:
       name: hoodie_white_full_46
       rect:
         serializedVersion: 2
-        x: 1022
-        y: 125
-        width: 20
-        height: 7
+        x: 672
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1100,10 +1100,10 @@ TextureImporter:
       name: hoodie_white_full_47
       rect:
         serializedVersion: 2
-        x: 1074
-        y: 116
-        width: 64
-        height: 14
+        x: 720
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1121,10 +1121,10 @@ TextureImporter:
       name: hoodie_white_full_48
       rect:
         serializedVersion: 2
-        x: 12
-        y: 105
-        width: 24
-        height: 15
+        x: 768
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1142,10 +1142,10 @@ TextureImporter:
       name: hoodie_white_full_49
       rect:
         serializedVersion: 2
-        x: 60
-        y: 103
-        width: 24
-        height: 15
+        x: 816
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1163,10 +1163,10 @@ TextureImporter:
       name: hoodie_white_full_50
       rect:
         serializedVersion: 2
-        x: 108
-        y: 102
-        width: 24
-        height: 14
+        x: 864
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1184,10 +1184,10 @@ TextureImporter:
       name: hoodie_white_full_51
       rect:
         serializedVersion: 2
-        x: 156
-        y: 108
-        width: 24
-        height: 15
+        x: 912
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1205,10 +1205,10 @@ TextureImporter:
       name: hoodie_white_full_52
       rect:
         serializedVersion: 2
-        x: 204
-        y: 110
-        width: 24
-        height: 15
+        x: 960
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1226,10 +1226,10 @@ TextureImporter:
       name: hoodie_white_full_53
       rect:
         serializedVersion: 2
-        x: 734
-        y: 99
-        width: 22
-        height: 26
+        x: 1008
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1247,10 +1247,10 @@ TextureImporter:
       name: hoodie_white_full_54
       rect:
         serializedVersion: 2
-        x: 1164
-        y: 110
-        width: 24
-        height: 15
+        x: 1056
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1268,10 +1268,10 @@ TextureImporter:
       name: hoodie_white_full_55
       rect:
         serializedVersion: 2
-        x: 1212
-        y: 108
-        width: 24
-        height: 15
+        x: 1104
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1289,10 +1289,10 @@ TextureImporter:
       name: hoodie_white_full_56
       rect:
         serializedVersion: 2
-        x: 1260
-        y: 102
-        width: 24
-        height: 14
+        x: 1152
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1310,10 +1310,10 @@ TextureImporter:
       name: hoodie_white_full_57
       rect:
         serializedVersion: 2
-        x: 1308
-        y: 103
-        width: 24
-        height: 15
+        x: 1200
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1331,10 +1331,10 @@ TextureImporter:
       name: hoodie_white_full_58
       rect:
         serializedVersion: 2
-        x: 12
-        y: 57
-        width: 24
-        height: 15
+        x: 1248
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1352,10 +1352,10 @@ TextureImporter:
       name: hoodie_white_full_59
       rect:
         serializedVersion: 2
-        x: 59
-        y: 56
-        width: 26
-        height: 15
+        x: 1296
+        y: 96
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1373,10 +1373,10 @@ TextureImporter:
       name: hoodie_white_full_60
       rect:
         serializedVersion: 2
-        x: 107
-        y: 55
-        width: 26
-        height: 15
+        x: 0
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1394,10 +1394,10 @@ TextureImporter:
       name: hoodie_white_full_61
       rect:
         serializedVersion: 2
-        x: 155
-        y: 55
-        width: 26
-        height: 15
+        x: 48
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1415,10 +1415,10 @@ TextureImporter:
       name: hoodie_white_full_62
       rect:
         serializedVersion: 2
-        x: 203
-        y: 55
-        width: 26
-        height: 15
+        x: 96
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1436,10 +1436,10 @@ TextureImporter:
       name: hoodie_white_full_63
       rect:
         serializedVersion: 2
-        x: 251
-        y: 55
-        width: 26
-        height: 15
+        x: 144
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1457,10 +1457,10 @@ TextureImporter:
       name: hoodie_white_full_64
       rect:
         serializedVersion: 2
-        x: 300
-        y: 55
-        width: 24
-        height: 15
+        x: 192
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1478,10 +1478,10 @@ TextureImporter:
       name: hoodie_white_full_65
       rect:
         serializedVersion: 2
-        x: 348
-        y: 55
-        width: 24
-        height: 15
+        x: 240
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1499,10 +1499,10 @@ TextureImporter:
       name: hoodie_white_full_66
       rect:
         serializedVersion: 2
-        x: 399
-        y: 55
-        width: 18
-        height: 15
+        x: 288
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1520,10 +1520,10 @@ TextureImporter:
       name: hoodie_white_full_67
       rect:
         serializedVersion: 2
-        x: 444
-        y: 55
-        width: 24
-        height: 15
+        x: 336
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1541,10 +1541,10 @@ TextureImporter:
       name: hoodie_white_full_68
       rect:
         serializedVersion: 2
-        x: 492
-        y: 55
-        width: 24
-        height: 15
+        x: 384
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1562,10 +1562,10 @@ TextureImporter:
       name: hoodie_white_full_69
       rect:
         serializedVersion: 2
-        x: 539
-        y: 55
-        width: 26
-        height: 15
+        x: 432
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1583,10 +1583,10 @@ TextureImporter:
       name: hoodie_white_full_70
       rect:
         serializedVersion: 2
-        x: 587
-        y: 55
-        width: 26
-        height: 15
+        x: 480
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1604,10 +1604,10 @@ TextureImporter:
       name: hoodie_white_full_71
       rect:
         serializedVersion: 2
-        x: 635
-        y: 56
-        width: 26
-        height: 15
+        x: 528
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1625,10 +1625,10 @@ TextureImporter:
       name: hoodie_white_full_72
       rect:
         serializedVersion: 2
-        x: 683
-        y: 57
-        width: 26
-        height: 15
+        x: 576
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1646,10 +1646,10 @@ TextureImporter:
       name: hoodie_white_full_73
       rect:
         serializedVersion: 2
-        x: 731
-        y: 57
-        width: 26
-        height: 15
+        x: 624
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1667,10 +1667,10 @@ TextureImporter:
       name: hoodie_white_full_74
       rect:
         serializedVersion: 2
-        x: 779
-        y: 57
-        width: 26
-        height: 15
+        x: 672
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1688,10 +1688,10 @@ TextureImporter:
       name: hoodie_white_full_75
       rect:
         serializedVersion: 2
-        x: 826
-        y: 57
-        width: 28
-        height: 15
+        x: 720
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1709,10 +1709,10 @@ TextureImporter:
       name: hoodie_white_full_76
       rect:
         serializedVersion: 2
-        x: 874
-        y: 57
-        width: 28
-        height: 15
+        x: 768
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1730,10 +1730,10 @@ TextureImporter:
       name: hoodie_white_full_77
       rect:
         serializedVersion: 2
-        x: 922
-        y: 57
-        width: 28
-        height: 15
+        x: 816
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1751,10 +1751,10 @@ TextureImporter:
       name: hoodie_white_full_78
       rect:
         serializedVersion: 2
-        x: 971
-        y: 57
-        width: 26
-        height: 15
+        x: 864
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1772,10 +1772,10 @@ TextureImporter:
       name: hoodie_white_full_79
       rect:
         serializedVersion: 2
-        x: 1020
-        y: 57
-        width: 24
-        height: 15
+        x: 912
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1793,10 +1793,10 @@ TextureImporter:
       name: hoodie_white_full_80
       rect:
         serializedVersion: 2
-        x: 1067
-        y: 57
-        width: 26
-        height: 15
+        x: 960
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1814,10 +1814,10 @@ TextureImporter:
       name: hoodie_white_full_81
       rect:
         serializedVersion: 2
-        x: 1114
-        y: 57
-        width: 28
-        height: 15
+        x: 1008
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1835,10 +1835,10 @@ TextureImporter:
       name: hoodie_white_full_82
       rect:
         serializedVersion: 2
-        x: 1162
-        y: 57
-        width: 28
-        height: 15
+        x: 1056
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1856,10 +1856,10 @@ TextureImporter:
       name: hoodie_white_full_83
       rect:
         serializedVersion: 2
-        x: 1210
-        y: 57
-        width: 28
-        height: 15
+        x: 1104
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1877,10 +1877,10 @@ TextureImporter:
       name: hoodie_white_full_84
       rect:
         serializedVersion: 2
-        x: 1259
-        y: 57
-        width: 26
-        height: 15
+        x: 1152
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1898,10 +1898,10 @@ TextureImporter:
       name: hoodie_white_full_85
       rect:
         serializedVersion: 2
-        x: 1307
-        y: 57
-        width: 26
-        height: 15
+        x: 1200
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1919,10 +1919,10 @@ TextureImporter:
       name: hoodie_white_full_86
       rect:
         serializedVersion: 2
-        x: 12
-        y: 9
-        width: 24
-        height: 15
+        x: 1248
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1940,10 +1940,10 @@ TextureImporter:
       name: hoodie_white_full_87
       rect:
         serializedVersion: 2
-        x: 60
-        y: 9
-        width: 24
-        height: 15
+        x: 1296
+        y: 48
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1961,10 +1961,10 @@ TextureImporter:
       name: hoodie_white_full_88
       rect:
         serializedVersion: 2
-        x: 107
-        y: 9
-        width: 26
-        height: 15
+        x: 0
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1982,10 +1982,10 @@ TextureImporter:
       name: hoodie_white_full_89
       rect:
         serializedVersion: 2
-        x: 157
-        y: 9
-        width: 22
-        height: 15
+        x: 48
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2003,10 +2003,10 @@ TextureImporter:
       name: hoodie_white_full_90
       rect:
         serializedVersion: 2
-        x: 205
-        y: 9
-        width: 22
-        height: 16
+        x: 96
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2024,10 +2024,10 @@ TextureImporter:
       name: hoodie_white_full_91
       rect:
         serializedVersion: 2
-        x: 253
-        y: 9
-        width: 22
-        height: 20
+        x: 144
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2045,10 +2045,10 @@ TextureImporter:
       name: hoodie_white_full_92
       rect:
         serializedVersion: 2
-        x: 301
-        y: 9
-        width: 22
-        height: 21
+        x: 192
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2066,10 +2066,10 @@ TextureImporter:
       name: hoodie_white_full_93
       rect:
         serializedVersion: 2
-        x: 349
-        y: 9
-        width: 22
-        height: 21
+        x: 240
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2087,10 +2087,10 @@ TextureImporter:
       name: hoodie_white_full_94
       rect:
         serializedVersion: 2
-        x: 398
-        y: 9
-        width: 20
-        height: 16
+        x: 288
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2108,10 +2108,10 @@ TextureImporter:
       name: hoodie_white_full_95
       rect:
         serializedVersion: 2
-        x: 446
-        y: 9
-        width: 20
-        height: 15
+        x: 336
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2129,10 +2129,10 @@ TextureImporter:
       name: hoodie_white_full_96
       rect:
         serializedVersion: 2
-        x: 493
-        y: 9
-        width: 22
-        height: 15
+        x: 384
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2150,10 +2150,10 @@ TextureImporter:
       name: hoodie_white_full_97
       rect:
         serializedVersion: 2
-        x: 539
-        y: 9
-        width: 26
-        height: 15
+        x: 432
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2171,10 +2171,10 @@ TextureImporter:
       name: hoodie_white_full_98
       rect:
         serializedVersion: 2
-        x: 588
-        y: 9
-        width: 24
-        height: 15
+        x: 480
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2184,6 +2184,48 @@ TextureImporter:
       bones: []
       spriteID: bac7c941de7b44d8b8d14645859d19ad
       internalID: -970742331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_99
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b404fb05335c4650856c2d28fc27ba1
+      internalID: -1998994730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_100
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef2f46fa2a8de439abf02300db3e7346
+      internalID: -1123472949
       vertices: []
       indices: 
       edges: []
@@ -2202,6 +2244,7 @@ TextureImporter:
       hoodie_white_full_0: 1999415643
       hoodie_white_full_1: 1868986999
       hoodie_white_full_10: 544429524
+      hoodie_white_full_100: -1123472949
       hoodie_white_full_11: -797223858
       hoodie_white_full_12: -1576929952
       hoodie_white_full_13: -620506993
@@ -2298,6 +2341,7 @@ TextureImporter:
       hoodie_white_full_96: -815940917
       hoodie_white_full_97: -2032439585
       hoodie_white_full_98: -970742331
+      hoodie_white_full_99: -1998994730
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

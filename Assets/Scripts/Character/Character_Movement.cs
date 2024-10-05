@@ -16,6 +16,8 @@ public class Character_Movement : MonoBehaviour
     private Animator animator;
     private Animator child_ChestAnimator;
 
+    private bool syncFlag = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,11 +25,16 @@ public class Character_Movement : MonoBehaviour
         child_ChestAnimator = transform.GetChild(0).GetComponent<Animator>();
     }
 
-    private void FixedUpdate()
+    // Use update for animations
+    private void Update()
     {
+        // Update the animator
         Vector2 movementInput = GetInput();
-        HandleMovement(movementInput);
         UpdateAnimator(movementInput);
+        HandleMovement(movementInput);
+        Debug.Log("Parent: " + animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+        Debug.Log("Child: " + child_ChestAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+
     }
 
     private Vector2 GetInput()
