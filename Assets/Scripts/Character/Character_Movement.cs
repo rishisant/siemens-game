@@ -14,11 +14,13 @@ public class Character_Movement : MonoBehaviour
     
     private Rigidbody2D rb;
     private Animator animator;
+    private Animator child_ChestAnimator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        child_ChestAnimator = transform.GetChild(0).GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -55,6 +57,11 @@ public class Character_Movement : MonoBehaviour
         animator.SetFloat("MovingX", movement.x);
         animator.SetFloat("MovingY", movement.y);
         animator.SetBool("IsMoving", isMoving);
+
+        // Update the child animator (Chest)
+        child_ChestAnimator.SetFloat("MovingX", movement.x);
+        child_ChestAnimator.SetFloat("MovingY", movement.y);
+        child_ChestAnimator.SetBool("IsMoving", isMoving);
 
         if (isMoving)
         {

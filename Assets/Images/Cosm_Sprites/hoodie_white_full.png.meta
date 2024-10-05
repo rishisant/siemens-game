@@ -1,0 +1,2305 @@
+fileFormatVersion: 2
+guid: 08b021ab1de314a29b244f310f76d2d4
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: hoodie_white_full_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 489
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b40a9930e73f14aa582f7857347b6428
+      internalID: 1999415643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 488
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad51cc2428d834219a14841125c51f1c
+      internalID: 1868986999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 441
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d6d119a135c54cb089f660bc50febed
+      internalID: -2006067012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 440
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba85610508dc844f2b8b6402c3b91af1
+      internalID: 1601527841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_4
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 394
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc143941b7714420bb211287253427aa
+      internalID: 1553988242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_5
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 393
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 846af274cd8234d76a38d20e321f9a35
+      internalID: 1936134265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_6
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 345
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e9dc87569b394c02a11b245fcd3082e
+      internalID: 761800864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_7
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 344
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2943c0dd760084a08b29e8244016d13f
+      internalID: 1355411929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_8
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 297
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27e789ed420234be2b0e1fa21540a52b
+      internalID: -566426363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_9
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 296
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 122d67a4211224a45a3147e50c15e558
+      internalID: -618784290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_10
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 297
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2263a9eae8bd45b18adcc621c4377bd
+      internalID: 544429524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_11
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 297
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8109deaf74404f35820240d2e0e9445
+      internalID: -797223858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_12
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 296
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c0deb82ddb3e445583677fc48b82f7b
+      internalID: -1576929952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_13
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 297
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76de70b71ed86498f8b8b489677b36f7
+      internalID: -620506993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_14
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 248
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6942368f10c3b4cf283118fdc35007c0
+      internalID: 189709921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_15
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 248
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 489a577beadcf4a279d3e2f54ae8e855
+      internalID: -2036615131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_16
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 249
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9698722c0ceec48c7b5855b90dd0ad95
+      internalID: 1861416766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 248
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 758fcb61efc784977befa5d754a43d13
+      internalID: -31750997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_18
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 248
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4b28cc5dfbf244d19b41c020874fe80
+      internalID: -2121681786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_19
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 249
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e1b1d9f138564ca1b282c412519c446
+      internalID: 1452581905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_20
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 200
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8204790cc2d044982af3331992d207af
+      internalID: 1759387351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_21
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 200
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0804e9c550b8a417d86d151e0c2d9728
+      internalID: 191183772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_22
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 201
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ef8307c3d4d4ea09a152fa52ea21d9
+      internalID: -1114023562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_23
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 200
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77cfec44798cd49ef85fb26fa0638a48
+      internalID: -2142659571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_24
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 200
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78173c1517e5f4522b46bbcd2b1ff3b7
+      internalID: 2095702498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_25
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 201
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da169ac8f746c4ec496242ea14914b64
+      internalID: 1829616227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_26
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 153
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23cf456e009db449294dc94485fe8c28
+      internalID: -756165112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_27
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 152
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 828c4a10c917b42c3b1823ff8b18b4a0
+      internalID: -1538640909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_28
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 153
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07fb02ccc0c1a46238504c30a55afd96
+      internalID: 492067865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_29
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 153
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50795b276ccc460e8172e1ebef1bf35
+      internalID: 114328643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_30
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 152
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 900c83b90461b4824b2008a008390c89
+      internalID: -1971967167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_31
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 153
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f54267c40a934151b68c23fe28cd4f4
+      internalID: 1102904841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_32
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 116
+        width: 64
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f18ad2f0c2ad4911bb118d2b1dc216b
+      internalID: 1886371527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_33
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 125
+        width: 20
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdf5c629801fb4e07bf82e84d636d4f9
+      internalID: 2018369665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_34
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 120
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6e71726c874a498f8c345345d27c7b2
+      internalID: 1379021757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_35
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 119
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa1c6202d9e2a4850a054531420ec243
+      internalID: 23028819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_36
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 118
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e70ae468d7e2e4a1f82ea38deaee8a1f
+      internalID: -1893711170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_37
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 115
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63cfd52c6cdca48aba1404766dc54eed
+      internalID: -817485247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_38
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 105
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d88c941ad3834d078e809981bdbc615
+      internalID: -961918201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_39
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 99
+        width: 22
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae185b9cff73f49c98d76940ce88ef2c
+      internalID: 1523286620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_40
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 99
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e231e9ec4624110883d2c309c94f69
+      internalID: 1003077827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_41
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 105
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f51275c07e3a845e386b069d7861e0de
+      internalID: 1090067580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_42
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 115
+        width: 23
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0361b44aab49414287e2af336b88d67
+      internalID: -1139801982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_43
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 118
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33ba3521cdb9645d99bb3494ea25725c
+      internalID: 331331568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_44
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 119
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc291e34b48fc4774b311b934b4f3f36
+      internalID: -1500665640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_45
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 120
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae756bae6414245718c708989e5a187b
+      internalID: 478746040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_46
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 125
+        width: 20
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 349d1465f5f3c42769d4ac44992397f4
+      internalID: -1368246545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_47
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 116
+        width: 64
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6539d01478f34b8483e89205e5a6732
+      internalID: 2009313795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_48
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 105
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab131cbe9eaf42b99e244d5b6b51e4e
+      internalID: 351104265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_49
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 103
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f36398344284a579da7b6c635a9faa
+      internalID: -1165591436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_50
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 102
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6294eef89678745f4b381690fa9eaaa0
+      internalID: -1527501556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_51
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 108
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3959d1882f80a4ad3aa37f9e2c6a872c
+      internalID: -1102820808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_52
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 110
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aeedaf92ab3740318ff7d90c48ed18e
+      internalID: -1705445825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_53
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 99
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e0e57a015607493e9422178b371052f
+      internalID: -1780821513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_54
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 110
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84aaac76d1c754da0a126121b5e020e7
+      internalID: -2143480826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_55
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 108
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9555133fc6190439aa1949814f73237e
+      internalID: -1215167993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_56
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 102
+        width: 24
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba177d65882084155999ef375bf7681d
+      internalID: -1581239773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_57
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 103
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d8f180a8e60b4156a62d3ef1fe1b2c8
+      internalID: -1232325892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_58
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 57
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d5f96c41cadc45a79c21a31be4290f1
+      internalID: 1791283436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_59
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 56
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa59ce6df0a24bd1beba7a936611055
+      internalID: 2107626116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_60
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 55
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0340d9e03da44128ad391dbc51217ef
+      internalID: -1505735293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_61
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 55
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4c5c37636bbb4ac9bcaae006143329d
+      internalID: -1447821292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_62
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 55
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbc4d1f391a834beba2186ff3e1ca9e3
+      internalID: -1553550186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_63
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 55
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6228717c91d542d290e6b0114099174
+      internalID: -461425141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_64
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 55
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 640088d3a91514596a12d2728cc34d20
+      internalID: 1667267826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_65
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 55
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3de743b2ac5b64b31a6e6ea974d5a8df
+      internalID: 1719940063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_66
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 55
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9be06651af6604cf2857974f1d72d3c3
+      internalID: -1304083444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_67
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 55
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d1b7ee57a4b4d38ac84fa5b1660079
+      internalID: 201296526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_68
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 55
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec7438b89266042d086424ff5277cc48
+      internalID: 255507218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_69
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 55
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2ed388dd30d140c2b02d67152347fdf
+      internalID: -2058193925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_70
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 55
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b78ca508301d441fc873311f4a45fa63
+      internalID: -883404380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_71
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 56
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83af12c0ae79c489eba158d0bef2497d
+      internalID: -1856885425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_72
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 57
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8971f1dbc6fab4aa39d9c7f5775bed6f
+      internalID: -32423012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_73
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 57
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f940f6d865d5415ba0f6e11968a21d3
+      internalID: -235372673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_74
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 57
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d906ead0a8b84182b1bc7fe3a7ac1e3
+      internalID: 1160717779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_75
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 57
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8452dafa948754ce3b78919799590346
+      internalID: -464548513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_76
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 57
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee33196c96b544d969f1178a338478df
+      internalID: 1173125266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_77
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 57
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0294d0526c1d490d82235e22e6019aa
+      internalID: -1454692158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_78
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 57
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49f82115699f643df9c76356f0f195a7
+      internalID: -1809271170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_79
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 57
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d556f31682b0642a28aedef6b4168a77
+      internalID: 736061080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_80
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 57
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b003bad31015947a5a2f06ddd1c94429
+      internalID: -243952534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_81
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 57
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ae07bf9b1f046edaaa47dfcc8cddc1
+      internalID: 892910810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_82
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 57
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee5602de2306417eb62734517468cc2
+      internalID: 644707034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_83
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 57
+        width: 28
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88b06a4031b9440f382b29aecf206c4a
+      internalID: -22157712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_84
+      rect:
+        serializedVersion: 2
+        x: 1259
+        y: 57
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8942ad74c357c4528abc1b1f4bf362b9
+      internalID: -609184808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_85
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 57
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f66b4dd53b71640e1bf36864d9db2963
+      internalID: -684357008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_86
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 9
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da7d8f1fd55d14cffad47946404a23ea
+      internalID: -708859605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_87
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 9
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13312f57bf11a445e836a5376c586761
+      internalID: -2070940410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_88
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 9
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a11cdd0a34a9045e28995f0559702ba4
+      internalID: -18732474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_89
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 9
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a9cd866f8a4f49be8d9b5c06c79ca36
+      internalID: 481080930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_90
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 9
+        width: 22
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc49502c3ec04d78b03579d12f29914
+      internalID: -712475208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_91
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 9
+        width: 22
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a31ff6e72e1e4a968427b5d38fff482
+      internalID: -1635456838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_92
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 9
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 279b92c0bd3be44198e65b345e96c83d
+      internalID: -2103763167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_93
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 9
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc9a21cce52d466cb04e3d13b19c15f
+      internalID: 764959082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_94
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 9
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9978d84a313d4ca2b8d12f3ccd409ea
+      internalID: 1045833578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_95
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 9
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f97f4b2e2be6345d29977e25b6ae93d1
+      internalID: 712237400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_96
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 9
+        width: 22
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 394b8c35c8bff4b0ea344de069570e5b
+      internalID: -815940917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_97
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 9
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab038db224f794be6b0f8e411d2414a5
+      internalID: -2032439585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hoodie_white_full_98
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 9
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bac7c941de7b44d8b8d14645859d19ad
+      internalID: -970742331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      hoodie_white_full_0: 1999415643
+      hoodie_white_full_1: 1868986999
+      hoodie_white_full_10: 544429524
+      hoodie_white_full_11: -797223858
+      hoodie_white_full_12: -1576929952
+      hoodie_white_full_13: -620506993
+      hoodie_white_full_14: 189709921
+      hoodie_white_full_15: -2036615131
+      hoodie_white_full_16: 1861416766
+      hoodie_white_full_17: -31750997
+      hoodie_white_full_18: -2121681786
+      hoodie_white_full_19: 1452581905
+      hoodie_white_full_2: -2006067012
+      hoodie_white_full_20: 1759387351
+      hoodie_white_full_21: 191183772
+      hoodie_white_full_22: -1114023562
+      hoodie_white_full_23: -2142659571
+      hoodie_white_full_24: 2095702498
+      hoodie_white_full_25: 1829616227
+      hoodie_white_full_26: -756165112
+      hoodie_white_full_27: -1538640909
+      hoodie_white_full_28: 492067865
+      hoodie_white_full_29: 114328643
+      hoodie_white_full_3: 1601527841
+      hoodie_white_full_30: -1971967167
+      hoodie_white_full_31: 1102904841
+      hoodie_white_full_32: 1886371527
+      hoodie_white_full_33: 2018369665
+      hoodie_white_full_34: 1379021757
+      hoodie_white_full_35: 23028819
+      hoodie_white_full_36: -1893711170
+      hoodie_white_full_37: -817485247
+      hoodie_white_full_38: -961918201
+      hoodie_white_full_39: 1523286620
+      hoodie_white_full_4: 1553988242
+      hoodie_white_full_40: 1003077827
+      hoodie_white_full_41: 1090067580
+      hoodie_white_full_42: -1139801982
+      hoodie_white_full_43: 331331568
+      hoodie_white_full_44: -1500665640
+      hoodie_white_full_45: 478746040
+      hoodie_white_full_46: -1368246545
+      hoodie_white_full_47: 2009313795
+      hoodie_white_full_48: 351104265
+      hoodie_white_full_49: -1165591436
+      hoodie_white_full_5: 1936134265
+      hoodie_white_full_50: -1527501556
+      hoodie_white_full_51: -1102820808
+      hoodie_white_full_52: -1705445825
+      hoodie_white_full_53: -1780821513
+      hoodie_white_full_54: -2143480826
+      hoodie_white_full_55: -1215167993
+      hoodie_white_full_56: -1581239773
+      hoodie_white_full_57: -1232325892
+      hoodie_white_full_58: 1791283436
+      hoodie_white_full_59: 2107626116
+      hoodie_white_full_6: 761800864
+      hoodie_white_full_60: -1505735293
+      hoodie_white_full_61: -1447821292
+      hoodie_white_full_62: -1553550186
+      hoodie_white_full_63: -461425141
+      hoodie_white_full_64: 1667267826
+      hoodie_white_full_65: 1719940063
+      hoodie_white_full_66: -1304083444
+      hoodie_white_full_67: 201296526
+      hoodie_white_full_68: 255507218
+      hoodie_white_full_69: -2058193925
+      hoodie_white_full_7: 1355411929
+      hoodie_white_full_70: -883404380
+      hoodie_white_full_71: -1856885425
+      hoodie_white_full_72: -32423012
+      hoodie_white_full_73: -235372673
+      hoodie_white_full_74: 1160717779
+      hoodie_white_full_75: -464548513
+      hoodie_white_full_76: 1173125266
+      hoodie_white_full_77: -1454692158
+      hoodie_white_full_78: -1809271170
+      hoodie_white_full_79: 736061080
+      hoodie_white_full_8: -566426363
+      hoodie_white_full_80: -243952534
+      hoodie_white_full_81: 892910810
+      hoodie_white_full_82: 644707034
+      hoodie_white_full_83: -22157712
+      hoodie_white_full_84: -609184808
+      hoodie_white_full_85: -684357008
+      hoodie_white_full_86: -708859605
+      hoodie_white_full_87: -2070940410
+      hoodie_white_full_88: -18732474
+      hoodie_white_full_89: 481080930
+      hoodie_white_full_9: -618784290
+      hoodie_white_full_90: -712475208
+      hoodie_white_full_91: -1635456838
+      hoodie_white_full_92: -2103763167
+      hoodie_white_full_93: 764959082
+      hoodie_white_full_94: 1045833578
+      hoodie_white_full_95: 712237400
+      hoodie_white_full_96: -815940917
+      hoodie_white_full_97: -2032439585
+      hoodie_white_full_98: -970742331
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
