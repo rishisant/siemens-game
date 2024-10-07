@@ -32,6 +32,8 @@ public class PlugBehavior : MonoBehaviour
             other.gameObject.transform.position = new Vector3(transform.position.x - 0.8f, transform.position.y, transform.position.z);
             other.gameObject.GetComponent<PoweredWireStats>().connected = true;
             other.gameObject.GetComponent<PoweredWireBehavior>().UpdateLine();
+
+            plugS.connected = true;
         }
     }
 }

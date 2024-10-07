@@ -44,6 +44,8 @@ public class WireGenerator : MonoBehaviour
         Color.black
     };
 
+    private List<PlugStats> allPlugStats = new List<PlugStats>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +55,10 @@ public class WireGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (checkConnection())
+        {
+            Debug.Log("game is finished");
+        }
     }
 
     void spawnObjects()
@@ -79,10 +84,13 @@ public class WireGenerator : MonoBehaviour
             GameObject plug = Instantiate(wirePlug, shuffledExitSpawns[i], wirePlug.transform.rotation);
             SpriteRenderer plugSpriteRenderer = plug.GetComponent<SpriteRenderer>();
             plugSpriteRenderer.color = currColor;
+
+            PlugStats plugStats = plug.GetComponent<PlugStats>();
+            allPlugStats.Add(plugStats);
         }
     }
 
-    T[] shuffle<T>(T[] sourceArray, int numElements)
+    private T[] shuffle<T>(T[] sourceArray, int numElements)
     {
         // https://stackoverflow.com/questions/108819/best-way-to-randomize-an-array-with-net
         // Fisher-Yates algorithm
@@ -99,5 +107,17 @@ public class WireGenerator : MonoBehaviour
         }
 
         return copy;
+    }
+
+    private bool checkConnection()
+    {
+        foreach (PlugStats p in allPlugStats)
+        {
+            if (!p.connected)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
