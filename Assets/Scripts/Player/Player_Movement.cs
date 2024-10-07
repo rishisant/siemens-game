@@ -1,4 +1,5 @@
 // Rishi Santhanam
+// Rohan Ali
 // CSCE 482 Siemens Gamification
 
 using System.Collections;
@@ -20,12 +21,17 @@ public class Player_Movement : MonoBehaviour
     private float speedIncreaseTimer;
 
     private bool isMoving = false; // Check if the player is moving
+    private bool canMove = true; // New variable to control movement
 
     private Vector2 lastMovement = Vector2.down;
     
     private Rigidbody2D rb;
     private Animator animator;
     private Camera mainCamera;
+
+
+    private List<GameObject> interactiveButtons = new List<GameObject>();
+
 
     // Start is called before the first frame update (duhhh...)
     void Start()
@@ -34,20 +40,37 @@ public class Player_Movement : MonoBehaviour
         animator = GetComponent<Animator>();
         mainCamera = Camera.main;
         currentSpeed = initialSpeed;
+
+        
+
+        // Find all buttons with the ButtonLocation script
+        ButtonLocation[] buttonLocations = FindObjectsOfType<ButtonLocation>();
+        foreach (var button in buttonLocations)
+        {
+            interactiveButtons.Add(button.gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         HandleSpeedIncrease();
+        CheckForLocationTrigger();
     }
 
     // FixedUpdate is called at a fixed interval, so it's good for physics
     private void FixedUpdate()
     {
-        Vector2 movementInput = GetInput();
-        HandleMovement(movementInput);
-        UpdateAnimator(movementInput);
+        if(canMove){
+            Vector2 movementInput = GetInput();
+            HandleMovement(movementInput);
+            UpdateAnimator(movementInput);
+        }
+        else{
+            Vector2 movementInput = Vector2.zero;
+            HandleMovement(movementInput);
+            UpdateAnimator(movementInput);
+        }
 
         if (!isMoving) {
             // Set the current speed to the initial speed
@@ -56,10 +79,18 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
+    // New method to toggle player movement
+    public void ToggleMovement()
+    {
+        canMove = !canMove; // Toggle the movement state
+    }
+
     // LateUpdate is called after Update, so it's good for camera movement
     private void LateUpdate()
     {
-        SmoothCameraFollowAndZoom(GetInput());
+        if(canMove){
+            SmoothCameraFollowAndZoom(GetInput());
+        }
     }
 
     // Isn't working right now, but the idea is to increase the speed of the player over time
@@ -135,5 +166,39 @@ public class Player_Movement : MonoBehaviour
         // Adjust camera zoom based on movement
         float targetZoom = movement != Vector2.zero ? cameraZoomIn : cameraZoomOut;
         mainCamera.orthographicSize = Mathf.Lerp(mainCamera.orthographicSize, targetZoom, cameraSmoothness);
+    }
+
+    void CheckForLocationTrigger()
+    {
+        Vector2 playerPosition = transform.position;
+
+        // Hide all buttons initially
+        foreach (var button in interactiveButtons)
+        {
+            button.SetActive(false);
+        }
+
+        
+        // Check if the player's position is close enough to the actual position of each button
+        foreach (var button in interactiveButtons)
+        {
+            ButtonLocation buttonLocation = button.GetComponent<ButtonLocation>();
+            if (buttonLocation != null)
+            {
+                //if(buttonLocation.clicked == true){
+                //    ButtonLocation.SetClickedForAllButtons(true);
+                //}
+                
+                Vector2 buttonPosition = buttonLocation.GetButtonPosition();
+                float distance = Vector2.Distance(playerPosition, buttonPosition);
+                float interactionDistance = buttonLocation.interactionDistance;
+                
+                // Check if the player is within the interaction distance
+                if (distance <= interactionDistance && buttonLocation.clicked == false)
+                {
+                    button.SetActive(true); // Show the button
+                }
+            }
+        }
     }
 }
