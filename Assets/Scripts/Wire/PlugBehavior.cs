@@ -14,21 +14,24 @@ public class PlugBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag(plugS.color))
+        SpriteRenderer otherSpriteRenderer = other.GetComponent<SpriteRenderer>();
+        if (otherSpriteRenderer == null)
         {
-            other.gameObject.transform.position = new Vector3(transform.position.x - 0.57f, transform.position.y, transform.position.z);
+            Debug.Log("otherSpriteRenderer is null");
+            return;
+        }
+
+        SpriteRenderer thisSpriteRenderer = GetComponent<SpriteRenderer>();
+        if (otherSpriteRenderer.color == thisSpriteRenderer.color)
+        {
+            other.gameObject.transform.position = new Vector3(transform.position.x - 0.8f, transform.position.y, transform.position.z);
             other.gameObject.GetComponent<PoweredWireStats>().connected = true;
             other.gameObject.GetComponent<PoweredWireBehavior>().UpdateLine();
-
-        }
-        else
-        {
-            // reset all other wires since there was a fail
         }
     }
 }
