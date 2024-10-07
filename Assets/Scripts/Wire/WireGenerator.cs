@@ -6,6 +6,8 @@ public class WireGenerator : MonoBehaviour
 {
     public System.Random rand = new System.Random();
 
+    public System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+
     public GameObject wireEntry;
     public GameObject wirePlug;
 
@@ -45,11 +47,13 @@ public class WireGenerator : MonoBehaviour
     };
 
     private List<PlugStats> allPlugStats = new List<PlugStats>();
+    public GameOverManager gameOverManager;
 
     // Start is called before the first frame update
     void Start()
     {
         spawnObjects();
+        stopwatch.Start();
     }
 
     // Update is called once per frame
@@ -58,6 +62,8 @@ public class WireGenerator : MonoBehaviour
         if (checkConnection())
         {
             Debug.Log("game is finished");
+            stopwatch.Stop();
+            gameOverManager.Setup(stopwatch.Elapsed);
         }
     }
 
