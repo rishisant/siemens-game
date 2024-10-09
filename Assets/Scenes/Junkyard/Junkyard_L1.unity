@@ -168,7 +168,7 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensityEnabled: 1
   m_ShadowIntensity: 0.75
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
@@ -32620,7 +32620,7 @@ MonoBehaviour:
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
   m_ShadowIntensityEnabled: 1
-  m_ShadowIntensity: 0.75
+  m_ShadowIntensity: 1
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
@@ -32677,7 +32677,7 @@ Transform:
   m_GameObject: {fileID: 1307522220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.83, y: -0.67, z: 0}
+  m_LocalPosition: {x: -1.74, y: -0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34693,7 +34693,7 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensityEnabled: 1
   m_ShadowIntensity: 0.75
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
@@ -35612,7 +35612,6 @@ SceneRoots:
   - {fileID: 1086115303}
   - {fileID: 1371331261}
   - {fileID: 270129009}
-  - {fileID: 921890197}
   - {fileID: 970341064}
   - {fileID: 163126191}
   - {fileID: 422173567}
@@ -35621,3 +35620,4 @@ SceneRoots:
   - {fileID: 2024616959}
   - {fileID: 2116936057}
   - {fileID: 1971602248}
+  - {fileID: 921890197}
