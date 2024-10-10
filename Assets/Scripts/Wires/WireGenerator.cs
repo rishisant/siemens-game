@@ -8,10 +8,11 @@ public class WireGenerator : MonoBehaviour
 
     public System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
 
+    // Prefabs to Instantiate what we need
     public GameObject wireEntry;
     public GameObject wirePlug;
 
-    public int level = 1;
+    public int level;
 
     public Vector3[] line2ndPointSpawns = {
         new Vector3(-10, 5, 0),
@@ -46,14 +47,22 @@ public class WireGenerator : MonoBehaviour
         Color.magenta
     };
 
+    // keep track of all plug stats to check when all are connected
     private List<PlugStats> allPlugStats = new List<PlugStats>();
+
+    // keep track of all objects for cleanup in between levels
+    private List<GameObject> allWires = new List<GameObject>();
+
+    // keep track of times for different levels
+    private List<System.TimeSpan> allTimes = new List<System.TimeSpan>();
+
     public GameOverManager gameOverManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        spawnObjects();
-        stopwatch.Start();
+        level = 0;
+        StartLevel();
     }
 
     // Update is called once per frame
@@ -62,15 +71,41 @@ public class WireGenerator : MonoBehaviour
         if (checkConnection())
         {
             stopwatch.Stop();
-            gameOverManager.Setup(stopwatch.Elapsed);
+            allTimes.Add(stopwatch.Elapsed);
+            if (level < 6)
+            {
+                // FIXME: add another background for going to next level
+            }
+            else
+            {
+                gameOverManager.Setup(stopwatch.Elapsed);
+            }
         }
+    }
+
+    void StartLevel()
+    {
+        // FIXME: move logic out of Start and into StartLevel so that we can
+        // have different levels
+        level++;
+        spawnObjects();
+        stopwatch.Start();
+    }
+
+    void clearWires()
+    {
+        foreach (GameObject g in allWires)
+        {
+            Destroy(g);
+        }
+        allWires.Clear();
     }
 
     void spawnObjects()
     {
         Color[] shuffledColors = shuffle(colors, colors.Length);
         Vector3[] shuffledExitSpawns = shuffle(exitSpawns, exitSpawns.Length);
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < level; i++)
         {
             Color currColor = shuffledColors[i];
             GameObject entry = Instantiate(wireEntry, entrySpawns[i], wireEntry.transform.rotation);
@@ -96,6 +131,10 @@ public class WireGenerator : MonoBehaviour
             // add now for game complete check
             PlugStats plugStats = plug.GetComponent<PlugStats>();
             allPlugStats.Add(plugStats);
+
+            // keep track of objects for clearWires() function
+            allWires.Add(entry);
+            allWires.Add(plug);
         }
     }
 
