@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Char_Idle_Left
+  m_Name: Chest_Idle_Left
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1447429572, guid: 2e70036d9ab94478b8d0e4e0870f4819, type: 3}
+      value: {fileID: -336610232, guid: 12d21e96a952b9440899b6f6cd431f2b, type: 3}
     - time: 0.25
-      value: {fileID: 943782925, guid: 2e70036d9ab94478b8d0e4e0870f4819, type: 3}
+      value: {fileID: 1456230988, guid: 12d21e96a952b9440899b6f6cd431f2b, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1447429572, guid: 2e70036d9ab94478b8d0e4e0870f4819, type: 3}
-    - {fileID: 943782925, guid: 2e70036d9ab94478b8d0e4e0870f4819, type: 3}
+    - {fileID: -336610232, guid: 12d21e96a952b9440899b6f6cd431f2b, type: 3}
+    - {fileID: 1456230988, guid: 12d21e96a952b9440899b6f6cd431f2b, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
