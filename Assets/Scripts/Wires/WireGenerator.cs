@@ -61,7 +61,6 @@ public class WireGenerator : MonoBehaviour
     {
         if (checkConnection())
         {
-            Debug.Log("game is finished");
             stopwatch.Stop();
             gameOverManager.Setup(stopwatch.Elapsed);
         }

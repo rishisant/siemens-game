@@ -30,7 +30,7 @@ public class PlugBehavior : MonoBehaviour
         SpriteRenderer thisSpriteRenderer = GetComponent<SpriteRenderer>();
         if (otherSpriteRenderer.color == thisSpriteRenderer.color)
         {
-            other.gameObject.transform.position = new Vector3(transform.position.x - 0.3f, transform.position.y, transform.position.z);
+            other.gameObject.transform.position = new Vector3(transform.position.x - 0.4f, transform.position.y, transform.position.z);
             other.gameObject.GetComponent<PoweredWireStats>().connected = true;
             other.gameObject.GetComponent<PoweredWireBehavior>().UpdateLine();
 
