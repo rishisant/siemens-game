@@ -43,7 +43,7 @@ public class WireGenerator : MonoBehaviour
         Color.yellow,
         Color.blue,
         Color.white,
-        Color.black
+        Color.magenta
     };
 
     private List<PlugStats> allPlugStats = new List<PlugStats>();
@@ -78,12 +78,14 @@ public class WireGenerator : MonoBehaviour
             foreach (Transform child in entry.transform)
             {
                 SpriteRenderer childSpriteRenderer = child.GetComponent<SpriteRenderer>();
+                childSpriteRenderer.material.color = currColor;
                 childSpriteRenderer.color = currColor;
             }
 
             LineRenderer line = entry.GetComponent<LineRenderer>();
             line.SetPosition(0, entrySpawns[i]);
             line.SetPosition(1, line2ndPointSpawns[i]);
+            line.material.color = currColor;
             line.startColor = currColor;
             line.endColor = currColor;
 
@@ -91,6 +93,7 @@ public class WireGenerator : MonoBehaviour
             SpriteRenderer plugSpriteRenderer = plug.GetComponent<SpriteRenderer>();
             plugSpriteRenderer.color = currColor;
 
+            // add now for game complete check
             PlugStats plugStats = plug.GetComponent<PlugStats>();
             allPlugStats.Add(plugStats);
         }

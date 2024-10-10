@@ -464,7 +464,7 @@ MonoBehaviour:
   - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.9513507, a: 1}
   gameOverManager: {fileID: 1596072988}
 --- !u!1 &922106817
 GameObject:
@@ -527,7 +527,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6.5710597
+  orthographic size: 11.912872
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1371,6 +1371,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1182386923698355266, guid: 9ffbc0b452343b2b38d0e5188f3fd584, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b54257ce601a9674a826d2b23665b206, type: 2}
     - target: {fileID: 6026078400679010481, guid: 9ffbc0b452343b2b38d0e5188f3fd584, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8
