@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: White_Hoodie_Idle_Up
+  m_Name: Chest_Idle_Left
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 761800864, guid: 08b021ab1de314a29b244f310f76d2d4, type: 3}
+      value: {fileID: 1553988242, guid: 08b021ab1de314a29b244f310f76d2d4, type: 3}
     - time: 0.25
-      value: {fileID: 1355411929, guid: 08b021ab1de314a29b244f310f76d2d4, type: 3}
+      value: {fileID: 1936134265, guid: 08b021ab1de314a29b244f310f76d2d4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 761800864, guid: 08b021ab1de314a29b244f310f76d2d4, type: 3}
-    - {fileID: 1355411929, guid: 08b021ab1de314a29b244f310f76d2d4, type: 3}
+    - {fileID: 1553988242, guid: 08b021ab1de314a29b244f310f76d2d4, type: 3}
+    - {fileID: 1936134265, guid: 08b021ab1de314a29b244f310f76d2d4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
