@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Junkyard/Sample_Map.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Game-Scenes/WireGame.unity
+    guid: 6274d5db4491ff14a9e40c823064eabd
+  - enabled: 1
+    path: Assets/Scenes/Laboratory/Laboratory_L1.unity
+    guid: 154569dca3fdb4a28a7c1811ea09b029
   m_configObjects: {}
