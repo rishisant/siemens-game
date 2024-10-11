@@ -15,8 +15,8 @@ public class Character_Movement : MonoBehaviour
 	private Animator animator;
 	private Animator child_ChestAnimator;
 	private Animator child_LegAnimator;
-	private Animator child_FootAnimator;
-	private Animator child_HeadAnimator;
+	private Animator child_ShoeAnimator;
+	private Animator child_HatAnimator;
 
 	private Vector2 movementInputDirection;
 	private Vector2 lastMovementInputDirection;
@@ -46,12 +46,18 @@ public class Character_Movement : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 		child_ChestAnimator = transform.GetChild(0).GetComponent<Animator>();
+		child_LegAnimator = transform.GetChild(1).GetComponent<Animator>();
+		child_ShoeAnimator = transform.GetChild(2).GetComponent<Animator>();
+		child_HatAnimator = transform.GetChild(3).GetComponent<Animator>();
 
 		CreateAnimationDictionary();
 
 		lastMovementInputDirection = Vector2.down;
 
 		SetChestSprite(cosmeticHandler.GetChestController(0));
+		SetLegSprite(cosmeticHandler.GetLegController(0));
+		SetShoeSprite(cosmeticHandler.GetShoeController(0));
+		SetHatSprite(cosmeticHandler.GetHatController(0));
 	}
 
 	// Use update for animations
@@ -64,6 +70,9 @@ public class Character_Movement : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			SetChestSprite(cosmeticHandler.GetChestController(Random.Range(0, cosmeticHandler.ChestAnimControllerLenght())));
+			SetLegSprite(cosmeticHandler.GetLegController(Random.Range(0, cosmeticHandler.LegAnimControllerLenght())));
+			SetShoeSprite(cosmeticHandler.GetShoeController(Random.Range(0, cosmeticHandler.ShoeControllerLenght())));
+			SetHatSprite(cosmeticHandler.GetHatController(Random.Range(0, cosmeticHandler.HatAnimControllerLenght())));
 		}
 	}
 
@@ -72,19 +81,36 @@ public class Character_Movement : MonoBehaviour
 		HandleMovement(movementInputDirection);
 	}
 
-	private void ChangePlayerAnimationState(string newState)
+	private void ChangeAnimationState(Animator animator, string newState, ref string currentState)
 	{
 		if (currentState == newState) return;
 
 		animator.Play(newState);
 		currentState = newState;
 	}
+
+	private void ChangePlayerAnimationState(string newState)
+	{
+		ChangeAnimationState(animator, newState, ref currentState);
+	}
+
 	private void ChangeChestAnimationState(string newState)
 	{
-		if (currentState == newState) return;
+		ChangeAnimationState(child_ChestAnimator, newState, ref currentState);
+	}
 
-		child_ChestAnimator.Play(newState);
-		currentState = newState;
+	private void ChangeLegAnimationState(string newState)
+	{
+		ChangeAnimationState(child_LegAnimator, newState, ref currentState);
+	}
+
+	private void ChangeShoeAnimationState(string newState)
+	{
+		ChangeAnimationState(child_ShoeAnimator, newState, ref currentState);
+	}
+	private void ChangeHatAnimationState(string newState)
+	{
+		ChangeAnimationState(child_HatAnimator, newState, ref currentState);
 	}
 
 	private Vector2 GetInput()
@@ -119,9 +145,12 @@ public class Character_Movement : MonoBehaviour
 			{
 				ChangePlayerAnimationState(playerMovingAnimations[movementInputDirection]);
 				ChangeChestAnimationState(chestMovingAnimations[movementInputDirection]);
+				ChangeLegAnimationState(legMovingAnimations[movementInputDirection]);
+				ChangeShoeAnimationState(shoeMovingAnimations[movementInputDirection]);
+				ChangeHatAnimationState(hatMovingAnimations[movementInputDirection]);
+
 				lastMovementInputDirection = movementInputDirection;
 			}
-
 		}
 		else
 		{
@@ -129,6 +158,9 @@ public class Character_Movement : MonoBehaviour
 			{
 				ChangePlayerAnimationState(playerIdleAnimations[lastMovementInputDirection]);
 				ChangeChestAnimationState(chestIdleAnimations[lastMovementInputDirection]);
+				ChangeLegAnimationState(legIdleAnimations[lastMovementInputDirection]);
+				ChangeShoeAnimationState(shoeIdleAnimations[lastMovementInputDirection]);
+				ChangeHatAnimationState(hatIdleAnimations[lastMovementInputDirection]);
 			}
 		}
 	}
@@ -142,9 +174,32 @@ public class Character_Movement : MonoBehaviour
 
 			SyncAnimations(movementInputDirection);
 		}
-		else
+	}
+	public void SetLegSprite(RuntimeAnimatorController newController)
+	{
+		if (newController != null)
 		{
-			Debug.LogWarning("The provided chest prefab does not have an Animator component.");
+			child_LegAnimator.runtimeAnimatorController = newController; // Reassign the animator
+
+			SyncAnimations(movementInputDirection);
+		}
+	}
+	public void SetShoeSprite(RuntimeAnimatorController newController)
+	{
+		if (newController != null)
+		{
+			child_ShoeAnimator.runtimeAnimatorController = newController; // Reassign the animator
+
+			SyncAnimations(movementInputDirection);
+		}
+	}
+	public void SetHatSprite(RuntimeAnimatorController newController)
+	{
+		if (newController != null)
+		{
+			child_HatAnimator.runtimeAnimatorController = newController; // Reassign the animator
+
+			SyncAnimations(movementInputDirection);
 		}
 	}
 
@@ -186,9 +241,11 @@ public class Character_Movement : MonoBehaviour
 			{
 				animator.Play(playerMovingAnimations[movement], 0, 0f);
 				child_ChestAnimator.Play(chestMovingAnimations[movement], 0, 0f);
-				lastMovementInputDirection = movement;
+				child_LegAnimator.Play(legMovingAnimations[movement], 0, 0f);
+				child_ShoeAnimator.Play(shoeMovingAnimations[movement], 0, 0f);
+				child_HatAnimator.Play(hatMovingAnimations[movement], 0, 0f);
 
-				Debug.Log("Playing currentInput: " + chestMovingAnimations[movement]);
+				lastMovementInputDirection = movement;
 			}
 
 		}
@@ -198,9 +255,10 @@ public class Character_Movement : MonoBehaviour
 			{
 				animator.Play(playerIdleAnimations[lastMovementInputDirection], 0, 0f);
 				child_ChestAnimator.Play(chestIdleAnimations[lastMovementInputDirection], 0, 0f);
+				child_LegAnimator.Play(legIdleAnimations[lastMovementInputDirection], 0, 0f);
+				child_ShoeAnimator.Play(shoeIdleAnimations[lastMovementInputDirection], 0, 0f);
+				child_HatAnimator.Play(hatIdleAnimations[lastMovementInputDirection], 0, 0f);
 			}
-
-			Debug.Log("Playing lastInput: " + chestIdleAnimations[lastMovementInputDirection]);
 		}
 
 
