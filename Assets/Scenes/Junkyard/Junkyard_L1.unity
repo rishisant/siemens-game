@@ -6883,7 +6883,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chestAnimatorControllers:
   - {fileID: 9100000, guid: a3a55f1fece434318a65e322e739004e, type: 2}
+  - {fileID: 9100000, guid: 277a23bea059a3240a3b949bc042183a, type: 2}
   - {fileID: 9100000, guid: 9d9deb73e08e11643b73a06c6b14fdb7, type: 2}
+  - {fileID: 9100000, guid: 199fd50fde22b73408b45e5e9109b3f4, type: 2}
+  - {fileID: 9100000, guid: c141995951618054abeb81e76746c9fc, type: 2}
+  - {fileID: 9100000, guid: 904ac9f2b3808544492621e5f9ed5439, type: 2}
+  - {fileID: 9100000, guid: 47c986e9c84678e4dbbecedd40704fc4, type: 2}
+  - {fileID: 9100000, guid: 03d19a5a9bdaf1a4ab48adaea0f8502f, type: 2}
+  - {fileID: 9100000, guid: ca1cee6007d70164c9acd0004fdb74f0, type: 2}
 --- !u!1 &1006015496
 GameObject:
   m_ObjectHideFlags: 0
@@ -35583,10 +35590,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.75, y: 0.46875}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &3429343950559511109
@@ -35599,7 +35606,7 @@ Animator:
   m_GameObject: {fileID: 7091498595984074760}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ca1cee6007d70164c9acd0004fdb74f0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

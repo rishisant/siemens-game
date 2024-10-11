@@ -1,7 +1,6 @@
 // Rishi Santhanam
 // CSCE 482 Siemens Gamification
 
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,11 +22,20 @@ public class Character_Movement : MonoBehaviour
 	private Vector2 lastMovementInputDirection;
 
 
-	private Dictionary<Vector2, string> playerDirectionAnimations;
+	private Dictionary<Vector2, string> playerMovingAnimations;
 	private Dictionary<Vector2, string> playerIdleAnimations;
 
-	private Dictionary<Vector2, string> chestDirectionAnimations;
+	private Dictionary<Vector2, string> chestMovingAnimations;
 	private Dictionary<Vector2, string> chestIdleAnimations;
+
+	private Dictionary<Vector2, string> legMovingAnimations;
+	private Dictionary<Vector2, string> legIdleAnimations;
+
+	private Dictionary<Vector2, string> hatMovingAnimations;
+	private Dictionary<Vector2, string> hatIdleAnimations;
+
+	private Dictionary<Vector2, string> shoeMovingAnimations;
+	private Dictionary<Vector2, string> shoeIdleAnimations;
 
 
 	private bool syncFlag = false;
@@ -39,37 +47,7 @@ public class Character_Movement : MonoBehaviour
 		animator = GetComponent<Animator>();
 		child_ChestAnimator = transform.GetChild(0).GetComponent<Animator>();
 
-		playerDirectionAnimations = new Dictionary<Vector2, string>
-		{
-			{ Vector2.down, "Char_Walk_Down" },
-			{ Vector2.up, "Char_Walk_Up" },
-			{ Vector2.left, "Char_Walk_Left" },
-			{ Vector2.right, "Char_Walk_Right" }
-		};
-
-		playerIdleAnimations = new Dictionary<Vector2, string>
-		{
-			{ Vector2.down, "Char_Idle_Down" },
-			{ Vector2.up, "Char_Idle_Up" },
-			{ Vector2.left, "Char_Idle_Left" },
-			{ Vector2.right, "Char_Idle_Right" }
-		};
-
-		chestDirectionAnimations = new Dictionary<Vector2, string>
-		{
-			{ Vector2.down, "Chest_Walk_Down" },
-			{ Vector2.up, "Chest_Walk_Up" },
-			{ Vector2.left, "Chest_Walk_Left" },
-			{ Vector2.right, "Chest_Walk_Right" }
-		};
-
-		chestIdleAnimations = new Dictionary<Vector2, string>
-		{
-			{ Vector2.down, "Chest_Idle_Down" },
-			{ Vector2.up, "Chest_Idle_Up" },
-			{ Vector2.left, "Chest_Idle_Left" },
-			{ Vector2.right, "Chest_Idle_Right" }
-		};
+		CreateAnimationDictionary();
 
 		lastMovementInputDirection = Vector2.down;
 
@@ -85,14 +63,7 @@ public class Character_Movement : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			if (child_ChestAnimator.runtimeAnimatorController == cosmeticHandler.GetChestController(0))
-			{
-				SetChestSprite(cosmeticHandler.GetChestController(1));
-			}
-			else
-			{
-				SetChestSprite(cosmeticHandler.GetChestController(0));
-			}
+			SetChestSprite(cosmeticHandler.GetChestController(Random.Range(0, cosmeticHandler.ChestAnimControllerLenght())));
 		}
 	}
 
@@ -144,10 +115,10 @@ public class Character_Movement : MonoBehaviour
 
 		if (movementInputDirection != Vector2.zero)
 		{
-			if (playerDirectionAnimations.ContainsKey(movementInputDirection))
+			if (playerMovingAnimations.ContainsKey(movementInputDirection))
 			{
-				ChangePlayerAnimationState(playerDirectionAnimations[movementInputDirection]);
-				ChangeChestAnimationState(chestDirectionAnimations[movementInputDirection]);
+				ChangePlayerAnimationState(playerMovingAnimations[movementInputDirection]);
+				ChangeChestAnimationState(chestMovingAnimations[movementInputDirection]);
 				lastMovementInputDirection = movementInputDirection;
 			}
 
@@ -211,13 +182,13 @@ public class Character_Movement : MonoBehaviour
 
 		if (movement != Vector2.zero)
 		{
-			if (playerDirectionAnimations.ContainsKey(movement))
+			if (playerMovingAnimations.ContainsKey(movement))
 			{
-				animator.Play(playerDirectionAnimations[movement], 0, 0f);
-				child_ChestAnimator.Play(chestDirectionAnimations[movement], 0, 0f);
+				animator.Play(playerMovingAnimations[movement], 0, 0f);
+				child_ChestAnimator.Play(chestMovingAnimations[movement], 0, 0f);
 				lastMovementInputDirection = movement;
 
-				Debug.Log("Playing currentInput: " + chestDirectionAnimations[movement]);
+				Debug.Log("Playing currentInput: " + chestMovingAnimations[movement]);
 			}
 
 		}
@@ -234,5 +205,88 @@ public class Character_Movement : MonoBehaviour
 
 
 		isResettingAnimations = false;
+	}
+
+	private void CreateAnimationDictionary()
+	{
+		playerMovingAnimations = new Dictionary<Vector2, string>
+		{
+			{ Vector2.down, "Char_Walk_Down" },
+			{ Vector2.up, "Char_Walk_Up" },
+			{ Vector2.left, "Char_Walk_Left" },
+			{ Vector2.right, "Char_Walk_Right" }
+		};
+
+		playerIdleAnimations = new Dictionary<Vector2, string>
+		{
+			{ Vector2.down, "Char_Idle_Down" },
+			{ Vector2.up, "Char_Idle_Up" },
+			{ Vector2.left, "Char_Idle_Left" },
+			{ Vector2.right, "Char_Idle_Right" }
+		};
+
+		chestMovingAnimations = new Dictionary<Vector2, string>
+		{
+			{ Vector2.down, "Chest_Walk_Down" },
+			{ Vector2.up, "Chest_Walk_Up" },
+			{ Vector2.left, "Chest_Walk_Left" },
+			{ Vector2.right, "Chest_Walk_Right" }
+		};
+
+		chestIdleAnimations = new Dictionary<Vector2, string>
+		{
+			{ Vector2.down, "Chest_Idle_Down" },
+			{ Vector2.up, "Chest_Idle_Up" },
+			{ Vector2.left, "Chest_Idle_Left" },
+			{ Vector2.right, "Chest_Idle_Right" }
+		};
+
+		legMovingAnimations = new Dictionary<Vector2, string>
+		{
+			{ Vector2.down, "Leg_Walk_Down" },
+			{ Vector2.up, "Leg_Walk_Up" },
+			{ Vector2.left, "Leg_Walk_Left" },
+			{ Vector2.right, "Leg_Walk_Right" }
+		};
+
+		legIdleAnimations = new Dictionary<Vector2, string>
+		{
+			{ Vector2.down, "Leg_Idle_Down" },
+			{ Vector2.up, "Leg_Idle_Up" },
+			{ Vector2.left, "Leg_Idle_Left" },
+			{ Vector2.right, "Leg_Idle_Right" }
+		};
+
+		shoeMovingAnimations = new Dictionary<Vector2, string>
+		{
+			{ Vector2.down, "Shoe_Walk_Down" },
+			{ Vector2.up, "Shoe_Walk_Up" },
+			{ Vector2.left, "Shoe_Walk_Left" },
+			{ Vector2.right, "Shoe_Walk_Right" }
+		};
+
+		shoeIdleAnimations = new Dictionary<Vector2, string>
+		{
+			{ Vector2.down, "Shoe_Idle_Down" },
+			{ Vector2.up, "Shoe_Idle_Up" },
+			{ Vector2.left, "Shoe_Idle_Left" },
+			{ Vector2.right, "Shoe_Idle_Right" }
+		};
+
+		hatMovingAnimations = new Dictionary<Vector2, string>
+		{
+			{ Vector2.down, "Hat_Walk_Down" },
+			{ Vector2.up, "Hat_Walk_Up" },
+			{ Vector2.left, "Hat_Walk_Left" },
+			{ Vector2.right, "Hat_Walk_Right" }
+		};
+
+		hatIdleAnimations = new Dictionary<Vector2, string>
+		{
+			{ Vector2.down, "Hat_Idle_Down" },
+			{ Vector2.up, "Hat_Idle_Up" },
+			{ Vector2.left, "Hat_Idle_Left" },
+			{ Vector2.right, "Hat_Idle_Right" }
+		};
 	}
 }
