@@ -1213,7 +1213,7 @@ TextureImporter:
       name: utility_pants_blue_full_53
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1008
         y: 96
         width: 48
         height: 48
@@ -1234,7 +1234,7 @@ TextureImporter:
       name: utility_pants_blue_full_54
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 1056
         y: 96
         width: 48
         height: 48
@@ -1255,7 +1255,7 @@ TextureImporter:
       name: utility_pants_blue_full_55
       rect:
         serializedVersion: 2
-        x: 1248
+        x: 1104
         y: 96
         width: 48
         height: 48
@@ -1276,7 +1276,7 @@ TextureImporter:
       name: utility_pants_blue_full_56
       rect:
         serializedVersion: 2
-        x: 1296
+        x: 1152
         y: 96
         width: 48
         height: 48
@@ -1297,8 +1297,8 @@ TextureImporter:
       name: utility_pants_blue_full_57
       rect:
         serializedVersion: 2
-        x: 0
-        y: 48
+        x: 1200
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -1318,8 +1318,8 @@ TextureImporter:
       name: utility_pants_blue_full_58
       rect:
         serializedVersion: 2
-        x: 48
-        y: 48
+        x: 1248
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -1339,8 +1339,8 @@ TextureImporter:
       name: utility_pants_blue_full_59
       rect:
         serializedVersion: 2
-        x: 96
-        y: 48
+        x: 1296
+        y: 96
         width: 48
         height: 48
       alignment: 0
@@ -1360,7 +1360,7 @@ TextureImporter:
       name: utility_pants_blue_full_60
       rect:
         serializedVersion: 2
-        x: 144
+        x: 0
         y: 48
         width: 48
         height: 48
@@ -1381,7 +1381,7 @@ TextureImporter:
       name: utility_pants_blue_full_61
       rect:
         serializedVersion: 2
-        x: 192
+        x: 48
         y: 48
         width: 48
         height: 48
@@ -1402,7 +1402,7 @@ TextureImporter:
       name: utility_pants_blue_full_62
       rect:
         serializedVersion: 2
-        x: 240
+        x: 96
         y: 48
         width: 48
         height: 48
@@ -1423,7 +1423,7 @@ TextureImporter:
       name: utility_pants_blue_full_63
       rect:
         serializedVersion: 2
-        x: 288
+        x: 144
         y: 48
         width: 48
         height: 48
@@ -1444,7 +1444,7 @@ TextureImporter:
       name: utility_pants_blue_full_64
       rect:
         serializedVersion: 2
-        x: 336
+        x: 192
         y: 48
         width: 48
         height: 48
@@ -1465,7 +1465,7 @@ TextureImporter:
       name: utility_pants_blue_full_65
       rect:
         serializedVersion: 2
-        x: 384
+        x: 240
         y: 48
         width: 48
         height: 48
@@ -1486,7 +1486,7 @@ TextureImporter:
       name: utility_pants_blue_full_66
       rect:
         serializedVersion: 2
-        x: 432
+        x: 288
         y: 48
         width: 48
         height: 48
@@ -1507,7 +1507,7 @@ TextureImporter:
       name: utility_pants_blue_full_67
       rect:
         serializedVersion: 2
-        x: 480
+        x: 336
         y: 48
         width: 48
         height: 48
@@ -1528,7 +1528,7 @@ TextureImporter:
       name: utility_pants_blue_full_68
       rect:
         serializedVersion: 2
-        x: 528
+        x: 384
         y: 48
         width: 48
         height: 48
@@ -1549,7 +1549,7 @@ TextureImporter:
       name: utility_pants_blue_full_69
       rect:
         serializedVersion: 2
-        x: 576
+        x: 432
         y: 48
         width: 48
         height: 48
@@ -1570,7 +1570,7 @@ TextureImporter:
       name: utility_pants_blue_full_70
       rect:
         serializedVersion: 2
-        x: 624
+        x: 480
         y: 48
         width: 48
         height: 48
@@ -1591,7 +1591,7 @@ TextureImporter:
       name: utility_pants_blue_full_71
       rect:
         serializedVersion: 2
-        x: 672
+        x: 528
         y: 48
         width: 48
         height: 48
@@ -1612,7 +1612,7 @@ TextureImporter:
       name: utility_pants_blue_full_72
       rect:
         serializedVersion: 2
-        x: 720
+        x: 576
         y: 48
         width: 48
         height: 48
@@ -1633,7 +1633,7 @@ TextureImporter:
       name: utility_pants_blue_full_73
       rect:
         serializedVersion: 2
-        x: 768
+        x: 624
         y: 48
         width: 48
         height: 48
@@ -1654,7 +1654,7 @@ TextureImporter:
       name: utility_pants_blue_full_74
       rect:
         serializedVersion: 2
-        x: 816
+        x: 672
         y: 48
         width: 48
         height: 48
@@ -1675,7 +1675,7 @@ TextureImporter:
       name: utility_pants_blue_full_75
       rect:
         serializedVersion: 2
-        x: 864
+        x: 720
         y: 48
         width: 48
         height: 48
@@ -1696,7 +1696,7 @@ TextureImporter:
       name: utility_pants_blue_full_76
       rect:
         serializedVersion: 2
-        x: 912
+        x: 768
         y: 48
         width: 48
         height: 48
@@ -1717,7 +1717,7 @@ TextureImporter:
       name: utility_pants_blue_full_77
       rect:
         serializedVersion: 2
-        x: 960
+        x: 816
         y: 48
         width: 48
         height: 48
@@ -1738,7 +1738,7 @@ TextureImporter:
       name: utility_pants_blue_full_78
       rect:
         serializedVersion: 2
-        x: 1008
+        x: 864
         y: 48
         width: 48
         height: 48
@@ -1759,7 +1759,7 @@ TextureImporter:
       name: utility_pants_blue_full_79
       rect:
         serializedVersion: 2
-        x: 1056
+        x: 912
         y: 48
         width: 48
         height: 48
@@ -1780,7 +1780,7 @@ TextureImporter:
       name: utility_pants_blue_full_80
       rect:
         serializedVersion: 2
-        x: 1104
+        x: 960
         y: 48
         width: 48
         height: 48
@@ -1801,7 +1801,7 @@ TextureImporter:
       name: utility_pants_blue_full_81
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1008
         y: 48
         width: 48
         height: 48
@@ -1822,7 +1822,7 @@ TextureImporter:
       name: utility_pants_blue_full_82
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 1056
         y: 48
         width: 48
         height: 48
@@ -1843,7 +1843,7 @@ TextureImporter:
       name: utility_pants_blue_full_83
       rect:
         serializedVersion: 2
-        x: 1248
+        x: 1104
         y: 48
         width: 48
         height: 48
@@ -1864,7 +1864,7 @@ TextureImporter:
       name: utility_pants_blue_full_84
       rect:
         serializedVersion: 2
-        x: 1296
+        x: 1152
         y: 48
         width: 48
         height: 48
@@ -1885,8 +1885,8 @@ TextureImporter:
       name: utility_pants_blue_full_85
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 1200
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -1906,8 +1906,8 @@ TextureImporter:
       name: utility_pants_blue_full_86
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
+        x: 1248
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -1927,8 +1927,8 @@ TextureImporter:
       name: utility_pants_blue_full_87
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 1296
+        y: 48
         width: 48
         height: 48
       alignment: 0
@@ -1948,7 +1948,7 @@ TextureImporter:
       name: utility_pants_blue_full_88
       rect:
         serializedVersion: 2
-        x: 144
+        x: 0
         y: 0
         width: 48
         height: 48
@@ -1969,7 +1969,7 @@ TextureImporter:
       name: utility_pants_blue_full_89
       rect:
         serializedVersion: 2
-        x: 192
+        x: 48
         y: 0
         width: 48
         height: 48
@@ -1990,7 +1990,7 @@ TextureImporter:
       name: utility_pants_blue_full_90
       rect:
         serializedVersion: 2
-        x: 240
+        x: 96
         y: 0
         width: 48
         height: 48
@@ -2011,7 +2011,7 @@ TextureImporter:
       name: utility_pants_blue_full_91
       rect:
         serializedVersion: 2
-        x: 288
+        x: 144
         y: 0
         width: 48
         height: 48
@@ -2032,7 +2032,7 @@ TextureImporter:
       name: utility_pants_blue_full_92
       rect:
         serializedVersion: 2
-        x: 336
+        x: 192
         y: 0
         width: 48
         height: 48
@@ -2053,7 +2053,7 @@ TextureImporter:
       name: utility_pants_blue_full_93
       rect:
         serializedVersion: 2
-        x: 384
+        x: 240
         y: 0
         width: 48
         height: 48
@@ -2074,7 +2074,7 @@ TextureImporter:
       name: utility_pants_blue_full_94
       rect:
         serializedVersion: 2
-        x: 432
+        x: 288
         y: 0
         width: 48
         height: 48
@@ -2095,7 +2095,7 @@ TextureImporter:
       name: utility_pants_blue_full_95
       rect:
         serializedVersion: 2
-        x: 480
+        x: 336
         y: 0
         width: 48
         height: 48
@@ -2116,7 +2116,7 @@ TextureImporter:
       name: utility_pants_blue_full_96
       rect:
         serializedVersion: 2
-        x: 528
+        x: 384
         y: 0
         width: 48
         height: 48
@@ -2137,7 +2137,7 @@ TextureImporter:
       name: utility_pants_blue_full_97
       rect:
         serializedVersion: 2
-        x: 576
+        x: 432
         y: 0
         width: 48
         height: 48
@@ -2150,6 +2150,69 @@ TextureImporter:
       bones: []
       spriteID: 97169378658a118469136dfbecaf7c08
       internalID: 566354691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: utility_pants_blue_full_98
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd21f36aa7c2aac4483844fd3ec7ad85
+      internalID: -938526223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: utility_pants_blue_full_99
+      rect:
+        serializedVersion: 2
+        x: 528
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c70e24fa66ac46428b3634ebd7fa00a
+      internalID: 415971695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: utility_pants_blue_full_100
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef2249d7de900db4796b5bd3aad4ad1d
+      internalID: -825179886
       vertices: []
       indices: 
       edges: []
@@ -2168,6 +2231,7 @@ TextureImporter:
       utility_pants_blue_full_0: -651000031
       utility_pants_blue_full_1: -845078743
       utility_pants_blue_full_10: -733821507
+      utility_pants_blue_full_100: -825179886
       utility_pants_blue_full_11: -1924198039
       utility_pants_blue_full_12: -2068335904
       utility_pants_blue_full_13: 1763433497
@@ -2263,6 +2327,8 @@ TextureImporter:
       utility_pants_blue_full_95: 1405003891
       utility_pants_blue_full_96: -438623387
       utility_pants_blue_full_97: 566354691
+      utility_pants_blue_full_98: -938526223
+      utility_pants_blue_full_99: 415971695
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

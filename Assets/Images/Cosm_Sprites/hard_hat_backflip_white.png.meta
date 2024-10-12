@@ -226,7 +226,7 @@ TextureImporter:
       name: hard_hat_backflip_white_6
       rect:
         serializedVersion: 2
-        x: 144
+        x: 96
         y: 400
         width: 48
         height: 80
@@ -247,8 +247,8 @@ TextureImporter:
       name: hard_hat_backflip_white_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 320
+        x: 144
+        y: 400
         width: 48
         height: 80
       alignment: 0
@@ -268,7 +268,7 @@ TextureImporter:
       name: hard_hat_backflip_white_8
       rect:
         serializedVersion: 2
-        x: 48
+        x: 0
         y: 320
         width: 48
         height: 80
@@ -289,7 +289,7 @@ TextureImporter:
       name: hard_hat_backflip_white_9
       rect:
         serializedVersion: 2
-        x: 96
+        x: 48
         y: 320
         width: 48
         height: 80
@@ -310,7 +310,7 @@ TextureImporter:
       name: hard_hat_backflip_white_10
       rect:
         serializedVersion: 2
-        x: 144
+        x: 96
         y: 320
         width: 48
         height: 80
@@ -331,8 +331,8 @@ TextureImporter:
       name: hard_hat_backflip_white_11
       rect:
         serializedVersion: 2
-        x: 0
-        y: 240
+        x: 144
+        y: 320
         width: 48
         height: 80
       alignment: 0
@@ -352,7 +352,7 @@ TextureImporter:
       name: hard_hat_backflip_white_12
       rect:
         serializedVersion: 2
-        x: 48
+        x: 0
         y: 240
         width: 48
         height: 80
@@ -373,7 +373,7 @@ TextureImporter:
       name: hard_hat_backflip_white_13
       rect:
         serializedVersion: 2
-        x: 96
+        x: 48
         y: 240
         width: 48
         height: 80
@@ -394,7 +394,7 @@ TextureImporter:
       name: hard_hat_backflip_white_14
       rect:
         serializedVersion: 2
-        x: 144
+        x: 96
         y: 240
         width: 48
         height: 80
@@ -415,8 +415,8 @@ TextureImporter:
       name: hard_hat_backflip_white_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
+        x: 144
+        y: 240
         width: 48
         height: 80
       alignment: 0
@@ -436,7 +436,7 @@ TextureImporter:
       name: hard_hat_backflip_white_16
       rect:
         serializedVersion: 2
-        x: 48
+        x: 0
         y: 160
         width: 48
         height: 80
@@ -457,7 +457,7 @@ TextureImporter:
       name: hard_hat_backflip_white_17
       rect:
         serializedVersion: 2
-        x: 96
+        x: 48
         y: 160
         width: 48
         height: 80
@@ -478,7 +478,7 @@ TextureImporter:
       name: hard_hat_backflip_white_18
       rect:
         serializedVersion: 2
-        x: 144
+        x: 96
         y: 160
         width: 48
         height: 80
@@ -499,8 +499,8 @@ TextureImporter:
       name: hard_hat_backflip_white_19
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
+        x: 144
+        y: 160
         width: 48
         height: 80
       alignment: 0
@@ -520,7 +520,7 @@ TextureImporter:
       name: hard_hat_backflip_white_20
       rect:
         serializedVersion: 2
-        x: 48
+        x: 0
         y: 80
         width: 48
         height: 80
@@ -541,7 +541,7 @@ TextureImporter:
       name: hard_hat_backflip_white_21
       rect:
         serializedVersion: 2
-        x: 144
+        x: 48
         y: 80
         width: 48
         height: 80
@@ -562,8 +562,8 @@ TextureImporter:
       name: hard_hat_backflip_white_22
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 96
+        y: 80
         width: 48
         height: 80
       alignment: 0
@@ -583,8 +583,8 @@ TextureImporter:
       name: hard_hat_backflip_white_23
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
+        x: 144
+        y: 80
         width: 48
         height: 80
       alignment: 0
@@ -604,7 +604,7 @@ TextureImporter:
       name: hard_hat_backflip_white_24
       rect:
         serializedVersion: 2
-        x: 96
+        x: 0
         y: 0
         width: 48
         height: 80
@@ -625,7 +625,7 @@ TextureImporter:
       name: hard_hat_backflip_white_25
       rect:
         serializedVersion: 2
-        x: 144
+        x: 48
         y: 0
         width: 48
         height: 80
@@ -638,6 +638,48 @@ TextureImporter:
       bones: []
       spriteID: c0c203250bc588341b02377d9da3f896
       internalID: -373642640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hard_hat_backflip_white_26
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 203c9174d7f635948b67bce4152681bb
+      internalID: 774979830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hard_hat_backflip_white_27
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e574cf1cd55a5e4d8f494a5d750edb4
+      internalID: 392636936
       vertices: []
       indices: 
       edges: []
@@ -672,6 +714,8 @@ TextureImporter:
       hard_hat_backflip_white_23: 1773049639
       hard_hat_backflip_white_24: 1491739828
       hard_hat_backflip_white_25: -373642640
+      hard_hat_backflip_white_26: 774979830
+      hard_hat_backflip_white_27: 392636936
       hard_hat_backflip_white_3: 1284959324
       hard_hat_backflip_white_4: 1828805797
       hard_hat_backflip_white_5: 592354382

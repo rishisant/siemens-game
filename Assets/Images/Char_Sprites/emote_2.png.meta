@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 90ad9b1f883cebe43bc671270fba6d01
+guid: cb64dc4fa893adb479bd0a926dca7240
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hard_hat_backflip_0
+      name: emote_2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 480
+        y: 288
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3060369da1558b489fdfd02e900c7fb
-      internalID: 160525905
+      spriteID: bdb880459234ac741ba3fc148f06946d
+      internalID: -672573893
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_1
+      name: emote_2_1
       rect:
         serializedVersion: 2
         x: 48
-        y: 480
+        y: 288
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f79a671fbb11c64590b85fe66d3636b
-      internalID: -705307877
+      spriteID: 220ad6e1d4ed0ca48b905ad29347ae3e
+      internalID: -66418258
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_2
+      name: emote_2_2
       rect:
         serializedVersion: 2
         x: 96
-        y: 480
+        y: 288
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23299a070e8f08b4fb7cb51fd786fbb8
-      internalID: 321576644
+      spriteID: 9c01a2590ac078b4498898ad6bc177c2
+      internalID: -1421926793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_3
+      name: emote_2_3
       rect:
         serializedVersion: 2
         x: 144
-        y: 480
+        y: 288
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,167 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa00be4babf4e9741b6e56b533ba2302
-      internalID: -1409751657
+      spriteID: 20fbc6ef67775e9459075b69d6721111
+      internalID: 2121513528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 400
-        width: 48
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 40a224b45870bf0479faf0e6ce23cdfb
-      internalID: -1129918962
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hard_hat_backflip_5
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 400
-        width: 48
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e6c90bf84fc02745ac05e80cfb1205d
-      internalID: -1049457738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hard_hat_backflip_6
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 400
-        width: 48
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11f53a32ae5bb9f4cbeb9a5021f7d33f
-      internalID: -2071167335
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hard_hat_backflip_7
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 320
-        width: 48
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c732088f573f9be4da9231d33e1a8cd3
-      internalID: 1961354955
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hard_hat_backflip_8
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 320
-        width: 48
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d21d7355549b5414bb1f9ed945825d8e
-      internalID: 1578983343
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hard_hat_backflip_9
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 320
-        width: 48
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: baf2b6c395e9d1649951c16f1ff2e3b1
-      internalID: 1168351050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hard_hat_backflip_10
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 320
-        width: 48
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 89cecbb16537bb048b638da2eb33e9b4
-      internalID: -1635760280
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hard_hat_backflip_11
+      name: emote_2_4
       rect:
         serializedVersion: 2
         x: 0
         y: 240
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c44f132ca1e29cd41bcffa41fafa98d2
-      internalID: -164975204
+      spriteID: b99b769ed1797c643baa382dc4a017ea
+      internalID: -576667367
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_12
+      name: emote_2_5
       rect:
         serializedVersion: 2
         x: 48
         y: 240
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -363,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b304321bb4ff0342b195bb5d2576b69
-      internalID: 2006595677
+      spriteID: 25d56550d4c2f914894edc18bd13b9bc
+      internalID: 1070719132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_13
+      name: emote_2_6
       rect:
         serializedVersion: 2
         x: 96
         y: 240
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -384,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ede714e1777d27f418d4f655ba54df72
-      internalID: 953650407
+      spriteID: ac0e328c51eb59a49a51bb48e5d3d3f9
+      internalID: -597534972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_14
+      name: emote_2_7
       rect:
         serializedVersion: 2
         x: 144
         y: 240
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -405,20 +258,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 508cfb733c21ff44cbdf6eac3b1bb52e
-      internalID: 1890770909
+      spriteID: 2b57474056b56c84eab17af3adf42ae6
+      internalID: -1349296013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_15
+      name: emote_2_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 160
+        y: 192
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -426,20 +279,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56c12dd0923658e489573339a2f98195
-      internalID: -323662182
+      spriteID: f35c0f2238eba1545a265c8faf08decc
+      internalID: -1809625429
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_16
+      name: emote_2_9
       rect:
         serializedVersion: 2
         x: 48
-        y: 160
+        y: 192
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -447,20 +300,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1576885528ca4574c851ae37f0f70742
-      internalID: -129377124
+      spriteID: 0eff21d1136536d49984c7bba577443e
+      internalID: -1576359826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_17
+      name: emote_2_10
       rect:
         serializedVersion: 2
         x: 96
-        y: 160
+        y: 192
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -468,20 +321,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4064af3f05b4e0a44a4c27a63ed42a41
-      internalID: -1776091373
+      spriteID: 888f3c83106a040458ae96e8e8050680
+      internalID: -379161314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_18
+      name: emote_2_11
       rect:
         serializedVersion: 2
         x: 144
-        y: 160
+        y: 192
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -489,20 +342,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c66b781a055f5cf44809e42ba18abce2
-      internalID: -1423738558
+      spriteID: adb901bb2a8f9db49bf259703cece614
+      internalID: 1077485046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_19
+      name: emote_2_12
       rect:
         serializedVersion: 2
         x: 0
-        y: 80
+        y: 144
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -510,20 +363,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76b5982469f7cf44ab4e65afad732a75
-      internalID: -1183807603
+      spriteID: 32e18335460412e4cb1d9738cb855ba5
+      internalID: 1135797379
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_20
+      name: emote_2_13
       rect:
         serializedVersion: 2
         x: 48
-        y: 80
+        y: 144
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -531,20 +384,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eda2a79c2e807004eae953500ace6c30
-      internalID: 886639890
+      spriteID: 0a3ccd8f623ecb844829a9d4b4a73f59
+      internalID: 2113105417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_21
+      name: emote_2_14
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dccd7bf33bb5c6d4da7c79b6b6e8ce4a
+      internalID: 889882072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote_2_15
       rect:
         serializedVersion: 2
         x: 144
-        y: 80
+        y: 144
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -552,20 +426,188 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e17c6d8b8e6e7774c90fc97997a3839f
-      internalID: 1032311547
+      spriteID: d28d697ec25f68e4dba09672758ad7e4
+      internalID: -1623828805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_22
+      name: emote_2_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfe2360f7d18e2449add585752a43993
+      internalID: -409526200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote_2_17
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff5b66939de058547952f4688e46e8fd
+      internalID: -1147071783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote_2_18
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48cbe5f13fd6f9240a81ce1a37079356
+      internalID: -2087973748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote_2_19
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 96
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d844f4e408dc0934c94019c2526acb28
+      internalID: -1049255472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote_2_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e145362c09436ed43bd1e846ef1d6cb6
+      internalID: 1054639287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote_2_21
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7066d7e09613914e80140ca529ba266
+      internalID: -1367874342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote_2_22
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 460475b2a5988a94b9f483fbd760e53d
+      internalID: -1906363276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote_2_23
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 48
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 902d58cee4a8f8c4c91ff3626c0c0544
+      internalID: 1832069185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emote_2_24
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -573,20 +615,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b7e6f1107bbabe479b85dbae5707250
-      internalID: -579417834
+      spriteID: d49060e06e7731c429d4294c5ebe1478
+      internalID: -211234440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_23
+      name: emote_2_25
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -594,20 +636,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc793373761258e43b876da346c402a6
-      internalID: 715260575
+      spriteID: d917e80526a4c994a8177b0672b079dd
+      internalID: -1288786186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_24
+      name: emote_2_26
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -615,20 +657,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af38a92433d47b24c8f7305a60396529
-      internalID: -60651765
+      spriteID: 9a63441737ad73b44b10423f70c40fe2
+      internalID: 637010901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hard_hat_backflip_25
+      name: emote_2_27
       rect:
         serializedVersion: 2
         x: 144
         y: 0
         width: 48
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -636,8 +678,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 256eb8ec821c6a44d8a76900938f51af
-      internalID: -431369454
+      spriteID: c46199db21d2cc74e967bdaf792d0bff
+      internalID: 1530825823
       vertices: []
       indices: 
       edges: []
@@ -653,32 +695,34 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      hard_hat_backflip_0: 160525905
-      hard_hat_backflip_1: -705307877
-      hard_hat_backflip_10: -1635760280
-      hard_hat_backflip_11: -164975204
-      hard_hat_backflip_12: 2006595677
-      hard_hat_backflip_13: 953650407
-      hard_hat_backflip_14: 1890770909
-      hard_hat_backflip_15: -323662182
-      hard_hat_backflip_16: -129377124
-      hard_hat_backflip_17: -1776091373
-      hard_hat_backflip_18: -1423738558
-      hard_hat_backflip_19: -1183807603
-      hard_hat_backflip_2: 321576644
-      hard_hat_backflip_20: 886639890
-      hard_hat_backflip_21: 1032311547
-      hard_hat_backflip_22: -579417834
-      hard_hat_backflip_23: 715260575
-      hard_hat_backflip_24: -60651765
-      hard_hat_backflip_25: -431369454
-      hard_hat_backflip_3: -1409751657
-      hard_hat_backflip_4: -1129918962
-      hard_hat_backflip_5: -1049457738
-      hard_hat_backflip_6: -2071167335
-      hard_hat_backflip_7: 1961354955
-      hard_hat_backflip_8: 1578983343
-      hard_hat_backflip_9: 1168351050
+      emote_2_0: -672573893
+      emote_2_1: -66418258
+      emote_2_10: -379161314
+      emote_2_11: 1077485046
+      emote_2_12: 1135797379
+      emote_2_13: 2113105417
+      emote_2_14: 889882072
+      emote_2_15: -1623828805
+      emote_2_16: -409526200
+      emote_2_17: -1147071783
+      emote_2_18: -2087973748
+      emote_2_19: -1049255472
+      emote_2_2: -1421926793
+      emote_2_20: 1054639287
+      emote_2_21: -1367874342
+      emote_2_22: -1906363276
+      emote_2_23: 1832069185
+      emote_2_24: -211234440
+      emote_2_25: -1288786186
+      emote_2_26: 637010901
+      emote_2_27: 1530825823
+      emote_2_3: 2121513528
+      emote_2_4: -576667367
+      emote_2_5: 1070719132
+      emote_2_6: -597534972
+      emote_2_7: -1349296013
+      emote_2_8: -1809625429
+      emote_2_9: -1576359826
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

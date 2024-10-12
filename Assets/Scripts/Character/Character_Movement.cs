@@ -1,6 +1,7 @@
 // Rishi Santhanam
 // CSCE 482 Siemens Gamification
 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,6 +41,7 @@ public class Character_Movement : MonoBehaviour
 
 	private bool syncFlag = false;
 	private bool isResettingAnimations;
+	private bool isEmoting;
 
 	void Awake()
 	{
@@ -69,10 +71,29 @@ public class Character_Movement : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
+			StopAllCoroutines();
+			isEmoting = false;
+
 			SetChestSprite(cosmeticHandler.GetChestController(Random.Range(0, cosmeticHandler.ChestAnimControllerLenght())));
 			SetLegSprite(cosmeticHandler.GetLegController(Random.Range(0, cosmeticHandler.LegAnimControllerLenght())));
 			SetShoeSprite(cosmeticHandler.GetShoeController(Random.Range(0, cosmeticHandler.ShoeControllerLenght())));
 			SetHatSprite(cosmeticHandler.GetHatController(Random.Range(0, cosmeticHandler.HatAnimControllerLenght())));
+		}
+
+		if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			StopAllCoroutines();
+			PerformEmote(1);
+		}
+		if (Input.GetKeyDown(KeyCode.Keypad2) || Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			StopAllCoroutines();
+			PerformEmote(2);
+		}
+		if (Input.GetKeyDown(KeyCode.Keypad3) || Input.GetKeyDown(KeyCode.Alpha3))
+		{
+			StopAllCoroutines();
+			PerformEmote(3);
 		}
 	}
 
@@ -132,12 +153,20 @@ public class Character_Movement : MonoBehaviour
 			movement.x = 0;
 		}
 
+		if (movement != Vector2.zero)
+		{
+			// Stops emoting
+
+			StopAllCoroutines();
+			isEmoting = false;
+		}
+
 		rb.velocity = movement * charSpeed;
 	}
 
 	private void UpdateAnimator()
 	{
-		if (isResettingAnimations) return;
+		if (isResettingAnimations || isEmoting) return;
 
 		if (movementInputDirection != Vector2.zero)
 		{
@@ -201,6 +230,50 @@ public class Character_Movement : MonoBehaviour
 
 			SyncAnimations(movementInputDirection);
 		}
+	}
+
+	private void PerformEmote(int emoteIndex)
+	{
+		isEmoting = true;
+
+		// Play the emote animation
+		ChangePlayerAnimationState("Char_Emote_" + emoteIndex);
+		ChangeChestAnimationState("Chest_Emote_" + emoteIndex);
+		ChangeLegAnimationState("Leg_Emote_" + emoteIndex);
+		ChangeShoeAnimationState("Shoe_Emote_" + emoteIndex);
+		ChangeHatAnimationState("Hat_Emote_" + emoteIndex);
+
+		// Start a coroutine to wait for the emote animation to finish
+		StartCoroutine(WaitForEmoteToFinish(emoteIndex));
+	}
+
+	private IEnumerator WaitForEmoteToFinish(int emoteIndex)
+	{
+		// Wait until the emote animation is fully playing
+		while (!animator.GetCurrentAnimatorStateInfo(0).IsName("Char_Emote_" + emoteIndex))
+		{
+			yield return null; // Wait for the next frame
+		}
+
+		// Get the length of the emote animation
+		float emoteLength = animator.GetCurrentAnimatorStateInfo(0).length;
+
+		// Wait for the emote animation to finish
+		yield return new WaitForSeconds(emoteLength);
+
+		// After emote finishes, stop emoting and return to idle
+		StopEmoting();
+	}
+
+	private void StopEmoting()
+	{
+		isEmoting = false;
+
+		ChangePlayerAnimationState("Char_Idle_Down");
+		ChangeChestAnimationState("Chest_Idle_Down");
+		ChangeLegAnimationState("Leg_Emote_Idle");
+		ChangeShoeAnimationState("Shoe_Emote_Idle");
+		ChangeHatAnimationState("Hat_Emote_Idle");
 	}
 
 	private void SyncAnimations(Vector2 movement)
