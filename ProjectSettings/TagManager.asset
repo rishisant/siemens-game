@@ -44,3 +44,9 @@ TagManager:
   - name: Clothing
     uniqueID: 2557588139
     locked: 0
+  - name: Objects,Fence
+    uniqueID: 2335008467
+    locked: 0
+  - name: Particles
+    uniqueID: 2908249619
+    locked: 0
