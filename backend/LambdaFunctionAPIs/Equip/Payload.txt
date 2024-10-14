@@ -1,0 +1,7 @@
+curl -X POST "https://g7fh351dz2.execute-api.us-east-1.amazonaws.com/default/Equip" \
+-H "Content-Type: application/json" \
+-d '{
+  "action": "equip",
+  "items": [17],
+  "employee_id": 8653
+}'
