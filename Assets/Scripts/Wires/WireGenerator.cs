@@ -2,11 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Driver class for WireGame generation and success criteria.
+ */
 public class WireGenerator : MonoBehaviour
 {
+    // For spawn locations
     public System.Random rand = new System.Random();
 
-    public System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+    // For section completion timing
+    public System.Diagnostics.Stopwatch levelStopwatch = new System.Diagnostics.Stopwatch();
+
+    // For game completion timing
+    public System.Diagnostics.Stopwatch gameStopwatch = new System.Diagnostics.Stopwatch();
 
     // Prefabs to Instantiate what we need
     public GameObject wireEntry;
@@ -14,6 +22,7 @@ public class WireGenerator : MonoBehaviour
 
     public int level;
 
+    // Collection of the line renderers 2nd point, is at the same as the wireLength in Unity
     public Vector3[] line2ndPointSpawns = {
         new Vector3(-10, 5, 0),
         new Vector3(-10, 3, 0),
@@ -22,6 +31,8 @@ public class WireGenerator : MonoBehaviour
         new Vector3(-10, -3, 0),
         new Vector3(-10, -5, 0)
     };
+
+    // Collection of the possible wireEntry spawn locations
     public Vector3[] entrySpawns = {
         new Vector3(-12, 5, 0),
         new Vector3(-12, 3, 0),
@@ -30,6 +41,8 @@ public class WireGenerator : MonoBehaviour
         new Vector3(-12, -3, 0),
         new Vector3(-12, -5, 0)
     };
+
+    // Collection of the possible wirePlug spawn locations
     public Vector3[] exitSpawns = {
         new Vector3(12, 5, 0),
         new Vector3(12, 3, 0),
@@ -38,6 +51,8 @@ public class WireGenerator : MonoBehaviour
         new Vector3(12, -3, 0),
         new Vector3(12, -5, 0)
     };
+
+    // Collection of possible wire colors
     public Color[] colors = {
         Color.red,
         Color.green,
@@ -56,42 +71,64 @@ public class WireGenerator : MonoBehaviour
     // keep track of times for different levels
     private List<System.TimeSpan> allTimes = new List<System.TimeSpan>();
 
+    // Level over screen manager member
+    public LevelOverManager levelOverManager;
+
+    // Game over screen manager member
     public GameOverManager gameOverManager;
 
-    // Start is called before the first frame update
+    /**
+     * Start() is a Unity function that runs before the first frame update of this scene
+     * This method just starts the first level by calling the StartLevel() function
+     */
     void Start()
     {
         level = 0;
+        gameStopwatch.Start();
         StartLevel();
     }
 
-    // Update is called once per frame
+    /**
+     * Update() is a Unity function that runs on every frame update.
+     * This function checks the connections of the wires, and if they are all connected
+     * then the gameOverManager member is called to end the level
+     * If performance becomes an issue, checkConnection() can be moved to the wire
+     * connection behavior function.
+     */
     void Update()
     {
         if (checkConnection())
         {
-            stopwatch.Stop();
-            allTimes.Add(stopwatch.Elapsed);
             if (level < 6)
             {
-                // FIXME: add another background for going to next level
+                levelStopwatch.Stop();
+                levelOverManager.Setup(levelStopwatch.Elapsed);
             }
             else
             {
-                gameOverManager.Setup(stopwatch.Elapsed);
+                levelStopwatch.Stop();
+                gameStopwatch.Stop();
+                gameOverManager.Setup(levelStopwatch.Elapsed, gameStopwatch.Elapsed);
             }
         }
     }
 
-    void StartLevel()
+    /**
+     * StartLevel() contains the logic for starting the level and is called at Start()
+     * and whenever a new level needs to be generated
+     */
+    public void StartLevel()
     {
-        // FIXME: move logic out of Start and into StartLevel so that we can
-        // have different levels
+        clearWires();
         level++;
         spawnObjects();
-        stopwatch.Start();
+        levelStopwatch.Restart();
     }
 
+    /**
+     * clearWires() destroys all game objects to prepare for the next level
+     * makes use of the allWires class member to keep track and destroy gameObjects
+     */
     void clearWires()
     {
         foreach (GameObject g in allWires)
@@ -101,6 +138,11 @@ public class WireGenerator : MonoBehaviour
         allWires.Clear();
     }
 
+    /**
+     * spawnObjects() spawns the objects for the game to function.
+     * This starts by shuffling the colors and exit spawns, then instantiates `level`
+     * wires.
+     */
     void spawnObjects()
     {
         Color[] shuffledColors = shuffle(colors, colors.Length);
@@ -138,10 +180,19 @@ public class WireGenerator : MonoBehaviour
         }
     }
 
+    /**
+     * shuffle() is a template function that shuffles an array
+     * This is to be used in the spawnObjects() function so that
+     * we can get random positions for the colors and exit spawns
+     * The Fisher-Yates algorithm is utilized in this function
+     * 
+     * @param sourceArray The source array that wants to be shuffled
+     * @param numElements The number of elements in the source array
+     * @return            A new array that is a shuffled version of the source Array
+     * @see               https://stackoverflow.com/questions/108819/best-way-to-randomize-an-array-with-net
+     */
     private T[] shuffle<T>(T[] sourceArray, int numElements)
     {
-        // https://stackoverflow.com/questions/108819/best-way-to-randomize-an-array-with-net
-        // Fisher-Yates algorithm
         T[] copy = new T[numElements];
         sourceArray.CopyTo(copy, 0);
 
@@ -157,6 +208,11 @@ public class WireGenerator : MonoBehaviour
         return copy;
     }
 
+    /**
+     * checkConnection() checks the connection of all the wires in the allPlugStats member
+     * 
+     * @return a boolean, true if all wires are connected, false otherwise
+     */
     private bool checkConnection()
     {
         foreach (PlugStats p in allPlugStats)
