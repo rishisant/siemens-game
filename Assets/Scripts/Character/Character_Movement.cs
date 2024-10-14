@@ -40,6 +40,9 @@ public class Character_Movement : MonoBehaviour
 
 
 	private bool syncFlag = false;
+    private bool canMove = true; // New variable to control movement
+
+    private List<GameObject> interactiveButtons = new List<GameObject>();
 	private bool isResettingAnimations;
 	private bool isEmoting;
 
@@ -60,6 +63,13 @@ public class Character_Movement : MonoBehaviour
 		SetLegSprite(cosmeticHandler.GetLegController(0));
 		SetShoeSprite(cosmeticHandler.GetShoeController(0));
 		SetHatSprite(cosmeticHandler.GetHatController(0));
+
+        // Find all buttons with the ButtonLocation script
+        ButtonLocation[] buttonLocations = FindObjectsOfType<ButtonLocation>();
+        foreach (var button in buttonLocations)
+        {
+            interactiveButtons.Add(button.gameObject);
+        }
 	}
 
 	// Use update for animations
@@ -67,7 +77,8 @@ public class Character_Movement : MonoBehaviour
 	{
 		// Update the animator
 		movementInputDirection = GetInput();
-		UpdateAnimator();
+        if(canMove)
+		    UpdateAnimator();
 
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
@@ -99,8 +110,21 @@ public class Character_Movement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		HandleMovement(movementInputDirection);
+		if(canMove)
+            HandleMovement(movementInputDirection);
+        else{
+            Vector2 movementInput = Vector2.zero;
+            HandleMovement(movementInput);
+            isEmoting = false;
+        }
+        CheckForLocationTrigger();
 	}
+
+    // New method to toggle player movement
+    public void ToggleMovement()
+    {
+        canMove = !canMove; // Toggle the movement state
+    }
 
 	private void ChangeAnimationState(Animator animator, string newState, ref string currentState)
 	{
@@ -420,4 +444,38 @@ public class Character_Movement : MonoBehaviour
 			{ Vector2.right, "Hat_Idle_Right" }
 		};
 	}
+
+    void CheckForLocationTrigger()
+    {
+        Vector2 playerPosition = transform.position;
+
+        // Hide all buttons initially
+        foreach (var button in interactiveButtons)
+        {
+            button.SetActive(false);
+        }
+
+        
+        // Check if the player's position is close enough to the actual position of each button
+        foreach (var button in interactiveButtons)
+        {
+            ButtonLocation buttonLocation = button.GetComponent<ButtonLocation>();
+            if (buttonLocation != null)
+            {
+                //if(buttonLocation.clicked == true){
+                //    ButtonLocation.SetClickedForAllButtons(true);
+                //}
+                
+                Vector2 buttonPosition = buttonLocation.GetButtonPosition();
+                float distance = Vector2.Distance(playerPosition, buttonPosition);
+                float interactionDistance = buttonLocation.interactionDistance;
+                
+                // Check if the player is within the interaction distance
+                if (distance <= interactionDistance && buttonLocation.clicked == false)
+                {
+                    button.SetActive(true); // Show the button
+                }
+            }
+        }
+    }
 }
