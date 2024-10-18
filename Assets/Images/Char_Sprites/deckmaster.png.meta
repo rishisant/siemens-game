@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 32e7318fa03b2b64fb2913cefcc3a8d9
+guid: e1213f0fec46047488076e2271bcf935
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: party_hat_blue_emote3_0
+      name: deckmaster_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 80
+        y: 144
         width: 32
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1270692bcbc624d4ba8244a48b237a82
-      internalID: 1677210182
+      spriteID: 7aac80e6c94c946afa9141b30a05f745
+      internalID: -1849934428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: party_hat_blue_emote3_1
+      name: deckmaster_1
       rect:
         serializedVersion: 2
         x: 32
-        y: 80
+        y: 144
         width: 32
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 267e77f97744db74fa2092aae99ceefb
-      internalID: -296226096
+      spriteID: 4349e35fed5114ba59ebe27c7df4811f
+      internalID: -1933547220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: party_hat_blue_emote3_2
+      name: deckmaster_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 80
+        x: 0
+        y: 96
         width: 32
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df78b8dd62353e3469dc9bf4ebf8ec20
-      internalID: -1721184737
+      spriteID: 45df3421770194e6aa200565bd198069
+      internalID: 1960378562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: party_hat_blue_emote3_3
+      name: deckmaster_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 80
+        x: 32
+        y: 96
         width: 32
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54c8c46317b4a804aa2dbb53a85f85c8
-      internalID: 1090138840
+      spriteID: 9a1548f01498146fbb4f6a563cb00a7b
+      internalID: -1778151248
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: party_hat_blue_emote3_4
+      name: deckmaster_4
       rect:
         serializedVersion: 2
-        x: 128
-        y: 80
+        x: 0
+        y: 48
         width: 32
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36d337c22682f6247a8753b146f23eeb
-      internalID: 578721706
+      spriteID: 95b1b728c2a644d7d8eb8d86967612a5
+      internalID: -222758319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: party_hat_blue_emote3_5
+      name: deckmaster_5
       rect:
         serializedVersion: 2
-        x: 160
-        y: 80
+        x: 32
+        y: 48
         width: 32
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,41 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae9d4e26bbd91b448a9145eef0972f57
-      internalID: 1272384582
+      spriteID: 900884a8856214025986421ee10c9d37
+      internalID: -772879310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: party_hat_blue_emote3_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 80
-        width: 32
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1b7b415677c47b34ca8db35bdf04a624
-      internalID: -123032661
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: party_hat_blue_emote3_7
+      name: deckmaster_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab830438718e9fd4dbe07d3daa21cb2b
-      internalID: -368298042
+      spriteID: f459ecefc221f4015a88316dd56ecd0f
+      internalID: 687454547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: party_hat_blue_emote3_8
+      name: deckmaster_7
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
-        height: 80
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,92 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 362aa16285c73184e9d42b7c1096d6a7
-      internalID: 753360232
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: party_hat_blue_emote3_9
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a81b57b68c320b14ba5ce88681381fc4
-      internalID: -1300224435
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: party_hat_blue_emote3_10
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7c1ace3be0bf3b4b86e5d2934d7064c
-      internalID: -11346738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: party_hat_blue_emote3_11
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 273004ecddd23fb48ac19299cc5332ce
-      internalID: -751301525
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: party_hat_blue_emote3_12
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5eefc808f1555af47ba90bfaaf04877d
-      internalID: 739212839
+      spriteID: 95914f2210c1c4619b1313f7eff70a45
+      internalID: -983856809
       vertices: []
       indices: 
       edges: []
@@ -393,19 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      party_hat_blue_emote3_0: 1677210182
-      party_hat_blue_emote3_1: -296226096
-      party_hat_blue_emote3_10: -11346738
-      party_hat_blue_emote3_11: -751301525
-      party_hat_blue_emote3_12: 739212839
-      party_hat_blue_emote3_2: -1721184737
-      party_hat_blue_emote3_3: 1090138840
-      party_hat_blue_emote3_4: 578721706
-      party_hat_blue_emote3_5: 1272384582
-      party_hat_blue_emote3_6: -123032661
-      party_hat_blue_emote3_7: -368298042
-      party_hat_blue_emote3_8: 753360232
-      party_hat_blue_emote3_9: -1300224435
+      deckmaster_0: -1849934428
+      deckmaster_1: -1933547220
+      deckmaster_2: 1960378562
+      deckmaster_3: -1778151248
+      deckmaster_4: -222758319
+      deckmaster_5: -772879310
+      deckmaster_6: 687454547
+      deckmaster_7: -983856809
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
