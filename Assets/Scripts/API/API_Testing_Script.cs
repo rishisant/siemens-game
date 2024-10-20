@@ -1,10 +1,19 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Networking; // Required namespace for UnityWebRequest
+// Should use UnityEngine's Networking library
+using UnityEngine.Networking; 
 
+// Rishi Santhanam
+// API Testing Script
+// Essentially, change the TMP objects to display the result and
+// type of API request (GET, POST, PUT, DELETE)
+
+// If errors occur, display that as well.
 public class API_Testing_Script : MonoBehaviour
 {
+    // SerializeField because I want to be able
+    // to choose manually in the Unity Editor
     [SerializeField] private TMP_Text text_Type;
     [SerializeField] private TMP_Text text_Result;
 
@@ -15,6 +24,7 @@ public class API_Testing_Script : MonoBehaviour
     }
 
     // Get the API using UnityWebRequest
+    // Part of the Networking library package
     IEnumerator GetAPI()
     {
         string url = "https://g7fh351dz2.execute-api.us-east-1.amazonaws.com/default/GetAllItems";
@@ -36,6 +46,7 @@ public class API_Testing_Script : MonoBehaviour
             else
             {
                 // Successful request, display the result
+                // Will be in JSON format
                 Debug.Log(webRequest.downloadHandler.text);
                 text_Type.SetText("GET");
                 text_Result.SetText(webRequest.downloadHandler.text);
