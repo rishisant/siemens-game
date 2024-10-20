@@ -27,6 +27,14 @@ public class TutorialManager : MonoBehaviour
     // The camera
     [SerializeField] private CameraFollow camera;
 
+    // Grab the public bool inventoryClosed from InventoryUI_Tutorial
+    // This will be used to check if the user finished the inventory tutorial
+    [SerializeField] private InventoryUI_Tutorial inventoryUI;
+    private bool inventoryClosed => inventoryUI.inventoryClosed;
+
+    // Import the inventory button
+    [SerializeField] private GameObject inventoryButton;
+
     // The flag (from flag object 1 - 3)
     // The flag's child activate object
     [SerializeField] private GameObject[] flags;
@@ -166,13 +174,40 @@ public class TutorialManager : MonoBehaviour
                 waitingOnObjective = false;
             }
         }
+        // Now for the inventory tutorial part... Basically just wait on objective.
+        else if (dialogueIndex == 13 && !waitingOnObjective)
+        {
+            // Pause the dialogue
+            dialogueManager.PauseDialogue();
+
+            // Assign an objective
+            waitingOnObjective = true;
+
+            // Let player move
+            player.UnstopPlayer();
+
+            // inventory button set to active
+            inventoryButton.SetActive(true);
+        }
+        else if (dialogueIndex == 13 && waitingOnObjective)
+        {
+            // Check if the player has closed the inventory
+            if (inventoryClosed)
+            {
+                // Unpause the dialogue and stop the player
+                dialogueManager.ResumeDialogue();
+                player.StopPlayer();
+
+                waitingOnObjective = false;
+            }
+        }
 
         else if (waitingOnObjective) {
             return;
         }
 
         // if dialogueIndex is maxed out
-        else if (dialogueIndex == 12)
+        else if (dialogueIndex == 17)
         {
             // End the tutorial
             EndTutorial();
