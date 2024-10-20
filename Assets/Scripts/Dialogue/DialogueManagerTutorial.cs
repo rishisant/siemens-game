@@ -34,6 +34,9 @@ public class DialogueManagerTutorial : MonoBehaviour
     // Is the character typing?
     private bool isTyping = true;
 
+    // Is dialoguePaused and don't check for mouse?
+    private bool dialoguePaused = false;
+
     // Typing the sentence
     IEnumerator TypeSentence (string sentence)
     {
@@ -106,6 +109,7 @@ public class DialogueManagerTutorial : MonoBehaviour
     public void PauseDialogue()
     {
         dialoguePanel.SetActive(false);
+        dialoguePaused = true;
     }
 
     // Resume dialogue
@@ -113,6 +117,7 @@ public class DialogueManagerTutorial : MonoBehaviour
     {
         dialoguePanel.SetActive(true);
         DisplayNextSentence();
+        dialoguePaused = false;
     }
 
     // Start is called before the first frame update
@@ -124,7 +129,7 @@ public class DialogueManagerTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !dialoguePaused)
         {
             ClearDialogue();
             DisplayNextSentence();
