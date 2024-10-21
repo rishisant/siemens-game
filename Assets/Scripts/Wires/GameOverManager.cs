@@ -43,6 +43,7 @@ public class GameOverManager : MonoBehaviour
      */
     public void RestartButton()
     {
+        uploadTime(12, score);
         SceneManager.LoadScene("WireGame");
     }
 
@@ -57,7 +58,7 @@ public class GameOverManager : MonoBehaviour
     }
 
     /**
-     * 
+     * uploadTime() is a function that sends a POST request to the backend to upload the time
      */
     private void uploadTime(int user_id, string time)
     {
@@ -69,9 +70,18 @@ public class GameOverManager : MonoBehaviour
             ""user_id"": {0},
             ""game_id"": {1},
             ""score"": {2}
-        }}", 12, 7, 5000);
+        }}", 12, 7, 420);
 
-        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
+        StartCoroutine(SendWebRequestCoroutine(url, jsonData));
+    }
+
+    /**
+     * SendWebRequestCoroutine() is a coroutine that sends a web request to the given url with the given json data
+     */
+    private IEnumerator SendWebRequestCoroutine(string url, string jsonData)
+    {
+        // Convert the json data to a byte array
+        byte[] jsonToSend = System.Text.Encoding.UTF8.GetBytes(jsonData);
 
         using (UnityWebRequest webRequest = new UnityWebRequest(url, "POST"))
         {
@@ -80,7 +90,7 @@ public class GameOverManager : MonoBehaviour
 
             webRequest.SetRequestHeader("Content-Type", "application/json");
 
-            webRequest.SendWebRequest();
+            yield return webRequest.SendWebRequest();
 
             if (webRequest.result == UnityWebRequest.Result.Success)
             {
