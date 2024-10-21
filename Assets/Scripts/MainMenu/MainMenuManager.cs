@@ -22,6 +22,13 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject creditsPanel;
 
+    // For beta testing, without logging in you will go to starting cutscene
+    public void PlayGame()
+    {
+        // Load the game scene starting cutscene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Starting-Cutscene");
+    }
+
     // Close button functions for login,register,abstract,settings,credits
     public void CloseLoginPanel()
     {
