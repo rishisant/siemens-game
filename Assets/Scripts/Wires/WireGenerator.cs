@@ -96,7 +96,8 @@ public class WireGenerator : MonoBehaviour
     {
         if (checkConnection())
         {
-            if (level < 6)
+            // FIXME: change back to 6 after testing
+            if (level < 2)
             {
                 levelStopwatch.Stop();
                 levelOverManager.Setup(levelStopwatch.Elapsed);
@@ -222,4 +223,5 @@ public class WireGenerator : MonoBehaviour
         }
         return true;
     }
+
 }
