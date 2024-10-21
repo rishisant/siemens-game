@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking; 
 using TMPro;
 
 /**
@@ -14,6 +15,7 @@ public class GameOverManager : MonoBehaviour
     public TMP_Text levelTimeElapsed;
     public TMP_Text gameTimeElapsed;
 
+    private string score;
     /**
      * Setup() sets the game over screen to be active so it will actually show up when called.
      * 
@@ -29,6 +31,8 @@ public class GameOverManager : MonoBehaviour
         gameTimeElapsed.text = "Game Time: " + System.String.Format("{0:00}:{1:00}.{2:00}",
             gameTimeSpan.Minutes, gameTimeSpan.Seconds,
             gameTimeSpan.Milliseconds / 10);
+
+        score = System.String.Format("{0}.{1}", gameTimeSpan.Minutes * 60 + gameTimeSpan.Seconds, gameTimeSpan.Milliseconds / 10);
 
         gameObject.SetActive(true);
     }
@@ -48,8 +52,45 @@ public class GameOverManager : MonoBehaviour
      */
     public void ExitButton()
     {
-        // FIXME: add a coordinate here so that we know where to spawn so they
-        // can spawn back at their computer?
+        uploadTime(12, score);
         SceneManager.LoadScene("Laboratory_L1");
+    }
+
+    /**
+     * 
+     */
+    private void uploadTime(int user_id, string time)
+    {
+        string url = "https://g7fh351dz2.execute-api.us-east-1.amazonaws.com/default/ScoreUpload";
+
+        // FIXME: replace 12 with the user_id
+        Debug.Log(System.String.Format("uploading score {0}", time)); 
+        string jsonData = System.String.Format(@"{{
+            ""user_id"": {0},
+            ""game_id"": {1},
+            ""score"": {2}
+        }}", 12, 7, 5000);
+
+        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(jsonData);
+
+        using (UnityWebRequest webRequest = new UnityWebRequest(url, "POST"))
+        {
+            webRequest.uploadHandler = new UploadHandlerRaw(jsonToSend);
+            webRequest.downloadHandler = new DownloadHandlerBuffer();
+
+            webRequest.SetRequestHeader("Content-Type", "application/json");
+
+            webRequest.SendWebRequest();
+
+            if (webRequest.result == UnityWebRequest.Result.Success)
+            {
+                Debug.Log("success!");
+                Debug.Log(webRequest.downloadHandler.text);
+            }
+            else
+            {
+                Debug.LogError("Error: " + webRequest.error);
+            }
+        }
     }
 }
