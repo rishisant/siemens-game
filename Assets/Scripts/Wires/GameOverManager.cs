@@ -43,7 +43,8 @@ public class GameOverManager : MonoBehaviour
      */
     public void RestartButton()
     {
-        uploadTime(12, score);
+        // FIXME: replace with current user_id
+        uploadTime(12);
         SceneManager.LoadScene("WireGame");
     }
 
@@ -53,54 +54,29 @@ public class GameOverManager : MonoBehaviour
      */
     public void ExitButton()
     {
-        uploadTime(12, score);
+        // FIXME: replace with current user_id
+        uploadTime(12);
         SceneManager.LoadScene("Laboratory_L1");
     }
 
     /**
      * uploadTime() is a function that sends a POST request to the backend to upload the time
      */
-    private void uploadTime(int user_id, string time)
+    private void uploadTime(int userId)
     {
         string url = "https://g7fh351dz2.execute-api.us-east-1.amazonaws.com/default/ScoreUpload";
-
-        // FIXME: replace 12 with the user_id
-        Debug.Log(System.String.Format("uploading score {0}", time)); 
         string jsonData = System.String.Format(@"{{
             ""user_id"": {0},
             ""game_id"": {1},
             ""score"": {2}
-        }}", 12, 7, time);
-
-        StartCoroutine(SendWebRequestCoroutine(url, jsonData));
+        }}", userId, 7, score);
+        Debug.Log("uploading score " + score);
+        WebRequestUtility.SendWebRequest(this, url, jsonData, OnRequestComplete);
     }
 
-    /**
-     * SendWebRequestCoroutine() is a coroutine that sends a web request to the given url with the given json data
-     */
-    private IEnumerator SendWebRequestCoroutine(string url, string jsonData)
+    void OnRequestComplete(string responseText)
     {
-        // Convert the json data to a byte array
-        byte[] jsonToSend = System.Text.Encoding.UTF8.GetBytes(jsonData);
-
-        using (UnityWebRequest webRequest = new UnityWebRequest(url, "POST"))
-        {
-            webRequest.uploadHandler = new UploadHandlerRaw(jsonToSend);
-            webRequest.downloadHandler = new DownloadHandlerBuffer();
-
-            webRequest.SetRequestHeader("Content-Type", "application/json");
-
-            yield return webRequest.SendWebRequest();
-
-            if (webRequest.result == UnityWebRequest.Result.Success)
-            {
-                Debug.Log("success!");
-                Debug.Log(webRequest.downloadHandler.text);
-            }
-            else
-            {
-                Debug.LogError("Error: " + webRequest.error);
-            }
-        }
+        Debug.Log(responseText);
     }
+
 }
