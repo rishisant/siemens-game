@@ -21,9 +21,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Game-Scenes/WireGame.unity
     guid: 6274d5db4491ff14a9e40c823064eabd
   - enabled: 1
-    path: Assets/Scenes/Starting-Cutscene.unity
+    path: Assets/Scenes/Initial-Scenes/Starting-Cutscene.unity
     guid: 9a7d4d02e18c643aab6f1e888aa27271
   - enabled: 1
     path: Assets/Scenes/Junkyard/Tutorial.unity
     guid: 60f99a93dd7364c42a7e09d636de64ef
+  - enabled: 1
+    path: Assets/Scenes/Initial-Scenes/MainMenu.unity
+    guid: 4de91cfcb7125476e80e2f84ec0f1129
   m_configObjects: {}
