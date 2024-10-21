@@ -70,7 +70,7 @@ public class GameOverManager : MonoBehaviour
             ""user_id"": {0},
             ""game_id"": {1},
             ""score"": {2}
-        }}", 12, 7, 420);
+        }}", 12, 7, time);
 
         StartCoroutine(SendWebRequestCoroutine(url, jsonData));
     }
