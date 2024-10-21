@@ -72,6 +72,26 @@ public class Character_Movement : MonoBehaviour
         }
 	}
 
+	// Can't move function
+	public void StopPlayer()
+	{
+		// Stop the player from moving
+		canMove = false;
+
+		// Change movement input direction to zero
+		movementInputDirection = Vector2.zero;
+
+		// Update player animations
+		UpdateAnimator();
+	}
+
+	// Can move function
+	public void UnstopPlayer()
+	{
+		// Allow the player to move
+		canMove = true;
+	}
+
 	// Use update for animations
 	private void Update()
 	{
