@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Character_Movement : MonoBehaviour
 {
 	[SerializeField] private float charSpeed = 4f;
@@ -19,9 +20,13 @@ public class Character_Movement : MonoBehaviour
 	private Animator child_ShoeAnimator;
 	private Animator child_HatAnimator;
 
+	// Grab the equipped items dictionary from PlayerData
+	[SerializeField] private PlayerData playerData;
+	private List<int> equipped_items => playerData.equipped_items;
+	private List<int> original_load_items = new List<int> { 100, 200, 300, 400 };
+
 	private Vector2 movementInputDirection;
 	private Vector2 lastMovementInputDirection;
-
 
 	private Dictionary<Vector2, string> playerMovingAnimations;
 	private Dictionary<Vector2, string> playerIdleAnimations;
@@ -37,7 +42,6 @@ public class Character_Movement : MonoBehaviour
 
 	private Dictionary<Vector2, string> shoeMovingAnimations;
 	private Dictionary<Vector2, string> shoeIdleAnimations;
-
 
 	private bool syncFlag = false;
     private bool canMove = true; // New variable to control movement
@@ -59,10 +63,17 @@ public class Character_Movement : MonoBehaviour
 
 		lastMovementInputDirection = Vector2.down;
 
-		SetChestSprite(cosmeticHandler.GetChestController(0));
-		SetLegSprite(cosmeticHandler.GetLegController(0));
-		SetShoeSprite(cosmeticHandler.GetShoeController(0));
-		SetHatSprite(cosmeticHandler.GetHatController(0));
+		// Set the chestsprite to the one in the equipped items
+		// Organize equippedItems by lowest to highest id
+		equipped_items.Sort();
+
+		SetChestSprite(cosmeticHandler.GetChestController(equipped_items[1] - 200));
+		SetLegSprite(cosmeticHandler.GetLegController(equipped_items[2] - 300));
+		SetShoeSprite(cosmeticHandler.GetShoeController(equipped_items[3] - 400));
+		SetHatSprite(cosmeticHandler.GetHatController(equipped_items[0] - 100));
+
+		// Change the original_load_items to the equipped items
+		original_load_items = equipped_items;
 
         // Find all buttons with the ButtonLocation script
         ButtonLocation[] buttonLocations = FindObjectsOfType<ButtonLocation>();
@@ -95,6 +106,21 @@ public class Character_Movement : MonoBehaviour
 	// Use update for animations
 	private void Update()
 	{
+		if (original_load_items != equipped_items)
+		{
+			// Organize equippedItems by lowest to highest id
+			equipped_items.Sort();
+
+			SetChestSprite(cosmeticHandler.GetChestController(equipped_items[1] - 200));
+			SetLegSprite(cosmeticHandler.GetLegController(equipped_items[2] - 300));
+			SetShoeSprite(cosmeticHandler.GetShoeController(equipped_items[3] - 400));
+			SetHatSprite(cosmeticHandler.GetHatController(equipped_items[0] - 100));
+
+			// Change the original_load_items to the equipped items
+			original_load_items = equipped_items;
+		}
+
+
 		// Update the animator
 		movementInputDirection = GetInput();
         if(canMove)

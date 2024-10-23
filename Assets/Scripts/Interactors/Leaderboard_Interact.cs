@@ -11,15 +11,6 @@ public class Leaderboard_Interact : MonoBehaviour
     [SerializeField] public GameObject player;
     [SerializeField] private GameObject interactButton;
 
-    // Q: Do I need to add the collider on this script?
-    // A: No, the collider is already attached to the game object
-    // Q: Why is it not working?
-    // A: Make sure the player object is assigned in the Unity Editor
-    // Q: It is.
-    // A: Make sure the interact button is assigned in the Unity Editor
-    // Q: It is.
-    // A: Make sure the player object has the PlayerData script attached
-
     // Start is called before the first frame update
     void Start()
     {
