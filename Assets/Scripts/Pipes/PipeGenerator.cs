@@ -11,6 +11,10 @@ public class PipeGenerator : MonoBehaviour
     public GameObject straightPipe;
     public GameObject turnPipe;
 
+    // initialize explicitly
+    private PipeInfo[,] level = {
+
+    };
 
     // Start is called before the first frame update
     void Start()

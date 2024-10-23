@@ -48,6 +48,29 @@ using UnityEngine;
  *        
  *         
  * Notice that the flow starts in the direction of the Direction, and ends 90 deg clockwise
+ * 
+ * For source and sink nodes, it is also a little different
+ * For source nodes, the direction will be where the water must flow and it will come out of the bottom of the triangle
+ * For sink nodes, the direction will be where the water must flow into and it will flow into the bottom of the triangle
+ *
+ * Down direction for sink node
+ *
+ *         |
+ *         v 
+ *
+ *       ----        
+ *       \  /
+ *        \/
+ *        
+ * Down direction for source node
+ *
+ *        /\
+ *       /  \
+ *       ----
+ *
+ *        |
+ *        v
+ *
  */
 public enum Direction
 {
@@ -58,7 +81,7 @@ public enum Direction
 }
 
 /**
- * PipeType determines if the type is a straight or turn pipe
+ * PipeType determines if the type is a straight pipe, turn pipe, source, or sink
  * @see Direction
  */
 public enum PipeType
@@ -70,6 +93,7 @@ public enum PipeType
     empty
 }
 
+// FIXME: write javadoc string here
 public class PipeInfo
 {
     public Direction direction;
