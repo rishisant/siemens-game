@@ -3,6 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using TMPro;
+using System.Linq;
+
+[System.Serializable]
+public class UserScoreList
+{
+    public List<UserScore> users;
+}
+
+[System.Serializable]
+public class UserScore
+{
+    // DON'T CHANGE THIS TO CAMEL CASE
+    // since we are parsing JSON, the names need to match up with what is in
+    // the JSON for this to serialize properly
+    public string user_name;
+    public double score;
+}
 
 public class Interactor_Display : MonoBehaviour
 {
@@ -75,10 +92,36 @@ public class Interactor_Display : MonoBehaviour
     {
         if (responseText != null)
         {
+            string json = System.String.Format(@"{{
+                ""users"" : {0}
+            }}", responseText);
 
-            top5.text = "testing";
-            top10.text = "bruh";
-            Debug.Log(responseText);
+            UserScoreList scores = JsonUtility.FromJson<UserScoreList>(json);
+
+            int i = 1;
+            string top5Text = "";
+            string top10Text = "";
+
+            foreach (UserScore user in scores.users)
+            {
+                string currText = System.String.Format("{0}. {1} : {2:00.00}\n", i, user.user_name, user.score);
+                if (i < 6)
+                {
+                    top5Text += currText;
+                }
+                else if (i <= 10)
+                {
+                    top10Text += currText;
+                }
+                else
+                {
+                    break;
+                }
+                i++;
+            }
+
+            top5.text = top5Text;
+            top10.text = top10Text;
         }
     }
 }
