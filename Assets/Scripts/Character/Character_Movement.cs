@@ -23,7 +23,7 @@ public class Character_Movement : MonoBehaviour
 	// Grab the equipped items dictionary from PlayerData
 	[SerializeField] private PlayerData playerData;
 	private List<int> equipped_items => playerData.equipped_items;
-	private List<int> original_load_items = new List<int> { 100, 200, 300, 400 };
+	public List<int> original_load_items = new List<int>();
 
 	private Vector2 movementInputDirection;
 	private Vector2 lastMovementInputDirection;
@@ -65,15 +65,33 @@ public class Character_Movement : MonoBehaviour
 
 		// Set the chestsprite to the one in the equipped items
 		// Organize equippedItems by lowest to highest id
-		equipped_items.Sort();
 
-		SetChestSprite(cosmeticHandler.GetChestController(equipped_items[1] - 200));
-		SetLegSprite(cosmeticHandler.GetLegController(equipped_items[2] - 300));
-		SetShoeSprite(cosmeticHandler.GetShoeController(equipped_items[3] - 400));
-		SetHatSprite(cosmeticHandler.GetHatController(equipped_items[0] - 100));
+		if (equipped_items.Count != 0) {
+			equipped_items.Sort();
 
-		// Change the original_load_items to the equipped items
-		original_load_items = equipped_items;
+			// If equipped items has something in the 100s
+			if (equipped_items[0] >= 100 && equipped_items[0] < 200)
+			{
+				SetHatSprite(cosmeticHandler.GetHatController(equipped_items[0] - 100));
+			}
+			if (equipped_items[1] >= 200 && equipped_items[1] < 300)
+			{
+				SetChestSprite(cosmeticHandler.GetChestController(equipped_items[1] - 200));
+			}
+			if (equipped_items[2] >= 300 && equipped_items[2] < 400)
+			{
+				SetLegSprite(cosmeticHandler.GetLegController(equipped_items[2] - 300));
+			}
+			if (equipped_items[3] >= 400 && equipped_items[3] < 500)
+			{
+				SetShoeSprite(cosmeticHandler.GetShoeController(equipped_items[3] - 400));
+			}
+
+			// SetChestSprite(cosmeticHandler.GetChestController(equipped_items[1] - 200));
+			// SetLegSprite(cosmeticHandler.GetLegController(equipped_items[2] - 300));
+			// SetShoeSprite(cosmeticHandler.GetShoeController(equipped_items[3] - 400));
+			// SetHatSprite(cosmeticHandler.GetHatController(equipped_items[0] - 100));
+		}
 
         // Find all buttons with the ButtonLocation script
         ButtonLocation[] buttonLocations = FindObjectsOfType<ButtonLocation>();
@@ -103,21 +121,140 @@ public class Character_Movement : MonoBehaviour
 		canMove = true;
 	}
 
+	// Coroutine to print the equipped items every 3 seconds
+	// private IEnumerator PrintEquippedEvery3Seconds()
+	// {
+	// 	// string that prints like [, , , ,]
+	// 	string equipped_items_string = "EQI: [";
+	// 	string original_load_items_string = "OLI: [";
+
+	// 	yield return new WaitForSeconds(3);
+		
+	// 	// Print the equipped items
+	// 	for (int i = 0; i < equipped_items.Count; i++)
+	// 	{
+	// 		equipped_items_string += equipped_items[i].ToString();
+	// 		if (i != equipped_items.Count - 1)
+	// 		{
+	// 			equipped_items_string += ", ";
+	// 		}
+	// 	}
+
+	// 	// Print the original load items
+	// 	for (int i = 0; i < original_load_items.Count; i++)
+	// 	{
+	// 		original_load_items_string += original_load_items[i].ToString();
+	// 		if (i != original_load_items.Count - 1)
+	// 		{
+	// 			original_load_items_string += ", ";
+	// 		}
+	// 	}
+
+	// 	equipped_items_string += "]";
+	// 	original_load_items_string += "]";
+
+	// 	Debug.Log(equipped_items_string);
+	// 	Debug.Log(original_load_items_string);
+	// }
+
+	// Check if lists are same content
+	private bool AreListsEqual(List<int> list1, List<int> list2)
+	{
+		if (list1.Count != list2.Count)
+		{
+			return false;
+		}
+
+		for (int i = 0; i < list1.Count; i++)
+		{
+			if (list1[i] != list2[i])
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	// Use update for animations
 	private void Update()
 	{
-		if (original_load_items != equipped_items)
+		// Remove all 0's from equipped items list
+		equipped_items.RemoveAll(item => item == 0);
+
+		// Every 3 seconds print the original load and equipped items
+		// This is for debugging purposes
+		// StartCoroutine(PrintEquippedEvery3Seconds());
+		
+		// For example if something gets unequipped
+		// This means that equipped_items will act weird
+		// If anything in the list is 199,299,399,499 we have to disable it
+
+		if (!AreListsEqual(original_load_items, equipped_items))
 		{
+			// Occurs
+			Debug.Log("OCCURANCE");
 			// Organize equippedItems by lowest to highest id
 			equipped_items.Sort();
 
-			SetChestSprite(cosmeticHandler.GetChestController(equipped_items[1] - 200));
-			SetLegSprite(cosmeticHandler.GetLegController(equipped_items[2] - 300));
-			SetShoeSprite(cosmeticHandler.GetShoeController(equipped_items[3] - 400));
-			SetHatSprite(cosmeticHandler.GetHatController(equipped_items[0] - 100));
+			// Check the count of equipped items
+			// and set accordingly for each of the 0, 1, 2, 3 elements
+			// For loop of equipped items
+			// If the equipped item is in the 100s, set the chest sprite, etc
+			for (int i = 0; i < equipped_items.Count; i++)
+			{
+				if (equipped_items[i] >= 100 && equipped_items[i] < 200)
+				{
+					if (equipped_items[i] == 199)
+					{
+						// Disable the hat sprite
+						child_HatAnimator.runtimeAnimatorController = null;
+					} else
+					{
+					child_HatAnimator.runtimeAnimatorController = transform.GetChild(3).GetComponent<Animator>().runtimeAnimatorController;
+					SetHatSprite(cosmeticHandler.GetHatController(equipped_items[i] - 100));
+					}
+				}
+				if (equipped_items[i] >= 200 && equipped_items[i] < 300)
+				{
+					if (equipped_items[i] == 299)
+					{
+						// Disable the chest sprite
+						child_ChestAnimator.runtimeAnimatorController = null;
+					} else
+					{
+					child_ChestAnimator.runtimeAnimatorController = transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController;
+					SetChestSprite(cosmeticHandler.GetChestController(equipped_items[i] - 200));
+					}
+				}
+				if (equipped_items[i] >= 300 && equipped_items[i] < 400)
+				{
+					if (equipped_items[i] == 399)
+					{
+						// Disable the leg sprite
+						child_LegAnimator.runtimeAnimatorController = null;
+					} else
+					{
+					child_LegAnimator.runtimeAnimatorController = transform.GetChild(1).GetComponent<Animator>().runtimeAnimatorController;
+					SetLegSprite(cosmeticHandler.GetLegController(equipped_items[i] - 300));
+					}
+				}
+				if (equipped_items[i] >= 400 && equipped_items[i] < 500)
+				{
+					if (equipped_items[i] == 499)
+					{
+						// Disable the shoe sprite
+						child_ShoeAnimator.runtimeAnimatorController = null;
+					} else
+					{
+					child_ShoeAnimator.runtimeAnimatorController = transform.GetChild(2).GetComponent<Animator>().runtimeAnimatorController;
+					SetShoeSprite(cosmeticHandler.GetShoeController(equipped_items[i] - 400));
+					}
+				}
+			}
 
 			// Change the original_load_items to the equipped items
-			original_load_items = equipped_items;
+			original_load_items = new List<int>(equipped_items);
 		}
 
 

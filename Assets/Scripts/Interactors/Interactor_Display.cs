@@ -13,11 +13,37 @@ public class Interactor_Display : MonoBehaviour
     // Call the GameObject for Player
     [SerializeField] private GameObject player;
 
+    // Call the Inventory Panel
+    [SerializeField] private GameObject inventoryPanel;
+
     // Defining the Exit Out for Leaderboards
     public void ExitLeaderboards()
     {
         leaderboards.SetActive(false);
         baseGameUI.SetActive(true);
+
+        // Unstop the player
+        player.GetComponent<Character_Movement>().UnstopPlayer();
+    }
+
+    // Defining the Exit Out for Inventory
+    public void ExitInventory()
+    {
+        inventoryPanel.SetActive(false);
+        baseGameUI.SetActive(true);
+
+        // Unstop the player
+        player.GetComponent<Character_Movement>().UnstopPlayer();
+    }
+
+    // Opening the Inventory
+    public void OpenInventory()
+    {
+        inventoryPanel.SetActive(true);
+        baseGameUI.SetActive(false);
+
+        // Stop the player
+        player.GetComponent<Character_Movement>().StopPlayer();
     }
 
     // Grab the playerData's interactable string
@@ -27,6 +53,9 @@ public class Interactor_Display : MonoBehaviour
 
     public void DisplayPanel()
     {
+        // Stop the player
+        player.GetComponent<Character_Movement>().StopPlayer();
+
         if (interactable == "leaderboard")
         {
             leaderboards.SetActive(true);
