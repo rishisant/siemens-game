@@ -645,15 +645,33 @@ public class MainMenuManager : MonoBehaviour
         SendCreateAccountRequest(employeeId, username, password);
     }
 
+    // Request payloads are serialized with JsonUtility so quotes or
+    // backslashes in user input can't corrupt the JSON
+    [System.Serializable]
+    private struct LoginRequest
+    {
+        public string user_name;
+        public string user_password;
+    }
+
+    [System.Serializable]
+    private struct CreateAccountRequest
+    {
+        public string user_name;
+        public string user_password;
+        public long employee_id;
+    }
+
     public void SendLoginRequest(string username, string password)
     {
-        Debug.Log($"sending request to login for {username} {password}");
+        Debug.Log($"sending request to login for {username}");
 
         string url = "https://g7fh351dz2.execute-api.us-east-1.amazonaws.com/default/Login";
-        string jsonData = System.String.Format(@"{{
-            ""user_name"": ""{0}"",
-            ""user_password"": ""{1}""
-        }}", username, password);
+        string jsonData = JsonUtility.ToJson(new LoginRequest
+        {
+            user_name = username,
+            user_password = password
+        });
 
         WebRequestUtility.SendWebRequest(
                 this,
@@ -667,6 +685,7 @@ public class MainMenuManager : MonoBehaviour
                     playerData.coins = data.user.current_coins;
                     playerData.unlocked_items = data.user.items_owned;
                     playerData.equipped_items = data.user.items_equipped;
+                    playerData.NotifyEquippedItemsChanged();
                     playerData.unlocked_cards = data.user.cards_owned;
                     playerData.unlocked_achievements = data.user.achievements_complete;
                     // Due to the way that JsonUtility parses Json, we need to
@@ -698,14 +717,23 @@ public class MainMenuManager : MonoBehaviour
 
     public void SendCreateAccountRequest(string employeeId, string username, string password)
     {
-        Debug.Log($"sending request to create account for {employeeId} {username} {password}");
+        Debug.Log($"sending request to create account for {employeeId} {username}");
+
+        // The employee id must be numeric; a non-numeric id can never match
+        // an employee badge, so reject it before hitting the API
+        if (!long.TryParse(employeeId, out long employeeIdNumber))
+        {
+            SetupErrorScreen("Error: The request was invalid. Are you sure you have the right employee ID? If so, please contact your supervisor");
+            return;
+        }
 
         string url = "https://g7fh351dz2.execute-api.us-east-1.amazonaws.com/default/Login";
-        string jsonData = System.String.Format(@"{{
-            ""user_name"": ""{0}"",
-            ""user_password"": ""{1}"",
-            ""employee_id"": {2}
-        }}", username, password, employeeId);
+        string jsonData = JsonUtility.ToJson(new CreateAccountRequest
+        {
+            user_name = username,
+            user_password = password,
+            employee_id = employeeIdNumber
+        });
 
         WebRequestUtility.SendWebRequest(
                 this,
@@ -718,6 +746,7 @@ public class MainMenuManager : MonoBehaviour
                     playerData.coins = data.user.current_coins;
                     playerData.unlocked_items = data.user.items_owned;
                     playerData.equipped_items = data.user.items_equipped;
+                    playerData.NotifyEquippedItemsChanged();
                     UnityEngine.SceneManagement.SceneManager.LoadScene("Starting-Cutscene");
                 },
                 (string response) => {

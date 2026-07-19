@@ -9,6 +9,7 @@ public class BroadcastDiscovery : MonoBehaviour
     private const int broadcastPort = 47777;
     private const string broadcastMessage = "HostAvailable";
     private UdpClient udpClient;
+    private bool isBroadcasting;
 
     public static BroadcastDiscovery Instance;
 
@@ -40,7 +41,8 @@ public class BroadcastDiscovery : MonoBehaviour
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Broadcast, broadcastPort);
 
             Debug.Log("Starting to broadcast host availability...");
-            while (true)
+            isBroadcasting = true;
+            while (isBroadcasting)
             {
                 if (string.IsNullOrEmpty(broadcastMessage))
                 {
@@ -109,8 +111,18 @@ public class BroadcastDiscovery : MonoBehaviour
         return null;
     }
 
+    public void StopBroadcasting()
+    {
+        isBroadcasting = false;
+    }
+
     private void OnDestroy()
     {
+        // Ends the StartBroadcasting loop; without this it would keep
+        // running after the object is destroyed (and after exiting play
+        // mode in the editor)
+        isBroadcasting = false;
+
         if (udpClient != null)
         {
             Debug.Log("Stopping broadcasting...");

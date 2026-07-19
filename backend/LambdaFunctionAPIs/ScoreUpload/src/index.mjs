@@ -83,13 +83,14 @@ const handleScoreInsert = async (client, userId, gameId, newScore, tableName = '
 };
 
 /**
- * Lambda function handler to manage game score operations.
+ * Runs the score upload flow against a specific table. Exported for tests;
+ * production traffic goes through `handler`, which pins the table name.
  *
  * @param {Object} event - The Lambda event object containing the request data.
  * @param {string} [tableName='game_scores'] - The name of the table to operate on.
  * @returns {Promise<Object>} - HTTP response object with status and score operation result.
  */
-export const handler = async (event, tableName = 'game_scores') => {
+export const runHandler = async (event, tableName = 'game_scores') => {
     let client;
 
     try {
@@ -141,3 +142,13 @@ export const handler = async (event, tableName = 'game_scores') => {
         }
     }
 };
+
+/**
+ * Lambda entry point. AWS invokes handler(event, context), so the table name
+ * must never be taken from the second argument — it would receive the Lambda
+ * context object and corrupt the SQL.
+ *
+ * @param {Object} event - The Lambda event object containing the request data.
+ * @returns {Promise<Object>} - HTTP response object with status and score operation result.
+ */
+export const handler = async (event) => runHandler(event);

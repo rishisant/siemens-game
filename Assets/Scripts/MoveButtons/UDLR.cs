@@ -13,20 +13,26 @@ using UnityEngine.EventSystems;
 public class UDLR : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private GameObject player;
+    private Character_Movement playerMovement;
     private bool isMovingUp, isMovingDown, isMovingLeft, isMovingRight;
+
+    private void Awake()
+    {
+        playerMovement = player.GetComponent<Character_Movement>();
+    }
 
     private void Update()
     {
         if (isMovingUp)
-            player.GetComponent<Character_Movement>().MoveUp();
+            playerMovement.MoveUp();
         if (isMovingDown)
-            player.GetComponent<Character_Movement>().MoveDown();
+            playerMovement.MoveDown();
         if (isMovingLeft)
-            player.GetComponent<Character_Movement>().MoveLeft();
+            playerMovement.MoveLeft();
         if (isMovingRight)
-            player.GetComponent<Character_Movement>().MoveRight();
+            playerMovement.MoveRight();
         if (!isMovingUp && !isMovingDown && !isMovingLeft && !isMovingRight)
-            player.GetComponent<Character_Movement>().StopMoving();
+            playerMovement.StopMoving();
     }
 
     public void OnPointerDown(PointerEventData eventData)

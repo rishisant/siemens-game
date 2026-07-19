@@ -57,7 +57,10 @@ public static class WebRequestUtility
             else
             {
                 Debug.LogError("Error: " + webRequest.error);
-                failCallback?.Invoke("failed");
+                // Pass the server's response body along so callers can see
+                // why the request failed, not just that it did
+                string body = webRequest.downloadHandler?.text;
+                failCallback?.Invoke(string.IsNullOrEmpty(body) ? webRequest.error : body);
             }
         }
     }
@@ -81,7 +84,10 @@ public static class WebRequestUtility
             else
             {
                 Debug.LogError("Error: " + webRequest.error);
-                failCallback?.Invoke("failed");
+                // Pass the server's response body along so callers can see
+                // why the request failed, not just that it did
+                string body = webRequest.downloadHandler?.text;
+                failCallback?.Invoke(string.IsNullOrEmpty(body) ? webRequest.error : body);
             }
         }
     }

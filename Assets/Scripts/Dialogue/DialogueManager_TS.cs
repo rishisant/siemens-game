@@ -8,7 +8,7 @@ using UnityEngine;
  *
  * @see DialogueManager
  */
-public class DialogueManager_TS : MonoBehaviour
+public class DialogueManager_TS : DialogueManagerBase
 {
     // Load the sprites in an array for the two NPCs
     [SerializeField] private Sprite[] shopOwnerSprites;
@@ -20,12 +20,9 @@ public class DialogueManager_TS : MonoBehaviour
     // Keep in mind if the npc_interactions with shopkeeper is 0, the shopkeeper
     // will have a short explanation before he opens the shop
 
-    // Variables
-    private bool isTyping = true;
-    private float typingSpeed = 0.025f;
+    // isTyping, typingSpeed, dialogueText and the TypeSentence coroutine
+    // live in DialogueManagerBase
 
-    // Text
-    public TMPro.TextMeshProUGUI dialogueText;
     // Charname
     public TMPro.TextMeshProUGUI charName;
     // image for the character
@@ -329,23 +326,6 @@ public class DialogueManager_TS : MonoBehaviour
 
         // Close the dialogue panel
         dialoguePanel.SetActive(false);
-    }
-
-    IEnumerator TypeSentence (string sentence)
-    {
-        dialogueText.text = "";
-        foreach (char letter in sentence.ToCharArray())
-        {
-            if (!isTyping)
-            {
-                dialogueText.text = sentence;
-                break;
-            }
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
-        }
-
-        isTyping = false;
     }
 
     // Get the next sentence

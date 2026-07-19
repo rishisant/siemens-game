@@ -80,10 +80,17 @@ public class DialogueManager : MonoBehaviour
     }
 
     IEnumerator TypeSentence (string sentence) {
-        dialogueText.text = "";
-        foreach(char letter in sentence.ToCharArray()){
-            dialogueText.text += letter;
-            yield return null;
+        // Reveal the pre-set sentence one character per frame instead of
+        // rebuilding the string on every letter
+        dialogueText.text = sentence;
+        try {
+            dialogueText.maxVisibleCharacters = 0;
+            for (int visible = 1; visible <= sentence.Length; visible++) {
+                dialogueText.maxVisibleCharacters = visible;
+                yield return null;
+            }
+        } finally {
+            dialogueText.maxVisibleCharacters = int.MaxValue;
         }
     }
 

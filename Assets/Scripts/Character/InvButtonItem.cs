@@ -35,6 +35,7 @@ public class InvButtonItem : MonoBehaviour
             // This is because the player can only have one item
 
             playerData.equipped_items.Add(item_id / 100 * 100 + 99);
+            playerData.NotifyEquippedItemsChanged();
             return;
         }
 
@@ -58,6 +59,6 @@ public class InvButtonItem : MonoBehaviour
         // Equip the item
         playerData.equipped_items.Add(item_id);
         playerData.equipped_items.Sort();
-
+        playerData.NotifyEquippedItemsChanged();
     }
 }
