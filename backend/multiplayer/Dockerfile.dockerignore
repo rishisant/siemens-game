@@ -1,0 +1,9 @@
+**
+!backend/
+!backend/multiplayer/
+!backend/multiplayer/package.json
+!backend/multiplayer/package-lock.json
+!backend/multiplayer/server.mjs
+!Builds/
+!Builds/Web/
+!Builds/Web/**
