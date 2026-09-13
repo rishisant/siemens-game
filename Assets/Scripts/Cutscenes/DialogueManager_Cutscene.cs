@@ -5,11 +5,10 @@ using UnityEngine;
 /**
  * @brief This class handles the dialogue when there is no player on the screen.
  */
-public class DialogueManager_Cutscene : MonoBehaviour
+public class DialogueManager_Cutscene : DialogueManagerBase
 {
-    // Get the dialogue panel, the textmeshpro text for the current dialogue
+    // Get the dialogue panel (the dialogue text lives in DialogueManagerBase)
     [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private TMPro.TextMeshProUGUI dialogueText;
 
     // Get the character (called Character-Sprite) under the dialogue panel
     [SerializeField] private UnityEngine.UI.Image characterImage;
@@ -26,36 +25,12 @@ public class DialogueManager_Cutscene : MonoBehaviour
     // The current index of the dialogue
     public int dialogueIndex = 0;
 
-    // Typing speed
-    [SerializeField] private float typingSpeed = 0.05f;
-
     // Serialize the Image UI for the cutscene
     [SerializeField] private UnityEngine.UI.Image cutsceneImage;
 
     // Serialize the list of images as well as the dialogue correspondence to the image
     [SerializeField] private Sprite[] cutsceneImages;
     [SerializeField] private int[] cutsceneImageAssociations;
-
-    // Is the character typing?
-    private bool isTyping = true;
-
-    // Typing the sentence
-    IEnumerator TypeSentence (string sentence)
-    {
-        dialogueText.text = "";
-        foreach (char letter in sentence.ToCharArray())
-        {
-            if (!isTyping)
-            {
-                dialogueText.text = sentence;
-                break;
-            }
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
-        }
-
-        isTyping = false;
-    }
 
     // Start the dialogue
     public void StartDialogue()

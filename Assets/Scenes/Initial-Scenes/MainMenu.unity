@@ -179,12 +179,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'If you are starting the game for the first time, please input your Siemens
-    employee ID and your desired username and password.
+  m_text: 'Welcome to Byte City. Press Play to explore town as a guest.
 
-
-    Please remember these
-    details since every future log-in necessitates your username and password.'
+    Use Play with friends in town to create or join a room.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c5b72c46d048eac418032a721a38712c, type: 2}
   m_sharedMaterial: {fileID: 4228292995865826738, guid: c5b72c46d048eac418032a721a38712c, type: 2}
@@ -2400,7 +2397,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EMPLOYEE ID
+  m_text: PLAYER ID
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c5b72c46d048eac418032a721a38712c, type: 2}
   m_sharedMaterial: {fileID: 4228292995865826738, guid: c5b72c46d048eac418032a721a38712c, type: 2}
@@ -2534,7 +2531,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'EMPLOYEE ID:
+  m_text: 'PLAYER ID:
 
 
     USERNAME:
@@ -4411,8 +4408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'This game was made as a Texas A&M 2024 Fall Semester Capstone project,
-    designed for Siemens.
+  m_text: 'Explore a city of robots, repair curious machines, and make new friends.
 
 
     The Design Team:
@@ -7509,12 +7505,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'For new users who have not yet created an account on this game, please
-    choose the create account button.
+  m_text: 'Explore Byte City, customize your robot, and try the puzzles.
 
-
-    For those who have already linked their
-    employee id with their username, please click the log-in button.'
+    Guest progress lasts for this play session.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c5b72c46d048eac418032a721a38712c, type: 2}
   m_sharedMaterial: {fileID: 4228292995865826738, guid: c5b72c46d048eac418032a721a38712c, type: 2}

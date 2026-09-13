@@ -27,6 +27,8 @@ public class ButtonLocation : MonoBehaviour
         allButtonLocations.Add(this);
     }
 
+    private void OnDestroy() { allButtonLocations.Remove(this); }
+
     public void OnButtonClicked()
     {
         // Make the button disappear
@@ -42,7 +44,7 @@ public class ButtonLocation : MonoBehaviour
     {
         foreach (var button in allButtonLocations)
         {
-            button.clicked = !button.clicked; // Set the clicked variable
+            if (button != null) button.clicked = !button.clicked; // Set the clicked variable
         }
     }
 

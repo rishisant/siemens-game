@@ -8,7 +8,7 @@ using UnityEngine;
  *
  * @see DialogueManager
  */
-public class DialogueManager_Casino : MonoBehaviour
+public class DialogueManager_Casino : DialogueManagerBase
 {
     // PlayerData
     private PlayerData playerData => PlayerData.Instance;
@@ -16,12 +16,9 @@ public class DialogueManager_Casino : MonoBehaviour
     // Keep in mind if the npc_interactions with shopkeeper is 0, the shopkeeper
     // will have a short explanation before he opens the shop
 
-    // Variables
-    private bool isTyping = true;
-    private float typingSpeed = 0.025f;
+    // isTyping, typingSpeed, dialogueText and the TypeSentence coroutine
+    // live in DialogueManagerBase
 
-    // Text
-    public TMPro.TextMeshProUGUI dialogueText;
     // Charname
     public TMPro.TextMeshProUGUI charName;
     // image for the character
@@ -183,10 +180,10 @@ public class DialogueManager_Casino : MonoBehaviour
             typeSentenceCoroutine = StartCoroutine(TypeSentence(casinoOwnerInitial[i]));
 
             // Wait
-            yield return new WaitForSeconds(casinoOwnerInitial[i].Length * typingSpeed + 1.25f);
+            yield return WaitForLineAdvance();
 
             // Wait
-            yield return new WaitForSeconds(2);
+            yield return null;
         }
 
         // Change TTC_Text to "Tap to Continue."
@@ -339,7 +336,7 @@ public class DialogueManager_Casino : MonoBehaviour
             typeSentenceCoroutine = StartCoroutine(TypeSentence(casinoOwnerFluxFull[i]));
 
             // Wait
-            yield return new WaitForSeconds(casinoOwnerFluxFull[i].Length * typingSpeed + 1.25f);
+            yield return WaitForLineAdvance();
         } else
         {
             // Choose a random hate dialogue
@@ -366,7 +363,7 @@ public class DialogueManager_Casino : MonoBehaviour
             typeSentenceCoroutine = StartCoroutine(TypeSentence(casinoOwnerHate[i]));
 
             // Wait
-            yield return new WaitForSeconds(casinoOwnerHate[i].Length * typingSpeed + 1.25f);
+            yield return WaitForLineAdvance();
         }
 
         // Change TTC_Text to "Tap to Continue."
@@ -429,7 +426,7 @@ public class DialogueManager_Casino : MonoBehaviour
         typeSentenceCoroutine = StartCoroutine(TypeSentence(casinoOwnerThanksForFlux[i]));
 
         // Wait
-        yield return new WaitForSeconds(casinoOwnerThanksForFlux[i].Length * typingSpeed + 1.25f);
+        yield return WaitForLineAdvance();
 
         // Change TTC_Text to "Tap to Continue."
         TTC_Text.text = "Tap to Continue...";
@@ -502,7 +499,7 @@ public class DialogueManager_Casino : MonoBehaviour
         // TTC
         TTC_Text.text = "Tap to Continue...";
 
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Began)));
+        yield return WaitForLineAdvance();
 
         // Show the choice panel
         // Before we do choice panel, we need to set the fluxCostText
@@ -527,23 +524,6 @@ public class DialogueManager_Casino : MonoBehaviour
     }
 
 
-
-    IEnumerator TypeSentence (string sentence)
-    {
-        dialogueText.text = "";
-        foreach (char letter in sentence.ToCharArray())
-        {
-            if (!isTyping)
-            {
-                dialogueText.text = sentence;
-                break;
-            }
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
-        }
-
-        isTyping = false;
-    }
 
     // Coroutine for typing the sentence
     private Coroutine typeSentenceCoroutine;
@@ -630,7 +610,7 @@ public class DialogueManager_Casino : MonoBehaviour
             typeSentenceCoroutine = StartCoroutine(TypeSentence(senseiDialogues[i]));
 
             // Wait
-            yield return new WaitForSeconds(senseiDialogues[i].Length * typingSpeed + 1.25f);
+            yield return WaitForLineAdvance();
 
             // if i = 2, pan to the casino owner
             if (i == 1)
@@ -639,7 +619,7 @@ public class DialogueManager_Casino : MonoBehaviour
             }
 
             // Wait
-            yield return new WaitForSeconds(2);
+            yield return null;
         }
 
         // Change TTC_Text to "Tap to Continue."

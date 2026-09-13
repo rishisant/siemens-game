@@ -22,6 +22,8 @@ public class WireGenerator : MonoBehaviour
     public GameObject wirePlug;
 
     public int level;
+    private bool roundActive;
+    private PuzzleHUD hud;
 
     // Collection of the line renderers 2nd point, is at the same as the wireLength in Unity
     public Vector3[] line2ndPointSpawns = {
@@ -82,7 +84,8 @@ public class WireGenerator : MonoBehaviour
     void Start()
     {
         level = 0;
-        gameStopwatch.Start();
+        hud = gameObject.AddComponent<PuzzleHUD>();
+        hud.Initialize("WACKY WIRES", "Drag each numbered cable to its matching socket.", 14f, 6f);
         StartLevel();
     }
 
@@ -95,21 +98,25 @@ public class WireGenerator : MonoBehaviour
      */
     void Update()
     {
+        if (hud != null) hud.SetTime(gameStopwatch.Elapsed);
+        if (!roundActive) return;
+        int connected = allPlugStats.FindAll(p => p != null && p.connected).Count;
+        hud.SetProgress("ROUND " + level + " / 6  ·  " + connected + " / " + level + " CONNECTED");
         if (checkConnection())
         {
+            roundActive = false;
+            levelStopwatch.Stop(); gameStopwatch.Stop();
+            if (PlayerData.Instance != null) PlayerData.Instance.wire_puzzle_wins++;
             clearWires();
-            if (level < 6)
-            {
-                levelStopwatch.Stop();
-                levelOverManager.Setup(levelStopwatch.Elapsed);
-            }
-            else
-            {
-                levelStopwatch.Stop();
-                gameStopwatch.Stop();
-                gameOverManager.Setup(levelStopwatch.Elapsed, gameStopwatch.Elapsed);
-            }
+            if (level < 6) levelOverManager.Setup(levelStopwatch.Elapsed);
+            else gameOverManager.Setup(levelStopwatch.Elapsed, gameStopwatch.Elapsed);
         }
+    }
+
+    private void OnApplicationPause(bool paused)
+    {
+        if (paused) { levelStopwatch.Stop(); gameStopwatch.Stop(); }
+        else if (roundActive) { levelStopwatch.Start(); gameStopwatch.Start(); }
     }
 
     /**
@@ -118,9 +125,13 @@ public class WireGenerator : MonoBehaviour
      */
     public void StartLevel()
     {
+        if (roundActive || level >= 6) return;
         level++;
         spawnObjects();
+        roundActive = true;
         levelStopwatch.Restart();
+        gameStopwatch.Start();
+        hud.SetFeedback("Drag each numbered cable to its matching socket.");
     }
 
     /**
@@ -134,6 +145,7 @@ public class WireGenerator : MonoBehaviour
             Destroy(g);
         }
         allWires.Clear();
+        allPlugStats.Clear();
     }
 
     /**
@@ -144,11 +156,15 @@ public class WireGenerator : MonoBehaviour
     void spawnObjects()
     {
         Color[] shuffledColors = shuffle(colors, colors.Length);
-        Vector3[] shuffledExitSpawns = shuffle(exitSpawns, exitSpawns.Length);
+        Vector3[] activeExits = new Vector3[level];
+        for(int j=0;j<level;j++) activeExits[j] = new Vector3(12, level - 1 - j * 2, 0);
+        Vector3[] shuffledExitSpawns = shuffle(activeExits, activeExits.Length);
         for (int i = 0; i < level; i++)
         {
             Color currColor = shuffledColors[i];
-            GameObject entry = Instantiate(wireEntry, entrySpawns[i], wireEntry.transform.rotation);
+            Vector3 entryPosition = new Vector3(-12, level - 1 - i * 2, 0);
+            Vector3 handlePosition = new Vector3(-10, level - 1 - i * 2, 0);
+            GameObject entry = Instantiate(wireEntry, entryPosition, wireEntry.transform.rotation);
 
             foreach (Transform child in entry.transform)
             {
@@ -158,8 +174,8 @@ public class WireGenerator : MonoBehaviour
             }
 
             LineRenderer line = entry.GetComponent<LineRenderer>();
-            line.SetPosition(0, entrySpawns[i]);
-            line.SetPosition(1, line2ndPointSpawns[i]);
+            line.SetPosition(0, entryPosition);
+            line.SetPosition(1, handlePosition);
             line.material.color = currColor;
             line.startColor = currColor;
             line.endColor = currColor;
@@ -170,6 +186,11 @@ public class WireGenerator : MonoBehaviour
 
             // add now for game complete check
             PlugStats plugStats = plug.GetComponent<PlugStats>();
+            plugStats.connectionId = i;
+            var wireStats = entry.GetComponentInChildren<PoweredWireStats>();
+            if (wireStats != null) wireStats.connectionId = i;
+            AddNumber(entry.transform, (i+1).ToString(), new Vector3(-0.9f,0,0));
+            AddNumber(plug.transform, (i+1).ToString(), new Vector3(0,0,-0.1f));
             allPlugStats.Add(plugStats);
 
             // keep track of objects for clearWires() function
@@ -213,14 +234,31 @@ public class WireGenerator : MonoBehaviour
      */
     private bool checkConnection()
     {
+        if (allPlugStats.Count == 0) return false;
         foreach (PlugStats p in allPlugStats)
         {
-            if (!p.connected)
+            if (p == null || !p.connected)
             {
                 return false;
             }
         }
         return true;
+    }
+
+    private void AddNumber(Transform parent, string number, Vector3 position)
+    {
+        var label = new GameObject("Connector " + number).AddComponent<TMPro.TextMeshPro>();
+        label.transform.SetParent(parent, false);
+        label.transform.localPosition = position;
+        label.transform.rotation = Quaternion.identity;
+        var scale = parent.lossyScale;
+        label.transform.localScale = new Vector3(0.7f / Mathf.Abs(scale.x),0.7f / Mathf.Abs(scale.y),1);
+        label.raycastTarget = false;
+        label.text = number; label.fontSize = 6; label.fontStyle = TMPro.FontStyles.Bold;
+        label.alignment = TMPro.TextAlignmentOptions.Center;
+        label.rectTransform.sizeDelta = new Vector2(2,2);
+        label.color = Color.white;
+        label.GetComponent<MeshRenderer>().sortingOrder = 100;
     }
 
 }

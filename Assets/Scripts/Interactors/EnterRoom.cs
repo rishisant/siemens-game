@@ -23,6 +23,8 @@ public class EnterRoom : MonoBehaviour
 
     [SerializeField] private int scene_checker = 0;
 
+    public string MapDestination { get { return scene_checker==1?"LAB":scene_checker==2?"CASINO":scene_checker==3 || scene_checker==4?"TOWN":""; } }
+
     // Serialize the interact button
     [SerializeField] private GameObject interactButton;
 

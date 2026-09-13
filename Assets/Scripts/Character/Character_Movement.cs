@@ -1,5 +1,5 @@
 // Rishi Santhanam
-// CSCE 482 Siemens Gamification
+// Byte City character controls
 
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +23,14 @@ public class Character_Movement : MonoBehaviour
 	private float charSpeed => PlayerData.Instance.movement_speed;
 
 	private string currentState;
+    private string chestState, legState, shoeState, hatState;
+    private Vector2 touchInput;
+    private readonly SprintState sprint = new SprintState();
+    public bool IsSprinting { get { return sprint.IsSprinting; } }
+    private Coroutine emoteRoutine;
+    public bool CanMove { get { return canMove && !WorldUiFocus.Blocked; } }
+    public bool NetworkMoving { get { return rb != null && rb.velocity.sqrMagnitude > 0.01f; } }
+    public string NetworkFacing { get { return lastMovementInputDirection == Vector2.up ? "Up" : lastMovementInputDirection == Vector2.left ? "Left" : lastMovementInputDirection == Vector2.right ? "Right" : "Down"; } }
 
 	private Rigidbody2D rb;
 	private Animator animator;
@@ -36,7 +44,6 @@ public class Character_Movement : MonoBehaviour
 	// PlayerData.Instance.equipped_items, PlayerData.Instance.original_load_items
 	private PlayerData playerData => PlayerData.Instance;
 	private List<int> equipped_items => playerData.equipped_items;
-	private List<int> original_load_items = new List<int>();
 
 	private Vector2 movementInputDirection;
 	private Vector2 lastMovementInputDirection;
@@ -66,6 +73,8 @@ public class Character_Movement : MonoBehaviour
 	void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+        if(GetComponent<RobotDepth>()==null)gameObject.AddComponent<RobotDepth>();
 		animator = GetComponent<Animator>();
 		child_ChestAnimator = transform.GetChild(0).GetComponent<Animator>();
 		child_LegAnimator = transform.GetChild(1).GetComponent<Animator>();
@@ -78,31 +87,75 @@ public class Character_Movement : MonoBehaviour
 
 		if (playerData != null)
 		{
-			original_load_items = new List<int>(playerData.equipped_items);
+			ApplyEquippedCosmetics();
 		}
+	}
 
-		// Sort the equipped_items and iterate through 100-499
-		// If the equipped_items contains a number in the 100s, 200s, 300s, 400s
-		// Set the hat, chest, leg, shoe sprites accordingly
-		if (equipped_items.Count != 0)
+	private void OnEnable()
+	{
+		if (PlayerData.Instance != null)
 		{
-			equipped_items.Sort();
+			PlayerData.Instance.EquippedItemsChanged += ApplyEquippedCosmetics;
+		}
+	}
 
-			for (int i = 0; i < equipped_items.Count; i++)
+	private void OnDisable()
+	{
+		if (PlayerData.Instance != null)
+		{
+			PlayerData.Instance.EquippedItemsChanged -= ApplyEquippedCosmetics;
+		}
+	}
+
+	// Apply the equipped cosmetics to the child animators. X99 ids
+	// (199/299/399/499) mark an empty slot, so its controller is cleared
+	private void ApplyEquippedCosmetics()
+	{
+		// Organize equippedItems by lowest to highest id
+		equipped_items.Sort();
+
+		for (int i = 0; i < equipped_items.Count; i++)
+		{
+			if (equipped_items[i] >= 100 && equipped_items[i] < 200)
 			{
-				if (equipped_items[i] >= 100 && equipped_items[i] < 200)
+				if (equipped_items[i] == 199)
+				{
+					child_HatAnimator.runtimeAnimatorController = null;
+				}
+				else
 				{
 					SetHatSprite(cosmeticHandler.GetHatController(equipped_items[i] - 100));
 				}
-				if (equipped_items[i] >= 200 && equipped_items[i] < 300)
+			}
+			if (equipped_items[i] >= 200 && equipped_items[i] < 300)
+			{
+				if (equipped_items[i] == 299)
+				{
+					child_ChestAnimator.runtimeAnimatorController = null;
+				}
+				else
 				{
 					SetChestSprite(cosmeticHandler.GetChestController(equipped_items[i] - 200));
 				}
-				if (equipped_items[i] >= 300 && equipped_items[i] < 400)
+			}
+			if (equipped_items[i] >= 300 && equipped_items[i] < 400)
+			{
+				if (equipped_items[i] == 399)
+				{
+					child_LegAnimator.runtimeAnimatorController = null;
+				}
+				else
 				{
 					SetLegSprite(cosmeticHandler.GetLegController(equipped_items[i] - 300));
 				}
-				if (equipped_items[i] >= 400 && equipped_items[i] < 500)
+			}
+			if (equipped_items[i] >= 400 && equipped_items[i] < 500)
+			{
+				if (equipped_items[i] == 499)
+				{
+					child_ShoeAnimator.runtimeAnimatorController = null;
+				}
+				else
 				{
 					SetShoeSprite(cosmeticHandler.GetShoeController(equipped_items[i] - 400));
 				}
@@ -113,6 +166,8 @@ public class Character_Movement : MonoBehaviour
 	// Use the Start() method
 	private void Start()
 	{
+        gameObject.AddComponent<LocalRobotPresentation>();
+        gameObject.AddComponent<DesktopHudLayout>();
 		if (GameManager.Instance != null)
 		{
 			transform.position = GameManager.Instance.playerSpawnPosition;
@@ -124,6 +179,9 @@ public class Character_Movement : MonoBehaviour
 	{
 		// Stop the player from moving
 		canMove = false;
+        sprint.Reset();
+        touchInput = Vector2.zero;
+        if (rb != null) rb.velocity = Vector2.zero;
 
 		// Change movement input direction to zero
 		movementInputDirection = Vector2.zero;
@@ -144,9 +202,9 @@ public class Character_Movement : MonoBehaviour
 	{
 		// Essentially, Move Up and Stop
 		// Set the movement input direction to up
-		movementInputDirection = Vector2.up;
-
-		HandleMovement(movementInputDirection);
+		if (!CanMove) return;
+        touchInput = Vector2.up;
+        movementInputDirection = touchInput;
 
 		// Update the animator
 		UpdateAnimator();
@@ -155,9 +213,9 @@ public class Character_Movement : MonoBehaviour
 	// Moving Down (Joystick)
 	public void MoveDown()
 	{
-		movementInputDirection = Vector2.down;
-
-		HandleMovement(movementInputDirection);
+		if (!CanMove) return;
+        touchInput = Vector2.down;
+        movementInputDirection = touchInput;
 
 		// Update the animator
 		UpdateAnimator();
@@ -166,9 +224,9 @@ public class Character_Movement : MonoBehaviour
 	// Moving Left (Joystick)
 	public void MoveLeft()
 	{
-		movementInputDirection = Vector2.left;
-
-		HandleMovement(movementInputDirection);
+		if (!CanMove) return;
+        touchInput = Vector2.left;
+        movementInputDirection = touchInput;
 
 		// Update the animator
 		UpdateAnimator();
@@ -177,9 +235,9 @@ public class Character_Movement : MonoBehaviour
 	// Moving Right (Joystick)
 	public void MoveRight()
 	{
-		movementInputDirection = Vector2.right;
-
-		HandleMovement(movementInputDirection);
+		if (!CanMove) return;
+        touchInput = Vector2.right;
+        movementInputDirection = touchInput;
 
 		// Update the animator
 		UpdateAnimator();
@@ -188,105 +246,25 @@ public class Character_Movement : MonoBehaviour
 	// Stopping the player
 	public void StopMoving()
 	{
-		movementInputDirection = Vector2.zero;
-		HandleMovement(movementInputDirection);
-	}
-
-	// Check if lists are same content
-	private bool AreListsEqual(List<int> list1, List<int> list2)
-	{
-		if (list1.Count != list2.Count)
-		{
-			return false;
-		}
-
-		for (int i = 0; i < list1.Count; i++)
-		{
-			if (list1[i] != list2[i])
-			{
-				return false;
-			}
-		}
-
-		return true;
+		sprint.Reset();
+        touchInput = Vector2.zero;
+        movementInputDirection = Vector2.zero;
+        if (rb != null) rb.velocity = Vector2.zero;
 	}
 
 	// Use update for animations
 	private void Update()
 	{
-		// First, check if the equipped items have changed
-		// If they have, update the player's equipped items
-		if (!AreListsEqual(original_load_items, equipped_items))
-		{
-			// Occurs
-			// Organize equippedItems by lowest to highest id
-			equipped_items.Sort();
-
-			// Check the count of equipped items
-			// and set accordingly for each of the 0, 1, 2, 3 elements
-			// For loop of equipped items
-			// If the equipped item is in the 100s, set the chest sprite, etc
-			for (int i = 0; i < equipped_items.Count; i++)
-			{
-				if (equipped_items[i] >= 100 && equipped_items[i] < 200)
-				{
-					if (equipped_items[i] == 199)
-					{
-						// Disable the hat sprite
-						child_HatAnimator.runtimeAnimatorController = null;
-					} else
-					{
-					child_HatAnimator.runtimeAnimatorController = transform.GetChild(3).GetComponent<Animator>().runtimeAnimatorController;
-					SetHatSprite(cosmeticHandler.GetHatController(equipped_items[i] - 100));
-					}
-				}
-				if (equipped_items[i] >= 200 && equipped_items[i] < 300)
-				{
-					if (equipped_items[i] == 299)
-					{
-						// Disable the chest sprite
-						child_ChestAnimator.runtimeAnimatorController = null;
-					} else
-					{
-					child_ChestAnimator.runtimeAnimatorController = transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController;
-					SetChestSprite(cosmeticHandler.GetChestController(equipped_items[i] - 200));
-					}
-				}
-				if (equipped_items[i] >= 300 && equipped_items[i] < 400)
-				{
-					if (equipped_items[i] == 399)
-					{
-						// Disable the leg sprite
-						child_LegAnimator.runtimeAnimatorController = null;
-					} else
-					{
-					child_LegAnimator.runtimeAnimatorController = transform.GetChild(1).GetComponent<Animator>().runtimeAnimatorController;
-					SetLegSprite(cosmeticHandler.GetLegController(equipped_items[i] - 300));
-					}
-				}
-				if (equipped_items[i] >= 400 && equipped_items[i] < 500)
-				{
-					if (equipped_items[i] == 499)
-					{
-						// Disable the shoe sprite
-						child_ShoeAnimator.runtimeAnimatorController = null;
-					} else
-					{
-					child_ShoeAnimator.runtimeAnimatorController = transform.GetChild(2).GetComponent<Animator>().runtimeAnimatorController;
-					SetShoeSprite(cosmeticHandler.GetShoeController(equipped_items[i] - 400));
-					}
-				}
-			}
-
-			// Change the original_load_items to the equipped items
-			original_load_items = new List<int>(equipped_items);
-		}
-
 		// Update the player's animations
-		if (canMove)
+		// (cosmetic changes are handled by the EquippedItemsChanged event)
+		if (CanMove)
 		{
+            Vector2 keyboard = GetInput();
+            movementInputDirection = keyboard != Vector2.zero ? keyboard : touchInput;
+            sprint.Tick(movementInputDirection != Vector2.zero, Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift), Time.deltaTime);
 			UpdateAnimator();
 		}
+        else { StopMoving(); UpdateAnimator(); }
 	}
 
 	// Dance emote function
@@ -311,9 +289,11 @@ public class Character_Movement : MonoBehaviour
 		}
 	}
 
+	private void OnApplicationFocus(bool focused) { if (!focused) StopMoving(); }
+    private void OnApplicationPause(bool paused) { if (paused) StopMoving(); }
 	private void FixedUpdate()
 	{
-		if(canMove)
+		if(CanMove)
             HandleMovement(movementInputDirection);
         else{
             Vector2 movementInput = Vector2.zero;
@@ -325,12 +305,12 @@ public class Character_Movement : MonoBehaviour
     // New method to toggle player movement
     public void ToggleMovement()
     {
-        canMove = !canMove; // Toggle the movement state
+        if(canMove) StopPlayer(); else UnstopPlayer();
     }
 
 	private void ChangeAnimationState(Animator animator, string newState, ref string currentState)
 	{
-		if (currentState == newState) return;
+		if (animator == null || animator.runtimeAnimatorController == null || currentState == newState) return;
 
 		animator.Play(newState);
 		currentState = newState;
@@ -343,28 +323,33 @@ public class Character_Movement : MonoBehaviour
 
 	private void ChangeChestAnimationState(string newState)
 	{
-		ChangeAnimationState(child_ChestAnimator, newState, ref currentState);
+		ChangeAnimationState(child_ChestAnimator, newState, ref chestState);
 	}
 
 	private void ChangeLegAnimationState(string newState)
 	{
-		ChangeAnimationState(child_LegAnimator, newState, ref currentState);
+		ChangeAnimationState(child_LegAnimator, newState, ref legState);
 	}
 
 	private void ChangeShoeAnimationState(string newState)
 	{
-		ChangeAnimationState(child_ShoeAnimator, newState, ref currentState);
+		ChangeAnimationState(child_ShoeAnimator, newState, ref shoeState);
 	}
 	private void ChangeHatAnimationState(string newState)
 	{
-		ChangeAnimationState(child_HatAnimator, newState, ref currentState);
+		ChangeAnimationState(child_HatAnimator, newState, ref hatState);
 	}
 
 	private Vector2 GetInput()
 	{
 		float moveHorizontal = Input.GetAxisRaw("Horizontal");
 		float moveVertical = Input.GetAxisRaw("Vertical");
-		return new Vector2(moveHorizontal, moveVertical).normalized;
+		if (UnityEngine.EventSystems.EventSystem.current != null)
+        {
+            var selected = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+            if (selected != null && (selected.GetComponent<TMPro.TMP_InputField>() != null || selected.GetComponent<UnityEngine.UI.InputField>() != null)) return Vector2.zero;
+        }
+        return Mathf.Abs(moveHorizontal) > 0 ? new Vector2(Mathf.Sign(moveHorizontal), 0) : new Vector2(0, Mathf.Sign(moveVertical) * (moveVertical == 0 ? 0 : 1));
 	}
 
 	private void HandleMovement(Vector2 movement)
@@ -391,7 +376,9 @@ public class Character_Movement : MonoBehaviour
 			isEmoting = false;
 		}
 
-		rb.velocity = movement * charSpeed;
+		rb.velocity = movement * charSpeed * (IsSprinting ? SprintState.Multiplier : 1f);
+        float pace = IsSprinting && movement != Vector2.zero ? 1.4f : 1f;
+        animator.speed = child_ChestAnimator.speed = child_LegAnimator.speed = child_ShoeAnimator.speed = child_HatAnimator.speed = pace;
 	}
 
 	private void UpdateAnimator()
@@ -474,7 +461,8 @@ public class Character_Movement : MonoBehaviour
 		ChangeHatAnimationState("Hat_Emote_" + emoteIndex);
 
 		// Start a coroutine to wait for the emote animation to finish
-		StartCoroutine(WaitForEmoteToFinish(emoteIndex));
+		if (emoteRoutine != null) StopCoroutine(emoteRoutine);
+        emoteRoutine = StartCoroutine(WaitForEmoteToFinish(emoteIndex));
 	}
 
 	private IEnumerator WaitForEmoteToFinish(int emoteIndex)
@@ -497,13 +485,15 @@ public class Character_Movement : MonoBehaviour
 
 	private void StopEmoting()
 	{
+        if (emoteRoutine != null) StopCoroutine(emoteRoutine);
+        emoteRoutine = null;
 		isEmoting = false;
 
 		ChangePlayerAnimationState("Char_Idle_Down");
 		ChangeChestAnimationState("Chest_Idle_Down");
-		ChangeLegAnimationState("Leg_Emote_Idle");
-		ChangeShoeAnimationState("Shoe_Emote_Idle");
-		ChangeHatAnimationState("Hat_Emote_Idle");
+		ChangeLegAnimationState(legIdleAnimations[lastMovementInputDirection]);
+		ChangeShoeAnimationState(shoeIdleAnimations[lastMovementInputDirection]);
+		ChangeHatAnimationState(hatIdleAnimations[lastMovementInputDirection]);
 	}
 
 	private void SyncAnimations(Vector2 movement)

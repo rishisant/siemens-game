@@ -19,14 +19,25 @@ public class DeckmasterChoice : MonoBehaviour
 
     // Grab the dialogueManager
     [SerializeField] private DialogueManager_Lab dialogueManager;
-    
+
+    private void AddChallengeButton()
+    {
+        var button = TownMultiplayerUI.MakeButton(choicesPanel.transform,"Challenge Deckmaster",new Vector2(-240,12),new Vector2(480,54),()=>{closeChoiceManager();DeckmasterDuel.Show();});
+        var rect=button.GetComponent<RectTransform>();rect.anchorMin=rect.anchorMax=new Vector2(.5f,0);
+    }
+
     // First choice
     public void viewCardOwned()
     {
-        // Set the viewCards object to active
-        viewCards.SetActive(true);
-        // choicepanel false
-        choicesPanel.SetActive(false);
+        closeChoiceManager();viewCards.SetActive(false);
+        CardGallery.Show("Your collection",playerData.unlocked_cards,ShowChoices);
+    }
+    public void ShowChoices() {closeChoiceManager();DeckmasterHub.Show(this);}
+    private void ShowUnlockedCards()
+    {
+        cardUnlockingPanel.SetActive(false);closeChoiceManager();
+        string title=TextofCardPackRarity.text=="Beginning"?"Starter cards":TextofCardPackRarity.text+" card pack";
+        CardGallery.Show(title,cardsUnlockedOnBuy,ShowChoices);
     }
 
     // CloseChoiceManager
@@ -68,7 +79,7 @@ public class DeckmasterChoice : MonoBehaviour
 
     // For rare card pack,
     // you should unlock 1 common at least, 1 rare at least, and 33% chance of ultra-rare,
-    // with a 2% chance of legendary 
+    // with a 2% chance of legendary
 
     // Let's make functions to handle these
     // keep in mind 1=common, 2=rare, 3=ultra-rare, 4=legendary
@@ -123,7 +134,7 @@ public class DeckmasterChoice : MonoBehaviour
         // or possibly id=6, id=4, id=0, id=13 id=11, id=1
 
         // yo uhave 50% chance of getting either
-        int random = Random.Range(0, 1);
+        int random = Random.Range(0, 2);
 
         if (random == 0)
         {
@@ -166,10 +177,10 @@ public class DeckmasterChoice : MonoBehaviour
         PopulateCard();
 
         // fade in the unlocked panel
-        StartCoroutine(FadeInUnlockedPanel());
+
 
         // Set the cardUnlockingPanel to active
-        cardUnlockingPanel.SetActive(true);
+        ShowUnlockedCards();
     }
 
     // Buy normal
@@ -276,10 +287,10 @@ public class DeckmasterChoice : MonoBehaviour
             PopulateCard();
 
             // fade in the unlocked panel
-            StartCoroutine(FadeInUnlockedPanel());
+
 
             // Set the cardUnlockingPanel to active
-            cardUnlockingPanel.SetActive(true);
+            ShowUnlockedCards();
         }
     }
 
@@ -383,10 +394,10 @@ public class DeckmasterChoice : MonoBehaviour
             PopulateCard();
 
             // fade in the unlocked panel
-            StartCoroutine(FadeInUnlockedPanel());
+
 
             // Set the cardUnlockingPanel to active
-            cardUnlockingPanel.SetActive(true);
+            ShowUnlockedCards();
 
         }
     }
@@ -493,7 +504,8 @@ public class DeckmasterChoice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
+
+
     }
 
     // Update is called once per frame

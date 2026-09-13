@@ -237,12 +237,14 @@ public class ItemIDs : MonoBehaviour
     // ... etc etc
     public void FillInventoryButtons()
     {
+        if (inventoryButtons == null) return;
         List<int> ownedItems = playerData.unlocked_items;
 
         if (selectedType == "all")
         {
             for (int i = 0; i < inventoryButtons.Length; i++)
             {
+                if (inventoryButtons[i] == null) continue;
                 if (i < ownedItems.Count)
                 {
                     int itemID = ownedItems[i];
@@ -281,6 +283,7 @@ public class ItemIDs : MonoBehaviour
 
             for (int i = 0; i < inventoryButtons.Length; i++)
             {
+                if (inventoryButtons[i] == null) continue;
                 if (i < displayItems.Count)
                 {
                     int itemID = displayItems[i];
@@ -437,6 +440,7 @@ public class ItemIDs : MonoBehaviour
 
             for (int i = 0; i < inventoryButtons.Length; i++)
             {
+                if (inventoryButtons[i] == null) continue;
                 if (i < displayItems.Count)
                 {
                     int itemID = displayItems[i];

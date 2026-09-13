@@ -7,14 +7,13 @@ using UnityEngine;
  *
  * @see DialogueManager
  */
-public class DialogueManagerTutorial : MonoBehaviour
+public class DialogueManagerTutorial : DialogueManagerBase
 {
     // SerializeFields all things
     [SerializeField] private Character_Movement playerMovement;
 
-    // Get the dialogue panel, the textmeshpro text for the current dialogue
+    // Get the dialogue panel (the dialogue text lives in DialogueManagerBase)
     [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] private TMPro.TextMeshProUGUI dialogueText;
 
     // Get the character (called Character-Sprite) under the dialogue panel
     [SerializeField] private UnityEngine.UI.Image characterImage;
@@ -35,32 +34,8 @@ public class DialogueManagerTutorial : MonoBehaviour
     // The current index of the dialogue
     public int dialogueIndex = 0;
 
-    // Typing speed
-    [SerializeField] private float typingSpeed = 0.05f;
-
-    // Is the character typing?
-    private bool isTyping = true;
-
     // Is dialoguePaused and don't check for mouse?
     private bool dialoguePaused = false;
-
-    // Typing the sentence
-    IEnumerator TypeSentence (string sentence)
-    {
-        dialogueText.text = "";
-        foreach (char letter in sentence.ToCharArray())
-        {
-            if (!isTyping)
-            {
-                dialogueText.text = sentence;
-                break;
-            }
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
-        }
-
-        isTyping = false;
-    }
 
     // Start the dialogue
     public void StartDialogue()
@@ -78,6 +53,14 @@ public class DialogueManagerTutorial : MonoBehaviour
     // Display the next sentence
     public void DisplayNextSentence()
     {
+        if (!dialoguePanel.activeSelf || dialoguePaused) return;
+        if (isTyping)
+        {
+            StopAllCoroutines();
+            dialogueText.maxVisibleCharacters = int.MaxValue;
+            isTyping = false;
+            return;
+        }
         // Stop all coroutines
         StopAllCoroutines();
 
@@ -95,6 +78,7 @@ public class DialogueManagerTutorial : MonoBehaviour
         else
         {
             EndDialogue();
+            return;
         }
 
         // Set the character image
@@ -125,8 +109,9 @@ public class DialogueManagerTutorial : MonoBehaviour
     public void ResumeDialogue()
     {
         dialoguePanel.SetActive(true);
-        DisplayNextSentence();
         dialoguePaused = false;
+        isTyping = false;
+        DisplayNextSentence();
         UI.SetActive(false);
     }
 
@@ -140,9 +125,8 @@ public class DialogueManagerTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !dialoguePaused)
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !dialoguePaused && dialoguePanel.activeSelf)
         {
-            ClearDialogue();
             DisplayNextSentence();
         }
     }

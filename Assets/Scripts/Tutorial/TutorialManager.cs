@@ -52,6 +52,7 @@ public class TutorialManager : MonoBehaviour
 
     // Private flag to check for waiting on objective
     private bool waitingOnObjective = false;
+    private bool completed;
 
     // Detect any taps
     private void OnMouseDown()
@@ -222,6 +223,8 @@ public class TutorialManager : MonoBehaviour
     // End of tutorial, unstop the player and stop the dialogue
     public void EndTutorial()
     {
+        if (completed) return;
+        completed = true;
         dialoguePanel.SetActive(false);
         finishTutorialPanel.SetActive(true);
         blackoutPanel.SetActive(true);

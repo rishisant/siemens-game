@@ -10101,8 +10101,8 @@ MonoBehaviour:
   - I'm sorry that it had to come to this. But let's get you used to your new body.
   - Oh heck, what am I saying. I guess I'm not the best at introductions.
   - My name is Sensei. I'm here to teach you the game, of course.
-  - Let's just throw you into the thick of it. I'm going to show you a flag. Walk
-    to it.
+  - Let's try your new legs. Walk to the flag with WASD or arrow keys. Hold a direction
+    to sprint, or hold Shift to sprint right away.
   - Turns out you can follow directions. Well, you'll never guess what I have waiting
     for you.
   - Another flag. You'll never guess where it is though.
@@ -10115,8 +10115,7 @@ MonoBehaviour:
     pop up, click on it and click out. The exit button is in the top-left corner.
   - Essentially, the inventory system will contain all the items (from cosmetics
     to extras) that you have unlocked.
-  - Since this is a mobile game, you'll simply tap to equip or unequip items. It's
-    intuitive.
+  - Click an item to equip or unequip it. On a phone, just tap. Your robot, your style.
   - Good luck on your journey, my friend. Wherever Rishi is, he's smiling...
   - Wait... Who's that? I guess I was just programmed to say that.
   characterImageAssociations: 0100000001000000020000000200000000000000000000000200000003000000020000000300000001000000010000000200000000000000000000000200000001000000

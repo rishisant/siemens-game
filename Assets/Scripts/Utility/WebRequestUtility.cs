@@ -27,11 +27,13 @@ public static class WebRequestUtility
 {
     public static void SendWebRequest(MonoBehaviour monoBehaviour, string url, string jsonData, System.Action<string> successCallback, System.Action<string> failCallback)
     {
+        if (LocalPlaytest.IsActive) { failCallback?.Invoke("Local playtest: online services are disabled."); return; }
         monoBehaviour.StartCoroutine(SendWebRequestCoroutine(url, jsonData, successCallback, failCallback));
     }
 
     public static void SendGetWebRequest(MonoBehaviour monobehavior, string url, System.Action<string> successCallback, System.Action<string> failCallback)
     {
+        if (LocalPlaytest.IsActive) { failCallback?.Invoke("Local playtest: online services are disabled."); return; }
         monobehavior.StartCoroutine(SendGetWebRequestCoroutine(url, successCallback, failCallback));
     }
 
@@ -43,6 +45,7 @@ public static class WebRequestUtility
         {
             webRequest.uploadHandler = new UploadHandlerRaw(jsonToSend);
             webRequest.downloadHandler = new DownloadHandlerBuffer();
+            webRequest.timeout = 12;
 
             webRequest.SetRequestHeader("Content-Type", "application/json");
 
@@ -57,7 +60,10 @@ public static class WebRequestUtility
             else
             {
                 Debug.LogError("Error: " + webRequest.error);
-                failCallback?.Invoke("failed");
+                // Pass the server's response body along so callers can see
+                // why the request failed, not just that it did
+                string body = webRequest.downloadHandler?.text;
+                failCallback?.Invoke(string.IsNullOrEmpty(body) ? webRequest.error : body);
             }
         }
     }
@@ -67,6 +73,7 @@ public static class WebRequestUtility
         using (UnityWebRequest webRequest = new UnityWebRequest(url, "GET"))
         {
             webRequest.downloadHandler = new DownloadHandlerBuffer();
+            webRequest.timeout = 12;
 
             webRequest.SetRequestHeader("Content-Type", "application/json");
 
@@ -81,7 +88,10 @@ public static class WebRequestUtility
             else
             {
                 Debug.LogError("Error: " + webRequest.error);
-                failCallback?.Invoke("failed");
+                // Pass the server's response body along so callers can see
+                // why the request failed, not just that it did
+                string body = webRequest.downloadHandler?.text;
+                failCallback?.Invoke(string.IsNullOrEmpty(body) ? webRequest.error : body);
             }
         }
     }

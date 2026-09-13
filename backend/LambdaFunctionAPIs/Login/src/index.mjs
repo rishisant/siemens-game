@@ -1,9 +1,17 @@
 /* jslint ignore:start */
 import { getSecret, createDbClient, secret_name } from './shared/utils.mjs';
+import bcrypt from 'bcryptjs';
 /* jslint ignore:end */
+
+// Work factor for bcrypt password hashing
+const BCRYPT_ROUNDS = 10;
 
 /**
  * Validates user login credentials by checking the database.
+ *
+ * Passwords are stored as bcrypt hashes. Rows created before hashing was
+ * introduced still hold plaintext; those are accepted once and upgraded to a
+ * hash on successful login.
  *
  * @param {Object} client - PostgreSQL client for database operations.
  * @param {string} user_name - The username to validate.
@@ -13,18 +21,39 @@ import { getSecret, createDbClient, secret_name } from './shared/utils.mjs';
  */
 const validateLoginCredentials = async (client, user_name, user_password) => {
     const query = `
-        SELECT * FROM users 
-        WHERE user_name = $1 AND user_password = $2
+        SELECT * FROM users
+        WHERE user_name = $1
     `;
-    const values = [user_name, user_password];
-    const result = await client.query(query, values);
+    const result = await client.query(query, [user_name]);
     console.log(`Login validation for user '${user_name}' completed.`);
 
-    if (result.rows.length > 0) {
-        return result.rows[0]; // Return user details if login is successful
-    } else {
+    if (result.rows.length === 0) {
         throw new Error('Invalid credentials.');
     }
+
+    const user = result.rows[0];
+    const stored = user.user_password || '';
+    const isHashed = stored.startsWith('$2');
+
+    if (isHashed) {
+        const matches = await bcrypt.compare(user_password, stored);
+        if (!matches) {
+            throw new Error('Invalid credentials.');
+        }
+        return user;
+    }
+
+    // Legacy plaintext row: accept an exact match, then upgrade it to a hash
+    if (stored !== user_password) {
+        throw new Error('Invalid credentials.');
+    }
+    const upgradedHash = await bcrypt.hash(user_password, BCRYPT_ROUNDS);
+    await client.query(
+        'UPDATE users SET user_password = $1 WHERE user_id = $2',
+        [upgradedHash, user.user_id]
+    );
+    console.log(`Upgraded stored password to a hash for user '${user_name}'.`);
+    return user;
 };
 
 
@@ -83,10 +112,11 @@ const createUser = async (client, employee_id, user_name, user_password) => {
         ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) 
         RETURNING *
     `;
+    const passwordHash = await bcrypt.hash(user_password, BCRYPT_ROUNDS);
     const values = [
-        user_name, 
-        user_password, 
-        employee_id, 
+        user_name,
+        passwordHash,
+        employee_id,
         0, 
         0, 
         '{}', 

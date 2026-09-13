@@ -1,70 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
-/**
- * @class PipeGameOverManager
- * @brief This handles the completion criteria for when the pipe game is
- * finished
- * @details Handles the restart button, exit button, as well as uploading the
- * score to the database for populating the leaderboard
- */
+/** @brief Presents a completed pipe run and submits its score exactly once. */
 public class PipeGameOverManager : MonoBehaviour
 {
     public TMP_Text timeElapsed;
-
-    private string score;
-
-    private PlayerData playerData => PlayerData.Instance;
-
-    public void Setup(System.TimeSpan timeSpan)
+    private bool submitted;
+    public void Setup(TimeSpan time)
     {
-        timeElapsed.text = "Time: " + System.String.Format("{0:00}:{1:00}.{2:00}",
-            timeSpan.Minutes, timeSpan.Seconds,
-            timeSpan.Milliseconds / 10);
-
-        score = System.String.Format("{0}.{1}", timeSpan.Minutes * 60 + timeSpan.Seconds, timeSpan.Milliseconds / 10);
-
-        gameObject.SetActive(true);
+        if (submitted) return;
+        submitted = true;
+        PuzzleScore.Submit(5, time);
+        if (PlayerData.Instance != null) PlayerData.Instance.pipe_puzzle_wins++;
+        var hud = FindObjectOfType<PuzzleHUD>();
+        hud.ShowResult("Circuit complete!", "All 3 boards connected\n\nRun time  " + PuzzleHUD.FormatTime(time), "Play again", RestartButton, ExitButton);
     }
-
-    public void RestartButton()
-    {
-        uploadTime(playerData.userId);
-        SceneManager.LoadScene("PipeGame");
-    }
-
-    public void ExitButton()
-    {
-        uploadTime(playerData.userId);
-        SceneManager.LoadScene("Laboratory_Main");
-    }
-
-    /**
-     * @brief uploadTime() is a function that sends a POST request to the
-     * backend to upload the time
-     */
-    private void uploadTime(int userId)
-    {
-        string url = "https://g7fh351dz2.execute-api.us-east-1.amazonaws.com/default/ScoreUpload";
-        string jsonData = System.String.Format(@"{{
-            ""user_id"": {0},
-            ""game_id"": {1},
-            ""score"": {2}
-        }}", userId, 5, score);
-        Debug.Log("uploading score " + score);
-        WebRequestUtility.SendWebRequest(this, url, jsonData, OnRequestComplete, OnRequestFail);
-    }
-
-    void OnRequestComplete(string responseText)
-    {
-        Debug.Log(responseText);
-    }
-
-    void OnRequestFail(string responseText)
-    {
-        Debug.Log(responseText);
-    }
+    public void RestartButton() { SceneManager.LoadScene("PipeGame"); }
+    public void ExitButton() { PuzzleHUD.ReturnToLab(); }
 }

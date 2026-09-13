@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // Netcode
 using Unity.Netcode;
@@ -186,19 +187,20 @@ public class PlayerData : MonoBehaviour
     // This function will be called when the player completes an achievement
     public void UnlockAchievement(int achievement_id)
     {
+        if (unlocked_achievements.Contains(achievement_id)) return;
         // If the achievement is not already unlocked, unlock it
         if (!unlocked_achievements.Contains(achievement_id))
         {
             unlocked_achievements.Add(achievement_id);
         }
 
-        // Also call PopulatePanel on AchievementHandler
-        // to update the achievements panel
-        FindObjectOfType<AchievementsHandler>().PopulatePanel();
-
-        // Call AchievementHandler's ShowAchievementUnlockedScreen
-        // to show the achievement unlocked screen
-        FindObjectOfType<AchievementsHandler>().ShowAchievementUnlockedScreen(achievement_id);
+        // Update the achievements panel and show the unlocked screen
+        AchievementsHandler achievementsHandler = FindObjectOfType<AchievementsHandler>();
+        if (achievementsHandler != null)
+        {
+            achievementsHandler.PopulatePanel();
+            achievementsHandler.ShowAchievementUnlockedScreen(achievement_id);
+        }
     }
 
     // Awake is called when the script instance is being loaded
@@ -213,6 +215,7 @@ public class PlayerData : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         // Don't destroy this object when loading a new scene
@@ -243,40 +246,105 @@ public class PlayerData : MonoBehaviour
         };
     }
 
-    // Start is called before the first frame update
-    void Start()
+    // Fired after equipped_items changes so listeners (e.g. the player's
+    // cosmetics in Character_Movement) can react without polling the list
+    // every frame
+    public event Action EquippedItemsChanged;
+
+    // Must be called after any change to equipped_items
+    public void NotifyEquippedItemsChanged()
     {
-        // If there is no equipped items within 500's range, grey out dance button (non-selectable)
-        if (danceEmoteButton != null && !equipped_items.Exists(x => x >= 500 && x < 600))
+        // If any 0's in equipped_items, remove them
+        equipped_items.RemoveAll(x => x == 0);
+
+        RefreshDanceButton();
+        EquippedItemsChanged?.Invoke();
+    }
+
+    // The dance button is only interactable while a dance is equipped
+    private void RefreshDanceButton()
+    {
+        if (danceEmoteButton != null)
         {
-            danceEmoteButton.interactable = false;
+            danceEmoteButton.interactable = equipped_items.Exists(x => x >= 500 && x < 600);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    // Start is called before the first frame update
+    void Start()
     {
-        // If ItemIDs is null, look for any ItemIDs in the scene
+        RefreshDanceButton();
+    }
+
+    // Re-find the scene objects this singleton needs (they change every
+    // scene load, and none of them exist in every scene)
+    private void ResolveSceneReferences()
+    {
         if (item_ids == null)
         {
             item_ids = FindObjectOfType<ItemIDs>();
         }
 
-        // If DanceEmoteButton is null, look for any DanceEmoteButton in the scene
+        // The name must be "UI_Button_Dance"
         if (danceEmoteButton == null)
         {
-            // The name must be "UI_Button_Dance"
-            // If can find it (it's not on all scenes)
-            if (GameObject.Find("UI_Button_Dance") != null)
+            GameObject danceButtonObject = GameObject.Find("UI_Button_Dance");
+            if (danceButtonObject != null)
             {
-                danceEmoteButton = GameObject.Find("UI_Button_Dance").GetComponent<UnityEngine.UI.Button>();
+                danceEmoteButton = danceButtonObject.GetComponent<UnityEngine.UI.Button>();
             }
+        }
+
+        if (currencyText == null)
+        {
+            GameObject currencyObject = GameObject.Find("Currency-Text");
+            if (currencyObject != null)
+            {
+                currencyText = currencyObject.GetComponent<TMPro.TMP_Text>();
+            }
+        }
+
+        RefreshDanceButton();
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ResolveSceneReferences();
+        nextLookupRetry = Time.unscaledTime + 1f;
+        lastCoinsShown = int.MinValue; // force a currency text refresh
+    }
+
+    // Tracks the last coins value written to the UI so the text is only
+    // rebuilt when it changes
+    private int lastCoinsShown = int.MinValue;
+    // Scene lookups missing on scene load (e.g. objects activated late) are
+    // retried at most once a second instead of every frame
+    private float nextLookupRetry = 0f;
+
+    // Update is called once per frame
+    void Update()
+    {
+        if ((item_ids == null || danceEmoteButton == null || currencyText == null)
+            && Time.unscaledTime >= nextLookupRetry)
+        {
+            ResolveSceneReferences();
+            nextLookupRetry = Time.unscaledTime + 1f;
         }
 
         // For just showing how everything works, add all items to unlocked_items
         // if someone pressed Y key
         // DEBUG:::
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Debug.isDebugBuild && Input.GetKeyDown(KeyCode.Y))
         {
             Debug.Log("Adding all items to unlocked items");
             foreach (KeyValuePair<int, ItemIDs.Item> item in item_database)
@@ -291,44 +359,21 @@ public class PlayerData : MonoBehaviour
             item_ids.FillInventoryButtons();
 
             // Now, we want to make sure to unlock all achievements that aren't already unlocked
-            for (int i = 0; i < 19; i++)
+            foreach (int achievementId in item_ids.achievement_database.Keys)
             {
-                if (!unlocked_achievements.Contains(i))
+                if (!unlocked_achievements.Contains(achievementId))
                 {
-                    unlocked_achievements.Add(i);
+                    unlocked_achievements.Add(achievementId);
                 }
             }
         }
 
 
-        // If any 0's in equipped_items, remove them
-        if (equipped_items.Contains(0))
-        {
-            equipped_items.RemoveAll(x => x == 0);
-        }
-        // If dances are equipped, make the dance button interactable
-        if (danceEmoteButton != null && equipped_items.Exists(x => x >= 500 && x < 600))
-        {
-            danceEmoteButton.interactable = true;
-        } else if (danceEmoteButton != null && !equipped_items.Exists(x => x >= 500 && x < 600))
-        {
-            danceEmoteButton.interactable = false;
-        }
-
         // Set the coins
-        if (currencyText == null)
-        {
-            // currencyText = GameObject.Find("Currency-Text").GetComponent<TMPro.TMP_Text>();
-            // If can find it (it's not on all scenes)
-            if (GameObject.Find("Currency-Text") != null)
-            {
-                currencyText = GameObject.Find("Currency-Text").GetComponent<TMPro.TMP_Text>();
-            }
-        }
-
-        if (currencyText != null)
+        if (currencyText != null && coins != lastCoinsShown)
         {
             currencyText.text = coins.ToString();
+            lastCoinsShown = coins;
         }
     }
 }

@@ -72,9 +72,13 @@ public class HorseBehavior : MonoBehaviour
     // Grab the players neuroflux level. It goes up to 100 (think of percent, but its an integer)
     private int neurofluxLevel;
 
-    // Grab the player's chosen horse
-    private string chosen_horse_; // if it's "blackhoof", "chromeblitz", "robotrotter", "nanomane", "thunderbyte"
-    private int betAmount;
+    // The horse ids and display names, by lane index
+    private static readonly string[] horseNames = { "blackhoof", "chromeblitz", "robotrotter", "nanomane", "thunderbyte" };
+    private static readonly string[] horseDisplayNames = { "Blackhoof", "Chrome Blitz", "Robotrotter", "Nano Mane", "Thunderbyte" };
+
+    // The player's chosen horse and bet are read straight from PlayerData
+    private string chosen_horse_ => playerData.chosen_horse;
+    private int betAmount => playerData.bet_amount;
 
     private bool horseCrossedFinishLine;
 
@@ -121,31 +125,9 @@ public class HorseBehavior : MonoBehaviour
         return speedArray[Random.Range(0, speedArray.Length)];
     }
 
-    private float NonChosenHorseSpeed()
-    {
-        int random = Random.Range(0, 10);
-
-        if (random < 5)
-        {
-            return slowSpeeds[Random.Range(0, slowSpeeds.Length)];
-        }
-        else if (random >= 5 && random < 9)
-        {
-            return mediumSpeeds[Random.Range(0, mediumSpeeds.Length)];
-        }
-        else
-        {
-            return fastSpeeds[Random.Range(0, fastSpeeds.Length)];
-        }
-
-
-    }
-
     void Start()
     {
         neurofluxLevel = playerData.neuroflux_meter;
-        chosen_horse_ = playerData.chosen_horse;
-        betAmount = playerData.bet_amount;
         horseCrossedFinishLine = false;
 
         horseStartPositions = new Vector2[horseObjects.Length];
@@ -159,18 +141,6 @@ public class HorseBehavior : MonoBehaviour
     // Update to check if the horse has reached the finish line
     void Update()
     {
-
-        // change chosen horse
-        if (chosen_horse_ != playerData.chosen_horse)
-        {
-            chosen_horse_ = playerData.chosen_horse;
-        }
-
-        // change bet amount
-        if (betAmount != playerData.bet_amount)
-        {
-            betAmount = playerData.bet_amount;
-        }
         if (horseCrossedFinishLine)
         {
             return;
@@ -182,28 +152,7 @@ public class HorseBehavior : MonoBehaviour
             if (horseObjects[i].transform.position.x >= flags[i].transform.position.x)
             {
                 horseCrossedFinishLine = true;
-
-                string winningHorse = "";
-                switch (i)
-                {
-                    case 0:
-                        winningHorse = "blackhoof";
-                        break;
-                    case 1:
-                        winningHorse = "chromeblitz";
-                        break;
-                    case 2:
-                        winningHorse = "robotrotter";
-                        break;
-                    case 3:
-                        winningHorse = "nanomane";
-                        break;
-                    case 4:
-                        winningHorse = "thunderbyte";
-                        break;
-                }
-
-                EndGame(winningHorse);
+                EndGame(GetHorseName(i));
             }
         }
     }
@@ -219,24 +168,7 @@ public class HorseBehavior : MonoBehaviour
             }
         }
 
-        switch (horseInLeadIdx)
-        {
-            case 0:
-                horseInLead.text = "Blackhoof is in the lead!";
-                break;
-            case 1:
-                horseInLead.text = "Chrome Blitz is in the lead!";
-                break;
-            case 2:
-                horseInLead.text = "Robotrotter is in the lead!";
-                break;
-            case 3:
-                horseInLead.text = "Nano Mane is in the lead!";
-                break;
-            case 4:
-                horseInLead.text = "Thunderbyte is in the lead!";
-                break;
-        }
+        horseInLead.text = horseDisplayNames[horseInLeadIdx] + " is in the lead!";
     }
 
     private int frameCount = 0;
@@ -267,7 +199,7 @@ public class HorseBehavior : MonoBehaviour
 
             bool isChosen = (GetHorseName(i) == chosen_horse_);
 
-            float speed = isChosen ? RandomSpeed(true) : RandomSpeed(false);
+            float speed = RandomSpeed(isChosen);
 
             horseObjects[i].transform.position += Vector3.right * speed * deltaTime;
 
@@ -284,15 +216,7 @@ public class HorseBehavior : MonoBehaviour
 
     private string GetHorseName(int index)
     {
-        switch (index)
-        {
-            case 0: return "blackhoof";
-            case 1: return "chromeblitz";
-            case 2: return "robotrotter";
-            case 3: return "nanomane";
-            case 4: return "thunderbyte";
-            default: return "";
-        }
+        return (index >= 0 && index < horseNames.Length) ? horseNames[index] : "";
     }
 
     public void EndGame(string winningHorse)
@@ -314,7 +238,8 @@ public class HorseBehavior : MonoBehaviour
             {
                 // unlock achievement 13
                 playerData.UnlockAchievement(13);
-            } else if (playerData.casino_winnings >= 1000 && !playerData.unlocked_achievements.Contains(14))
+            }
+            if (playerData.casino_winnings >= 1000 && !playerData.unlocked_achievements.Contains(14))
             {
                 // unlock achievement 14
                 playerData.UnlockAchievement(14);

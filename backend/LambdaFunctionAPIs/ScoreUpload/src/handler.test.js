@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import { handler } from './index.mjs';
+import { handler, runHandler } from './index.mjs';
 import { getSecret, createDbClient, secret_name } from './shared/utils.mjs';
 
 // Mock utilities
@@ -72,7 +72,7 @@ describe('Score Handler Tests', () => {
         body: JSON.stringify({ user_id: 300, game_id: 7, score: 1 }), // New lower score
     };
 
-    const response = await handler(mockEvent, 'test_game_scores'); // Use test table
+    const response = await runHandler(mockEvent, 'test_game_scores'); // Use test table
 
     //expect(response.statusCode).toBe(200);
     console.log("Debug:",response);

@@ -103,7 +103,7 @@ public class ShopManager : MonoBehaviour
         if (pages.Count == 0)
         {
             // Set the player's interactable to "shopclosed"
-            playerData.interactable = "shopclosed";
+            // Keep the shop open so the completed collection has a clear empty state.
         }
     }
 
@@ -115,6 +115,7 @@ public class ShopManager : MonoBehaviour
     public void SetClickedItem(int item_id)
     {
         // To choose what to display in the shop.
+        if (!itemIDs.item_database.ContainsKey(item_id) || unlockedItems.Contains(item_id)) return;
         clicked_item_id = item_id;
         clicked_item_name = itemIDs.item_database[item_id].name;
         clicked_item_cost = itemIDs.item_database[item_id].cost;
@@ -156,7 +157,8 @@ public class ShopManager : MonoBehaviour
     public void Purchase()
     {
         // If the player has enough money
-        if (playerData.coins >= clicked_item_cost)
+        if (clicked_item_id >= 0 && itemIDs.item_database.ContainsKey(clicked_item_id)
+            && !playerData.unlocked_items.Contains(clicked_item_id) && playerData.coins >= clicked_item_cost)
         {
             // Deduct the money
             playerData.coins -= clicked_item_cost;
@@ -166,6 +168,10 @@ public class ShopManager : MonoBehaviour
 
             // Set the clicked item to -1
             clicked_item_id = -1;
+            GameToast.Show("Purchased " + clicked_item_name, "Added to your inventory  ·  " + clicked_item_cost + " coins");
+            itemTitle.GetComponent<TextMeshProUGUI>().text = "Select an item";
+            itemCost.GetComponent<TextMeshProUGUI>().text = "";
+            itemRarity.GetComponent<TextMeshProUGUI>().text = "";
 
             // Deactivate the purchase button
             purchaseButton.interactable = false;
@@ -190,9 +196,39 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    /** @brief Clear title, rarity, price and action rows within the original shop frame. */
+    private void LayoutSelection()
+    {
+        var root=(RectTransform)itemTitle.transform.parent;
+        float width=root.rect.width;
+        SetInfoRect(itemTitle,root,new Vector2(0,1),new Vector2(32,-20),new Vector2(width-64,60));
+        SetInfoRect(itemRarity,root,new Vector2(0,1),new Vector2(32,-84),new Vector2(width-64,44));
+        var coin=itemCost.transform.parent.gameObject;
+        SetInfoRect(coin,root,new Vector2(0,0),new Vector2(32,30),new Vector2(56,56));
+        SetInfoRect(itemCost,root,new Vector2(0,0),new Vector2(108,30),new Vector2(240,56));
+        SetInfoRect(purchaseButton.gameObject,root,new Vector2(1,0),new Vector2(-28,26),new Vector2(280,64));
+        foreach(var field in new[]{itemTitle,itemRarity,itemCost})
+        {
+            var label=field.GetComponent<TextMeshProUGUI>();label.font=ByteCityTheme.Font;
+            label.alignment=TextAlignmentOptions.MidlineLeft;label.enableAutoSizing=true;
+            label.fontSizeMin=18;label.fontSizeMax=field==itemTitle?32:field==itemCost?30:23;
+            label.overflowMode=TextOverflowModes.Ellipsis;
+        }
+        itemTitle.GetComponent<TextMeshProUGUI>().text="Select an item";
+        itemRarity.GetComponent<TextMeshProUGUI>().text="";itemCost.GetComponent<TextMeshProUGUI>().text="";
+    }
+    private static void SetInfoRect(GameObject obj,RectTransform parent,Vector2 anchor,Vector2 pos,Vector2 size)
+    {
+        var rect=(RectTransform)obj.transform;rect.SetParent(parent,false);rect.anchorMin=rect.anchorMax=rect.pivot=anchor;
+        rect.anchoredPosition=pos;rect.sizeDelta=size;rect.localScale=Vector3.one;
+        var motion=rect.GetComponent<ButtonMotion>();if(motion!=null)motion.CaptureScale();
+    }
+
+
     // Start
     private void Start()
     {
+        LayoutSelection();
         // Set players items
         unlockedItems = playerData.unlocked_items;
 
@@ -207,6 +243,18 @@ public class ShopManager : MonoBehaviour
     private void UpdateObjHolders()
     {
     // Check which items to display based on the current page
+    if (pages.Count == 0)
+    {
+        foreach (var holder in objHolders) holder.gameObject.SetActive(false);
+        currentPage = 0;
+        clicked_item_id = -1;
+        itemTitle.GetComponent<TextMeshProUGUI>().text = "All owned";
+        itemCost.GetComponent<TextMeshProUGUI>().text = "";
+        itemRarity.GetComponent<TextMeshProUGUI>().text = "";
+        leftButton.interactable = rightButton.interactable = purchaseButton.interactable = false;
+        return;
+    }
+    currentPage = Mathf.Clamp(currentPage, 0, pages.Count - 1);
     List<int> currentPageList = pages[currentPage];
 
     for (int i = 0; i < objHolders.Length; i++)
@@ -245,7 +293,7 @@ public class ShopManager : MonoBehaviour
     public void NextPage()
     {
         // If the current page is not the last page
-        if (currentPage != pages.Count - 1)
+        if (currentPage < pages.Count - 1)
         {
             // Increment the current page
             currentPage++;
@@ -283,7 +331,7 @@ public class ShopManager : MonoBehaviour
         }
 
         // If the currentPage == pages.Count - 1, disable the right button
-        if (currentPage == pages.Count - 1)
+        if (pages.Count == 0 || currentPage >= pages.Count - 1)
         {
             rightButton.interactable = false;
         }

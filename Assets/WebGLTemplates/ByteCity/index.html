@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Byte City — Play together</title>
+<link rel="icon" href="data:,">
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#171923;color:#dbd9ed;font:14px ui-monospace,monospace}body{height:100dvh;display:flex;flex-direction:column;user-select:none;-webkit-user-select:none}main{flex:1;position:relative;min-height:0;display:grid;place-items:center}canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none;touch-action:none}footer{height:44px;flex:0 0 44px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-top:2px solid #454057;gap:12px}button{font:inherit;color:#211d31;background:#b6b4cd;border:2px solid #77728e;padding:6px 14px;cursor:pointer}button:hover{background:#d9d7e8}#unity-loading-bar{position:absolute;inset:0;display:grid;place-content:center;text-align:center;background:#171923;gap:20px}h1{margin:0;font-size:36px;letter-spacing:6px}#track{width:280px;height:16px;border:3px solid #77728e;padding:2px;margin:auto}#unity-progress-bar-full{height:100%;width:0;background:#c2b6e8}#unity-warning{display:none;position:absolute;inset:20px 15% auto;background:#2d293b;padding:20px;border:2px solid #c2b6e8;white-space:pre-wrap}small{opacity:.8}@media(max-width:650px){footer small{display:none}}
+</style>
+</head>
+<body>
+<main id="unity-container">
+<canvas id="unity-canvas" tabindex="0" aria-label="Byte City game"></canvas>
+<div id="unity-loading-bar"><h1>BYTE CITY</h1><div id="track"><div id="unity-progress-bar-full"></div></div><span id="loading-label">Opening the city...</span><small id="move-hint">Move with WASD or arrow keys. Meet your friends in town.</small></div>
+<div id="unity-warning" role="alert"></div>
+</main>
+<footer><span>BYTE CITY <small>· Play together</small></span><small id="controls-hint">WASD / arrows · Hold / Shift to sprint · C for chat</small><button id="fullscreen" type="button">Fullscreen</button></footer>
+<script>
+const canvas=document.querySelector('#unity-canvas');
+const touchDevice=navigator.maxTouchPoints>0 && window.matchMedia('(pointer: coarse)').matches;
+if(touchDevice){document.querySelector('#move-hint').textContent='Turn your phone sideways. Use the touch pad to explore.';document.querySelector('#controls-hint').textContent='Touch pad to move · Tap Chat to talk';}
+const config={
+ dataUrl:'Build/{{{ DATA_FILENAME }}}',frameworkUrl:'Build/{{{ FRAMEWORK_FILENAME }}}',codeUrl:'Build/{{{ CODE_FILENAME }}}',
+ streamingAssetsUrl:'StreamingAssets',companyName:{{{ JSON.stringify(COMPANY_NAME) }}},productName:{{{ JSON.stringify(PRODUCT_NAME) }}},productVersion:{{{ JSON.stringify(PRODUCT_VERSION) }}},
+ devicePixelRatio:Math.min(window.devicePixelRatio||1,touchDevice?1:2),
+ showBanner:(message,type)=>{if(type!=='error'){console.warn(message);return;}const warning=document.querySelector('#unity-warning');warning.textContent='The game could not finish loading. Reload this page to try again.';warning.style.display='block';console.error(message);}
+};
+const loader=document.createElement('script');loader.src='Build/{{{ LOADER_FILENAME }}}';
+loader.onload=()=>createUnityInstance(canvas,config,progress=>{document.querySelector('#unity-progress-bar-full').style.width=(progress*100)+'%';document.querySelector('#loading-label').textContent='Opening the city... '+Math.round(progress*100)+'%';}).then(instance=>{window.byteCity=instance;document.querySelector('#unity-loading-bar').style.display='none';document.querySelector('#fullscreen').onclick=()=>instance.SetFullscreen(1);canvas.focus();}).catch(error=>config.showBanner(error,'error'));
+loader.onerror=()=>config.showBanner('Loader request failed','error');document.body.appendChild(loader);
+</script>
+</body>
+</html>
