@@ -16,6 +16,9 @@ public class CameraFollow : MonoBehaviour
 
     // How much the camera takes up on the screen
     private float cameraZoomSize = 3.0f;
+    private Coroutine pan;
+    private Transform returnTarget;
+    private float returnSize;
 
     // Given a target, pan the camera to the target
     private void SwitchTarget(Transform newTarget)
@@ -30,7 +33,9 @@ public class CameraFollow : MonoBehaviour
     public void PanCamera(Transform newTarget)
     {
         // Call the coroutine
-        StartCoroutine(PanCameraCoroutine(newTarget));
+        if(pan!=null){StopCoroutine(pan);target=returnTarget;Camera.main.orthographicSize=returnSize;}
+        returnTarget=target;returnSize=Camera.main.orthographicSize;
+        pan=StartCoroutine(PanCameraCoroutine(newTarget));
     }
 
     private IEnumerator PanCameraCoroutine(Transform newTarget)
@@ -53,7 +58,7 @@ public class CameraFollow : MonoBehaviour
         SwitchTarget(oldTarget);
 
         // Make camera zoom out
-        Camera.main.orthographicSize = oldSize;
+        Camera.main.orthographicSize = oldSize;pan=null;
     }
 
     private void FixedUpdate()
