@@ -82,3 +82,10 @@ node_modules/
 # Ignore macOS DS_Store which contains custom attributes of the existing folder
 # for macOS. This doesn't need to be committed
 *.DS_Store
+
+# Local playtest screenshots
+/Captures/
+
+# Unity test runner scratch scene
+/Assets/InitTestScene*.unity
+/Assets/InitTestScene*.unity.meta
