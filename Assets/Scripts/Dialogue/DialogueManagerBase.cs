@@ -21,6 +21,30 @@ public abstract class DialogueManagerBase : MonoBehaviour
     // while a sentence is typing to skip to the full sentence
     protected bool isTyping = true;
 
+    public bool IsRevealing { get { return isTyping; } }
+    private int requestedFrame=-1, consumedFrame=-1;
+    public void RequestAdvance() { requestedFrame=Time.frameCount; }
+    /** @brief First input reveals the sentence; a fresh input advances at the reader's pace. */
+    protected IEnumerator WaitForLineAdvance()
+    {
+        requestedFrame=-1;
+        yield return null;
+        while(true)
+        {
+            bool direct=Input.GetMouseButtonUp(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return);
+            int inputFrame=direct?Time.frameCount:requestedFrame;
+            bool input=inputFrame>consumedFrame;
+            requestedFrame=-1;
+            if(input)
+            {
+                consumedFrame=inputFrame;
+                if(isTyping) {isTyping=false;dialogueText.maxVisibleCharacters=int.MaxValue;}
+                else yield break;
+            }
+            yield return null;
+        }
+    }
+
     protected IEnumerator TypeSentence (string sentence)
     {
         // Set the full sentence once and reveal it character by character,

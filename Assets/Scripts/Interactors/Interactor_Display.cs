@@ -270,7 +270,7 @@ public class Interactor_Display : MonoBehaviour
                 dialogueManagerLab.DeckMasterInterrupt();
             } else
             {
-            SceneManager.LoadScene("CardJitsu");
+            DeckmasterDuel.Show();
             }
         }
          else {

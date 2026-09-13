@@ -263,13 +263,8 @@ public class AchievementsHandler : MonoBehaviour
     // ShowAchievementUnlockedScreen (will be a fade in fade out for a few seconds)
     public void ShowAchievementUnlockedScreen(int achievementID)
     {
-        // Set the title and description
-        achievementUnlockedTitle.text = itemIDS.achievement_database[achievementID].title;
-        achievementUnlockedDescription.text = itemIDS.achievement_database[achievementID].description;
-
-        // Set the screen to active
-        achievementUnlockedScreen.SetActive(true);
-        StartCoroutine(FadeAchievementUnlockedScreen());
+        achievementUnlockedScreen.SetActive(false);
+        GameToast.Show("Achievement unlocked", itemIDS.achievement_database[achievementID].title);
     }
 
     // FadeAchievementUnlockedScreen

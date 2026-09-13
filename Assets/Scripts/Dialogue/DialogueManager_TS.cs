@@ -195,7 +195,7 @@ public class DialogueManager_TS : DialogueManagerBase
         typeSentenceCoroutine = StartCoroutine(TypeSentence(drunkGuyDialogues[randomIndex]));
 
         // Wait
-        yield return new WaitForSeconds(drunkGuyDialogues[randomIndex].Length * typingSpeed + 1.5f);
+        yield return WaitForLineAdvance();
 
         // Increment the dialogueIndex
         dialogueIndex++;
@@ -259,7 +259,7 @@ public class DialogueManager_TS : DialogueManagerBase
     private IEnumerator WaitForUserInput()
     {
         // Wait for a mouse click or screen tap
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began));
+        yield return WaitForLineAdvance();
 
         dialoguePanel.SetActive(false);
         shopPanel.SetActive(true);
@@ -304,7 +304,7 @@ public class DialogueManager_TS : DialogueManagerBase
             typeSentenceCoroutine = StartCoroutine(TypeSentence(shopOwnerInitial[i]));
 
             // Wait
-            yield return new WaitForSeconds(shopOwnerInitial[i].Length * typingSpeed + 1);
+            yield return WaitForLineAdvance();
 
             // Increment the dialogueIndex
             dialogueIndex++;
@@ -406,7 +406,7 @@ public class DialogueManager_TS : DialogueManagerBase
         StartCoroutine(SenseiTutorialCoroutine());
 
         // Increment the npc_interactions for the sensei
-        playerData.npc_interactions["sensei"] = 2;
+
     }
 
     private IEnumerator SenseiTutorialCoroutine()
@@ -436,7 +436,7 @@ public class DialogueManager_TS : DialogueManagerBase
             typeSentenceCoroutine = StartCoroutine(TypeSentence(senseiDialogues[i]));
 
             // Wait
-            yield return new WaitForSeconds(senseiDialogues[i].Length * typingSpeed + 2);
+            yield return WaitForLineAdvance();
 
             // If i == 0, pan to the first target
             if (i == 1)
@@ -465,6 +465,8 @@ public class DialogueManager_TS : DialogueManagerBase
             }
         }
 
+        playerData.npc_interactions["sensei"] = 2;
+        if (LocalPlaytest.IsActive) { PlayerPrefs.SetInt("ByteCity.TutorialComplete", 1); PlayerPrefs.Save(); }
         // Close the dialogue panel
         dialoguePanel.SetActive(false);
 

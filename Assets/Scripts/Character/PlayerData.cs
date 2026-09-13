@@ -187,6 +187,7 @@ public class PlayerData : MonoBehaviour
     // This function will be called when the player completes an achievement
     public void UnlockAchievement(int achievement_id)
     {
+        if (unlocked_achievements.Contains(achievement_id)) return;
         // If the achievement is not already unlocked, unlock it
         if (!unlocked_achievements.Contains(achievement_id))
         {
@@ -195,8 +196,11 @@ public class PlayerData : MonoBehaviour
 
         // Update the achievements panel and show the unlocked screen
         AchievementsHandler achievementsHandler = FindObjectOfType<AchievementsHandler>();
-        achievementsHandler.PopulatePanel();
-        achievementsHandler.ShowAchievementUnlockedScreen(achievement_id);
+        if (achievementsHandler != null)
+        {
+            achievementsHandler.PopulatePanel();
+            achievementsHandler.ShowAchievementUnlockedScreen(achievement_id);
+        }
     }
 
     // Awake is called when the script instance is being loaded
@@ -211,6 +215,7 @@ public class PlayerData : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
         // Don't destroy this object when loading a new scene
@@ -339,7 +344,7 @@ public class PlayerData : MonoBehaviour
         // For just showing how everything works, add all items to unlocked_items
         // if someone pressed Y key
         // DEBUG:::
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Debug.isDebugBuild && Input.GetKeyDown(KeyCode.Y))
         {
             Debug.Log("Adding all items to unlocked items");
             foreach (KeyValuePair<int, ItemIDs.Item> item in item_database)

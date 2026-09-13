@@ -21,7 +21,7 @@ public class FinishTutorial : MonoBehaviour
     public void TakeToTownSquare()
     {
         // Get the unlocked_items
-        playerData.unlocked_items.Add(108);
+        if (!playerData.unlocked_items.Contains(108)) playerData.unlocked_items.Add(108);
 
         // Change the player's spawn position -30.1,20.49
         gameManager.ChangePlayerSpawnPosition(new Vector2(-30.1f, 20.49f));

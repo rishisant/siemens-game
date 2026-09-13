@@ -53,6 +53,14 @@ public class DialogueManagerTutorial : DialogueManagerBase
     // Display the next sentence
     public void DisplayNextSentence()
     {
+        if (!dialoguePanel.activeSelf || dialoguePaused) return;
+        if (isTyping)
+        {
+            StopAllCoroutines();
+            dialogueText.maxVisibleCharacters = int.MaxValue;
+            isTyping = false;
+            return;
+        }
         // Stop all coroutines
         StopAllCoroutines();
 
@@ -70,6 +78,7 @@ public class DialogueManagerTutorial : DialogueManagerBase
         else
         {
             EndDialogue();
+            return;
         }
 
         // Set the character image
@@ -100,8 +109,9 @@ public class DialogueManagerTutorial : DialogueManagerBase
     public void ResumeDialogue()
     {
         dialoguePanel.SetActive(true);
-        DisplayNextSentence();
         dialoguePaused = false;
+        isTyping = false;
+        DisplayNextSentence();
         UI.SetActive(false);
     }
 
@@ -115,9 +125,8 @@ public class DialogueManagerTutorial : DialogueManagerBase
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !dialoguePaused)
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return)) && !dialoguePaused && dialoguePanel.activeSelf)
         {
-            ClearDialogue();
             DisplayNextSentence();
         }
     }

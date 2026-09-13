@@ -34,6 +34,7 @@ public class InventoryUI_Tutorial : MonoBehaviour
     public void OpenInventory()
     {
         inventoryPanel.SetActive(true);
+        var player=FindObjectOfType<Character_Movement>();if(player != null) player.StopPlayer();
         inventoryButton.SetActive(false);
 
         // Blackout the panel

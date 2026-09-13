@@ -592,8 +592,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OpenLoginRegAbstractPanel()
     {
-        loginregAbstractPanel.SetActive(true);
-        blackOutModal.SetActive(true);
+        GuestProfileUI.Show();
     }
 
     public void OpenSettingsPanel()
