@@ -115,8 +115,7 @@ public class DialogueManager_Lab : DialogueManagerBase
             StartCoroutine(DeckMasterSpeakCoroutine());
         }
 
-        // Increment the npc_interactions for deckmaster
-        playerData.npc_interactions["deckmaster"] += 1;
+
     }
 
     public void DeckMasterInterrupt()
@@ -162,7 +161,7 @@ public class DialogueManager_Lab : DialogueManagerBase
         typeSentenceCoroutine = StartCoroutine(TypeSentence(deckMasterHaventSpoken[i]));
 
         // Wait
-        yield return new WaitForSeconds(deckMasterHaventSpoken[i].Length * typingSpeed + 1.25f);
+        yield return WaitForLineAdvance();
 
         // Change TTC_Text to "Tap to Continue."
         TTC_Text.text = "Tap to Continue...";
@@ -216,10 +215,10 @@ public class DialogueManager_Lab : DialogueManagerBase
             typeSentenceCoroutine = StartCoroutine(TypeSentence(deckMasterInitial[i]));
 
             // Wait
-            yield return new WaitForSeconds(deckMasterInitial[i].Length * typingSpeed + 1f);
+            yield return WaitForLineAdvance();
 
             // Wait
-            yield return new WaitForSeconds(2);
+            yield return null;
         }
 
         // Change TTC_Text to "Tap to Continue."
@@ -264,13 +263,13 @@ public class DialogueManager_Lab : DialogueManagerBase
         // TTC
         TTC_Text.text = "Tap to Continue...";
 
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Began)));
+        yield return WaitForLineAdvance();
 
         // Close the dialogue panel
         dialoguePanel.SetActive(false);
 
         // Open the choice panel
-        choicePanel.SetActive(true);
+        deckmasterChoice.ShowChoices();
 
         // Let player move
         playerMovement.UnstopPlayer();
@@ -365,7 +364,7 @@ public class DialogueManager_Lab : DialogueManagerBase
             typeSentenceCoroutine = StartCoroutine(TypeSentence(senseiDialogues[i]));
 
             // Wait
-            yield return new WaitForSeconds(senseiDialogues[i].Length * typingSpeed + 1.25f);
+            yield return WaitForLineAdvance();
 
             // if i = 2, pan to the casino owner
             if (i==4)
@@ -383,7 +382,7 @@ public class DialogueManager_Lab : DialogueManagerBase
             }
 
             // Wait
-            yield return new WaitForSeconds(1.5f);
+            yield return null;
         }
 
         // Change TTC_Text to "Tap to Continue."

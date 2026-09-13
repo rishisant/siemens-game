@@ -96,6 +96,8 @@ public class CardViewManager : MonoBehaviour
     // PopulateCard
     private void PopulateCard()
     {
+        if(unlockedCardsLength==0){cardImage.enabled=false;cardName.text="No cards yet";cardRarity.text=cardType.text=cardPower.text="";buttonLeft.interactable=buttonRight.interactable=false;return;}
+        currentCard=Mathf.Clamp(currentCard,0,unlockedCardsLength-1);cardImage.enabled=true;
         // Grab the cardID
         int cardID = playerData.unlocked_cards[currentCard];
 
