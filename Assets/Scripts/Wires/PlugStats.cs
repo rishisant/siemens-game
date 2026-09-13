@@ -12,5 +12,7 @@ using UnityEngine;
  */
 public class PlugStats : MonoBehaviour
 {
+    public int connectionId = -1;
+
     public bool connected = false;
 }

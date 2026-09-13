@@ -50,7 +50,9 @@ public class PoweredWireBehavior : MonoBehaviour
      */
     void OnMouseDown()
     {
+        if (powerWireS.connected || (UnityEngine.EventSystems.EventSystem.current != null && UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())) return;
         mouseDown = true;
+        powerWireS.movable = true;
     }
 
     /**
@@ -93,15 +95,18 @@ public class PoweredWireBehavior : MonoBehaviour
      */
     void OnMouseUp()
     {
-        if (powerWireS.connected)
-        {
-            return;
-        }
-
         mouseDown = false;
-        gameObject.transform.position = powerWireS.startPosition;
+        powerWireS.moving = false;
+        if (powerWireS.connected) return;
+        foreach (var plug in FindObjectsOfType<PlugBehavior>())
+        {
+            if (Vector2.Distance(transform.position, plug.transform.position) < 1.1f && plug.TryConnect(this)) return;
+        }
+        transform.position = powerWireS.startPosition;
         UpdateLine();
     }
+
+    private void OnApplicationFocus(bool focused) { if (!focused && powerWireS != null) OnMouseUp(); }
 
     /**
      * MoveWire() handles the logic for moving the wire
@@ -121,7 +126,7 @@ public class PoweredWireBehavior : MonoBehaviour
             float mouseX = Input.mousePosition.x;
             float mouseY = Input.mousePosition.y;
 
-            gameObject.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, 1));
+            gameObject.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, Mathf.Abs(Camera.main.transform.position.z - transform.position.z)));
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, transform.parent.transform.position.z);
 
             UpdateLine();

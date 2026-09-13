@@ -13,6 +13,8 @@ using UnityEngine;
  */
 public class PoweredWireStats : MonoBehaviour
 {
+    public int connectionId = -1;
+
     // bool for if the wire is able to be moved. mainly for checking that it's not
     // already being acted upon by a mouse or finger, or already connected
     public bool movable = false;

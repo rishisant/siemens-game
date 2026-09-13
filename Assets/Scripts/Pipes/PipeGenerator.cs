@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +27,14 @@ public class PipeGenerator : MonoBehaviour
     public GameObject turnPipe;
 
     int level = 1;
+    private PuzzleHUD hud;
+    private bool checking;
+    private bool completed;
+    private ArcadeFeedback arcade;
+    private int turns, attempts;
+    private GameObject flowParticle;
+    private readonly Dictionary<Vector2Int, GameObject> cells = new Dictionary<Vector2Int, GameObject>();
+    private readonly Dictionary<SpriteRenderer, Color> originalColors = new Dictionary<SpriteRenderer, Color>();
 
     private Quaternion[] possibleRotations = {
         // up
@@ -46,57 +53,20 @@ public class PipeGenerator : MonoBehaviour
         new Vector3[] {new Vector3(-7, 4, 0), new Vector3(-5, 4, 0), new Vector3(-3, 4, 0), new Vector3(-1, 4, 0), new Vector3(1, 4, 0), new Vector3(3, 4, 0), new Vector3(5, 4, 0), new Vector3(7, 4, 0)},
         new Vector3[] {new Vector3(-7, 2, 0), new Vector3(-5, 2, 0), new Vector3(-3, 2, 0), new Vector3(-1, 2, 0), new Vector3(1, 2, 0), new Vector3(3, 2, 0), new Vector3(5, 2, 0), new Vector3(7, 2, 0)},
         new Vector3[] {new Vector3(-7, 0, 0), new Vector3(-5, 0, 0), new Vector3(-3, 0, 0), new Vector3(-1, 0, 0), new Vector3(1, 0, 0), new Vector3(3, 0, 0), new Vector3(5, 0, 0), new Vector3(7, 0, 0)},
-        new Vector3[] {new Vector3(-7, -3, 0), new Vector3(-5, -3, 0), new Vector3(-3, -3, 0), new Vector3(-1, -3, 0), new Vector3(1, -3, 0), new Vector3(3, -2, 0), new Vector3(5, -3, 0), new Vector3(7, -3, 0)},
+        new Vector3[] {new Vector3(-7, -2, 0), new Vector3(-5, -2, 0), new Vector3(-3, -2, 0), new Vector3(-1, -2, 0), new Vector3(1, -2, 0), new Vector3(3, -2, 0), new Vector3(5, -2, 0), new Vector3(7, -2, 0)},
         new Vector3[] {new Vector3(-7, -4, 0), new Vector3(-5, -4, 0), new Vector3(-3, -4, 0), new Vector3(-1, -4, 0), new Vector3(1, -4, 0), new Vector3(3, -4, 0), new Vector3(5, -4, 0), new Vector3(7, -4, 0)}
     };
 
-    private PipeInfo[][][] easyLevels = new PipeInfo[][][] {
-        // level 1 straight line
-        new PipeInfo[][] {
-            emptyRow,
-            new PipeInfo[] {new PipeInfo(Direction.right, PipeType.source), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.left, PipeType.sink)},
-            emptyRow,
-            emptyRow,
-            emptyRow
-        },
-        // level 1 one turn
-        new PipeInfo[][] {
-            emptyRow,
-            new PipeInfo[] {new PipeInfo(Direction.right, PipeType.source), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.turn), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty)},
-            new PipeInfo[] {new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.left, PipeType.sink)},
-            emptyRow,
-            emptyRow
-        }
+    private PipeInfo[][][] easyLevels = {
+        PipeBoards.Create(new Vector2Int(1,0), new Vector2Int(1,7)),
+        PipeBoards.Create(new Vector2Int(1,0), new Vector2Int(1,5), new Vector2Int(3,5))
     };
-
-    private PipeInfo[][][] mediumLevels = new PipeInfo[][][] {
-        // level 2 stairs down and then back
-        new PipeInfo[][] {
-            new PipeInfo[] {new PipeInfo(Direction.right, PipeType.source), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.turn), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty)},
-            new PipeInfo[] {new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.turn), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty)},
-            new PipeInfo[] {new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.turn), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty)},
-            new PipeInfo[] {new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.right, PipeType.sink), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.turn), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty)},
-            emptyRow
-        },
-        // level 2 sideways u shape
-        new PipeInfo[][] {
-            emptyRow,
-            emptyRow,
-            new PipeInfo[] {new PipeInfo(Direction.right, PipeType.source), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.turn), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty)},
-            new PipeInfo[] {new PipeInfo(Direction.right, PipeType.sink), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.turn), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty)},
-            emptyRow
-        }
+    private PipeInfo[][][] mediumLevels = {
+        PipeBoards.Create(new Vector2Int(0,0), new Vector2Int(0,6), new Vector2Int(3,6), new Vector2Int(3,1)),
+        PipeBoards.Create(new Vector2Int(1,1), new Vector2Int(1,7), new Vector2Int(4,7), new Vector2Int(4,0))
     };
-
-    private PipeInfo[][][] hardLevels = new PipeInfo[][][] {
-        // level 3 down then back
-        new PipeInfo[][] {
-            new PipeInfo[] {new PipeInfo(Direction.right, PipeType.source), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.turn), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty)},
-            new PipeInfo[] {new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.turn), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty)},
-            new PipeInfo[] {new PipeInfo(Direction.right, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.turn), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty)},
-            new PipeInfo[] {new PipeInfo(Direction.right, PipeType.sink), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.straight), new PipeInfo(Direction.up, PipeType.turn), new PipeInfo(Direction.up, PipeType.empty), new PipeInfo(Direction.up, PipeType.empty)},
-            emptyRow
-        }
+    private PipeInfo[][][] hardLevels = {
+        PipeBoards.Create(new Vector2Int(0,0), new Vector2Int(0,7), new Vector2Int(4,7), new Vector2Int(4,1), new Vector2Int(2,1), new Vector2Int(2,5))
     };
 
     private PipeInfo[][] currentLevel;
@@ -110,6 +80,10 @@ public class PipeGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        arcade = gameObject.AddComponent<ArcadeFeedback>();
+        hud = gameObject.AddComponent<PuzzleHUD>();
+        hud.Initialize("PECULIAR PIPES", "Tap a pipe to rotate it. Follow the arrows from inlet to outlet.", 9f, 5.5f);
+        hud.SetPrimaryButton(checkSolutionButton, "Test flow");
         gameTime.Start();
         GenerateLevel(easyLevels[rand.Next(2)]);
     }
@@ -169,6 +143,8 @@ public class PipeGenerator : MonoBehaviour
     {
         GameObject pipe = Instantiate(prefab, spawn, rotation);
         PipeBehavior pipeBehavior = pipe.GetComponent<PipeBehavior>();
+        pipeBehavior.generator = this;
+        cells[new Vector2Int(row,col)] = pipe;
         pipeBehavior.gameState = currLevel;
         pipeBehavior.row = row;
         pipeBehavior.col = col;
@@ -186,12 +162,21 @@ public class PipeGenerator : MonoBehaviour
 
     void GenerateLevel(PipeInfo[][] currLevel)
     {
+        var copy = new PipeInfo[currLevel.Length][];
+        for(int r=0;r<currLevel.Length;r++)
+        {
+            copy[r] = new PipeInfo[currLevel[r].Length];
+            for(int c=0;c<currLevel[r].Length;c++) copy[r][c] = new PipeInfo(currLevel[r][c].direction,currLevel[r][c].type);
+        }
+        currLevel = copy;
         currentLevel = currLevel;
+        turns=0;attempts=0;hud.SetFlow(0);
+        hud.SetProgress("BOARD " + level + " / 3  ·  " + (level == 1 ? "POWER THE WORKSHOP" : level == 2 ? "WAKE THE COOLANT PUMPS" : "BRING THE LAB ONLINE"));
         for (int i = 0; i < currLevel.Length; i++)
         {
             for (int j = 0; j < currLevel[i].Length; j++)
             {
-                int dir = rand.Next(3);
+                int dir = rand.Next(4);
                 Quaternion currRotation = possibleRotations[dir];
 
                 switch (currLevel[i][j].type)
@@ -228,10 +213,12 @@ public class PipeGenerator : MonoBehaviour
                             sr.flipY = !sr.flipY;
                         }
 
+                        cells[new Vector2Int(i,j)]=bruh1;
                         gameObjects.Add(bruh1);
                         break;
                     case PipeType.sink:
                         GameObject bruh2 = Instantiate(sink, getSpawnLocation(PipeType.sink, i, j, 0), getSpawnRotation(currLevel, i, j));
+                        cells[new Vector2Int(i,j)]=bruh2;
                         gameObjects.Add(bruh2);
                         break;
                 }
@@ -245,79 +232,100 @@ public class PipeGenerator : MonoBehaviour
         {
             Destroy(g);
         }
+        if(flowParticle!=null)flowParticle.SetActive(false);
         gameObjects.Clear();
-    }
-
-    (int row, int col) GetSource(PipeInfo[][] currLevel)
-    {
-        for (int row = 0; row < currLevel.Length; row++)
-        {
-            for (int col = 0; col < currLevel[row].Length; col++)
-            {
-                if (currLevel[row][col].type == PipeType.source)
-                {
-                    return (row, col);
-                }
-            }
-        }
-
-        return (0, 0);
-    }
-
-    (int i, int j) DirectionToMove(PipeInfo[][] currLevel, int row, int col)
-    {
-        if (currLevel[row][col].type == PipeType.turn)
-        {
-            switch(currLevel[row][col].direction)
-            {
-                case Direction.up:
-                    return (row, col + 1);
-                case Direction.right:
-                    return (row + 1, col);
-                case Direction.down:
-                    return (row, col - 1);
-                case Direction.left:
-                    return (row - 1, col);
-            }
-        }
-        else
-        {
-            switch(currLevel[row][col].direction)
-            {
-                case Direction.up:
-                    return (row - 1, col);
-                case Direction.right:
-                    return (row, col + 1);
-                case Direction.down:
-                    return (row + 1, col);
-                case Direction.left:
-                    return (row, col - 1);
-            }
-        }
-        return (0, 0);
+        cells.Clear();
+        originalColors.Clear();
     }
 
     public bool CheckSolution(PipeInfo[][] currLevel)
     {
-        var (currRow, currCol) = GetSource(currLevel);
-        for (int i = 0; i < 100; i++)
-        {
-            // sometimes we can go out of bounds, so if we do, just return false
-            try
-            {
-                if (currLevel[currRow][currCol].type == PipeType.sink)
-                {
-                    return true;
-                }
-            }
-            catch (System.Exception e)
-            {
-                return false;
-            }
-            (currRow, currCol) = DirectionToMove(currLevel, currRow, currCol);
-        }
+        List<Vector2Int> path;
+        Vector2Int failure;
+        return PipePath.Trace(currLevel, out path, out failure);
+    }
 
-        return false;
+    private void Update() { if (hud != null) hud.SetTime(gameTime.Elapsed); }
+    private void OnApplicationPause(bool paused)
+    {
+        if (paused) gameTime.Stop(); else if (!completed) gameTime.Start();
+    }
+    public void OnPipeRotated()
+    {
+        foreach (var pair in originalColors) if (pair.Key != null) pair.Key.color = pair.Value;
+        originalColors.Clear();
+        turns++;
+        arcade.Tone(330+(turns%4)*55,.035f);
+        hud.SetFeedback("Valve clicks: "+turns+"  /  Route the coolant, then test the flow.");
+    }
+    private void Tint(Vector2Int cell, Color color)
+    {
+        GameObject pipe;
+        if (!cells.TryGetValue(cell,out pipe)) return;
+        foreach (var renderer in pipe.GetComponentsInChildren<SpriteRenderer>())
+        {
+            if (!originalColors.ContainsKey(renderer)) originalColors[renderer] = renderer.color;
+            renderer.color = color;
+        }
+    }
+    private IEnumerator TestFlow()
+    {
+        checking = true;
+        checkSolutionButton.interactable = false;
+        foreach(var pair in originalColors)if(pair.Key!=null)pair.Key.color=pair.Value;
+        originalColors.Clear();attempts++;hud.SetFlow(0);
+        hud.SetFeedback("PUMP STARTED. Charging the circuit...");
+        arcade.Tone(150,.18f);
+        List<Vector2Int> path;
+        Vector2Int failure;
+        bool solved = PipePath.Trace(currentLevel, out path, out failure);
+        foreach (var pipe in cells.Values) {var behavior=pipe.GetComponent<PipeBehavior>();if(behavior!=null)behavior.enabled=false;}
+        foreach (var cell in path)
+        {
+            Tint(cell, new Color(.4f,1f,.84f));
+            hud.SetFlow((path.IndexOf(cell)+1f)/path.Count);
+            arcade.Tone(300+path.IndexOf(cell)*24,.055f);
+            hud.SetFeedback("COOLANT FLOW  "+(path.IndexOf(cell)+1)+" / "+path.Count+"  /  Keep it moving!");
+            yield return FlowThrough(cell,.12f);
+        }
+        if (solved)
+        {
+            hud.SetFeedback(attempts==1?"FIRST-TRY FIX! Circuit online.":"CIRCUIT ONLINE! Byte City is humming.");
+            arcade.Tone(880,.25f);hud.Celebrate();
+            gameTime.Stop();
+            yield return new WaitForSeconds(.85f);
+            ClearLevel(); level++;
+            if (level == 2) GenerateLevel(mediumLevels[rand.Next(mediumLevels.Length)]);
+            else if (level == 3) GenerateLevel(hardLevels[0]);
+            else { completed = true; pipeGameOverManager.Setup(gameTime.Elapsed); }
+            if (!completed) { gameTime.Start(); hud.SetFeedback("New board. Rotate the pipes to reconnect the flow."); }
+        }
+        else
+        {
+            Tint(failure, new Color(1,0.35f,0.3f));
+            arcade.Tone(100,.2f);
+            hud.SetFeedback("Flow stopped here. Check the next pipe's inlet and arrow.", true);
+            foreach (var pipe in cells.Values) {var behavior=pipe.GetComponent<PipeBehavior>();if(behavior!=null)behavior.enabled=true;}
+        }
+        checking = false;
+        checkSolutionButton.interactable = !completed;
+    }
+
+    private IEnumerator FlowThrough(Vector2Int cell,float duration)
+    {
+        if(flowParticle==null)
+        {
+            flowParticle=new GameObject("Coolant pulse");flowParticle.transform.SetParent(transform);flowParticle.SetActive(false);
+            var sr=flowParticle.AddComponent<SpriteRenderer>();
+            sr.sprite=ByteCityTheme.Current.button;sr.color=new Color(.4f,1,.9f);sr.sortingOrder=100;
+            float width=sr.sprite.bounds.size.x;flowParticle.transform.localScale=Vector3.one*(.28f/width);
+        }
+        Vector3 end=spawnLocations[cell.x][cell.y]+Vector3.down*.5f;
+        Vector3 start=flowParticle.activeSelf?flowParticle.transform.position:end;
+        if(start==Vector3.zero)start=end;
+        flowParticle.SetActive(true);
+        for(float t=0;t<duration;t+=Time.deltaTime){flowParticle.transform.position=Vector3.Lerp(start,end,t/duration);yield return null;}
+        flowParticle.transform.position=end;
     }
 
     public IEnumerator ChangeButtonColorOnFail()
@@ -334,27 +342,6 @@ public class PipeGenerator : MonoBehaviour
 
     public void CheckSolutionButton()
     {
-        if (CheckSolution(currentLevel))
-        {
-            ClearLevel();
-            level++;
-            if (level == 2)
-            {
-                GenerateLevel(mediumLevels[rand.Next(2)]);
-            }
-            else if (level == 3)
-            {
-                GenerateLevel(hardLevels[0]);
-            }
-            else
-            {
-                gameTime.Stop();
-                pipeGameOverManager.Setup(gameTime.Elapsed);
-            }
-        }
-        else
-        {
-            StartCoroutine(ChangeButtonColorOnFail());
-        }
+        if (!checking && !completed) StartCoroutine(TestFlow());
     }
 }

@@ -15,6 +15,7 @@ using UnityEngine;
 public class PipeBehavior : MonoBehaviour
 {
     public PipeInfo pipeInfo;
+    public PipeGenerator generator;
 
     private bool mouseDown;
     private bool movable;
@@ -64,17 +65,22 @@ public class PipeBehavior : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (!enabled || (UnityEngine.EventSystems.EventSystem.current != null && UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())) return;
         mouseDown = true;
+        movable = true;
     }
 
     void OnMouseUp()
     {
-        if (!mouseDown || !movable)
+        bool pressed = mouseDown;
+        mouseDown = false;
+        if (!enabled || !pressed || !movable)
         {
             return;
         }
         mouseDown = false;
         RotatePipe();
+        if (generator != null) generator.OnPipeRotated();
     }
 
     void RotatePipe()

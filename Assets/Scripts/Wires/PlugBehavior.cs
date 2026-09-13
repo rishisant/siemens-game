@@ -1,56 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-/**
- * @brief Behavior logic for a wirePlug
- *
- * Makes use of the PlugStats class to keep track of variables
- * @see PlugStats
- */
+/** @brief Connects only matching wire ends and supports forgiving drop targets. */
 public class PlugBehavior : MonoBehaviour
 {
-    // PlugStats member to keep track of various flags
     public PlugStats plugS;
-
-    /**
-     * Start() is a Unity function that is called before the first frame update
-     *
-     * This just grabs the appropriate members using the GetComponent() Unity function
-     * PlugStats for the wire is grabbed
-     */
-    void Start()
+    void Awake() { plugS = GetComponent<PlugStats>(); }
+    public bool TryConnect(PoweredWireBehavior wire)
     {
-        plugS = gameObject.GetComponent<PlugStats>();
+        if (wire == null || wire.powerWireS == null || wire.powerWireS.connected || plugS.connected) return false;
+        var wireColor = wire.GetComponent<SpriteRenderer>();
+        var socketColor = GetComponent<SpriteRenderer>();
+        bool matches = plugS.connectionId >= 0 && wire.powerWireS.connectionId >= 0
+            ? plugS.connectionId == wire.powerWireS.connectionId
+            : wireColor != null && socketColor != null && wireColor.color == socketColor.color;
+        if (!matches) return false;
+        wire.transform.position = new Vector3(transform.position.x - 0.4f, transform.position.y, wire.transform.position.z);
+        wire.powerWireS.connected = true; wire.powerWireS.moving = false; plugS.connected = true;
+        wire.UpdateLine();
+        var hud = FindObjectOfType<PuzzleHUD>();
+        if (hud != null) hud.SetFeedback("Connected! Keep going.");
+        return true;
     }
-
-    /**
-     * OnTriggerEnter2D() is a Unity function that runs when another Collider2D
-     * enters the zone of this gameObject's Collider2D
-     *
-     * This function handles the collision of a wireEntry and a wirePlug. If
-     * they are the same color then they are locked into place and are marked
-     * as connected, otherwise nothing happens.
-     *
-     * @param other The other Collider2D that is currently colliding with this gameObject
-     */
     public void OnTriggerEnter2D(Collider2D other)
     {
-        SpriteRenderer otherSpriteRenderer = other.GetComponent<SpriteRenderer>();
-        if (otherSpriteRenderer == null)
-        {
-            Debug.Log("otherSpriteRenderer is null");
-            return;
-        }
-
-        SpriteRenderer thisSpriteRenderer = GetComponent<SpriteRenderer>();
-        if (otherSpriteRenderer.color == thisSpriteRenderer.color)
-        {
-            other.gameObject.transform.position = new Vector3(transform.position.x - 0.4f, transform.position.y, transform.position.z);
-            other.gameObject.GetComponent<PoweredWireStats>().connected = true;
-            other.gameObject.GetComponent<PoweredWireBehavior>().UpdateLine();
-
-            plugS.connected = true;
-        }
+        var wire = other.GetComponent<PoweredWireBehavior>();
+        if (wire != null) TryConnect(wire);
     }
 }
